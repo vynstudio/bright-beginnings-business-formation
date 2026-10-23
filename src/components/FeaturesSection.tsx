@@ -63,7 +63,7 @@ const FeaturesSection = () => {
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
               {t("Everything you need")}{" "}
               <br />
-              to open in Florida
+              {t("to open in Florida")}
             </motion.h2>
           </div>
         <motion.div initial={{

@@ -14,7 +14,7 @@ const benefits = [{
   filled: 4
 }, {
   title: "Bilingual support",
-  description: "Talk to us in English or Spanish, by phone, email or WhatsApp.",
+  description: "Talk to us in English, Spanish or Portuguese, by phone, email or WhatsApp.",
   filled: 4
 }, {
   title: "Open from abroad",
@@ -71,7 +71,7 @@ const BenefitsSection = () => {
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
               {t("Why founders choose us")}{" "}
               <br />
-              to open in Florida
+              {t("to open in Florida")}
             </motion.h2>
           </div>
         <motion.div initial={{
