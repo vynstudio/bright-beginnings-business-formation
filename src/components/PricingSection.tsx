@@ -1,13 +1,12 @@
-import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const PricingSection = () => {
-  const [isAnnual, setIsAnnual] = useState(true);
-  const starterFeatures = ["Access to core AI models", "Up to 5 team members", "Basic compliance tools", "Community support", "Standard integrations"];
-  const coreFeatures = ["Access to all AI model integrations", "Full team management", "Compliance and monitoring controls", "Standard cross-organization support", "Email and dedicated support"];
-  const customFeatures = ["Everything in Enterprise Core, plus SSO/SAML", "Custom models and VPC or on-prem deployment", "Advanced security (PII on content filtering)", "Volume discounts and unlimited teams", "Dedicated support with live chat"];
+  const starterFeatures = ["Articles filed with Sunbiz", "1 year of registered agent service", "Digital company documents", "Email support", "Name availability check"];
+  const coreFeatures = ["Everything in Basic", "EIN from the IRS", "Operating agreement or bylaws", "Banking resolution", "Phone and WhatsApp support"];
+  const customFeatures = ["Everything in Standard", "Annual report filing for 1 year", "Help with ITIN for international owners", "US business bank account guidance", "Priority same-day filing"];
   
   return (
     <section className="py-12 md:py-20 bg-background">
@@ -25,7 +24,7 @@ const PricingSection = () => {
               <p className="text-[12px] font-medium text-[#1F2420]">// Pricing //</p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Enterprise pricing, tailored to your needs
+              Simple pricing, plus state fees
             </h2>
           </motion.div>
           
@@ -36,37 +35,9 @@ const PricingSection = () => {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground lg:max-w-xs lg:text-right lg:pt-12"
           >
-            Choose the right plan for the pace and complexity of your organization.
+            One-time formation fee. Florida state filing fee ($125 for an LLC, $70 for a corporation) is added at checkout.
           </motion.p>
         </div>
-
-        {/* Toggle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-10"
-        >
-          <div className="inline-flex items-center gap-1 bg-background border border-border rounded-full p-1">
-            <button
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                !isAnnual ? "bg-foreground text-background" : "text-muted-foreground"
-              }`}
-              onClick={() => setIsAnnual(false)}
-            >
-              Monthly
-            </button>
-            <button
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                isAnnual ? "bg-foreground text-background" : "text-muted-foreground"
-              }`}
-              onClick={() => setIsAnnual(true)}
-            >
-              Yearly
-              <span className="text-[11px] font-semibold text-[#FF520A]">20% off</span>
-            </button>
-          </div>
-        </motion.div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-6">
@@ -84,13 +55,13 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">Starter</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">Basic</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
-                  ${isAnnual ? "199" : "249"}
+                  $49
                 </span>
-                <span className="text-muted-foreground">/month</span>
+                <span className="text-muted-foreground">+ state fee</span>
               </div>
 
               <Button asChild variant="outline" className="w-full rounded-full">
@@ -123,17 +94,17 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">Enterprise Core</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">Standard</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
-                  ${isAnnual ? "499" : "599"}
+                  $149
                 </span>
-                <span className="text-muted-foreground">/month</span>
+                <span className="text-muted-foreground">+ state fee</span>
               </div>
 
               <Button asChild variant="lime" className="w-full rounded-full">
-                <Link to="/contact">TALK TO SALES</Link>
+                <Link to="/contact">GET STARTED</Link>
               </Button>
             </div>
 
@@ -163,15 +134,16 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.3), 0px 1px 4px rgba(0, 0, 0, 0.2)'
               }}
             >
-              <h3 className="text-lg font-medium text-white mb-4">Custom</h3>
+              <h3 className="text-lg font-medium text-white mb-4">Premium</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-bold text-white">Custom</span>
+                <span className="text-4xl font-bold text-white">$299</span>
+                <span className="text-white/70">+ state fee</span>
               </div>
 
               <Button asChild variant="heroOutline" className="w-full bg-white text-foreground hover:bg-white/90 rounded-full py-2 pr-[2px] pl-6 relative justify-center">
                 <Link to="/contact">
-                  TALK TO SALES
+                  GET STARTED
                   <span className="bg-foreground rounded-full p-2 absolute right-2">
                     <ArrowUpRight size={18} className="text-background" />
                   </span>

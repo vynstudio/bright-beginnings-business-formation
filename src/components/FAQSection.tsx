@@ -4,20 +4,20 @@ import { AddCircleIcon, MinusSignCircleIcon } from "hugeicons-react";
 
 const faqs = [
   {
-    question: "Can AxiomAI run in our private environment?",
-    answer: "Yes. We support private cloud, VPC, and on-premise deployments",
+    question: "Do I need to live in Florida or the US?",
+    answer: "No. Anyone can own a Florida LLC or corporation. You just need a registered agent with a Florida address, which we provide.",
   },
   {
-    question: "How do you handle data privacy?",
-    answer: "AxiomAI is designed with privacy-first principles. We offer data encryption at rest and in transit, role-based access controls, and compliance with major regulations including GDPR, HIPAA, and SOC 2.",
+    question: "How long does formation take?",
+    answer: "Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.",
   },
   {
-    question: "Does it support multiple AI models?",
-    answer: "Absolutely. AxiomAI provides a unified interface to orchestrate and manage multiple AI models from various providers, including OpenAI, Anthropic, and custom models.",
+    question: "LLC or corporation: which is right for me?",
+    answer: "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.",
   },
   {
-    question: "Is AxiomAI compliant with enterprise standards?",
-    answer: "Yes. We maintain SOC 2 Type II certification, ISO 27001 compliance, and support HIPAA BAA agreements for healthcare organizations.",
+    question: "What does a registered agent do?",
+    answer: "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.",
   },
 ];
 

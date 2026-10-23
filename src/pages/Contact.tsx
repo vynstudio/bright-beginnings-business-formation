@@ -123,7 +123,7 @@ const Contact = () => {
               Get in Touch
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Have questions about Axiom? We'd love to hear from you. Send us a
+              Have questions about forming your Florida company? We'd love to hear from you. Send us a
               message and we'll respond as soon as possible.
             </p>
           </motion.div>

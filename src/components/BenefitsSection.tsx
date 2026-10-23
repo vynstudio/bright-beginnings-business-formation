@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
 const benefits = [{
-  title: "Optimized AI Costs",
-  description: "Control and predict AI spending with centralized management and usage insights.",
+  title: "Clear, flat pricing",
+  description: "One price plus the state fee. No hidden charges or surprise renewals.",
   filled: 1
 }, {
-  title: "Accelerated AI Deployment",
-  description: "Move AI solutions from pilot to production faster with standardized, enterprise-ready infrastructure.",
+  title: "Fast filing",
+  description: "Most filings are submitted to the state within one business day.",
   filled: 2
 }, {
-  title: "Reduced Compliance Risk",
-  description: "Protect enterprise data with built-in security, governance, and auditability across all AI usage.",
+  title: "Never miss a deadline",
+  description: "We remind you and file your annual report before the May 1 deadline.",
   filled: 4
 }, {
-  title: "Centralized Governance",
-  description: "Monitor AI usage, performance, and cost across teams from a single control layer.",
+  title: "Bilingual support",
+  description: "Talk to us in English or Spanish, by phone, email or WhatsApp.",
   filled: 4
 }, {
-  title: "Scalable Adoption Across Teams",
-  description: "Enable secure AI usage across departments without creating silos or operational friction.",
+  title: "Open from abroad",
+  description: "International founders can form a Florida company without traveling or a US address.",
   filled: 5
 }, {
-  title: "Executive-Level Confidence",
-  description: "Provide leadership with transparency, accountability, and control over enterprise AI initiatives.",
+  title: "Privacy protected",
+  description: "Use our registered agent address on public records instead of your home address.",
   filled: 6
 }];
 const ProgressIndicator = ({
@@ -67,9 +67,9 @@ const BenefitsSection = () => {
           }} transition={{
             delay: 0.1
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Measurable business value{" "}
+              Why founders choose us{" "}
               <br />
-              from enterprise AI
+              to open in Florida
             </motion.h2>
           </div>
         <motion.div initial={{
@@ -84,9 +84,7 @@ const BenefitsSection = () => {
           delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-base font-light text-muted-foreground max-w-lg">
-              AxiomAI helps organizations move from fragmented AI initiatives to a governed, scalable 
-              AI capability — delivering operational efficiency, reduced risk, and faster time to value 
-              across the enterprise.
+              We handle the paperwork, filings and deadlines so you can focus on running your business — whether you live in Miami or Madrid.
             </p>
           </motion.div>
         </div>
