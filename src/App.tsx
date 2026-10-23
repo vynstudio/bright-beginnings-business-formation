@@ -15,6 +15,9 @@ import AdminCategories from "./pages/AdminCategories";
 import AdminLogin from "./pages/AdminLogin";
 import AdminUsers from "./pages/AdminUsers";
 import AdminMessages from "./pages/AdminMessages";
+import AdminOrders from "./pages/AdminOrders";
+import Start from "./pages/Start";
+import CheckoutReturn from "./pages/CheckoutReturn";
 import ResetPassword from "./pages/ResetPassword";
 import RequireAdmin from "./components/auth/RequireAdmin";
 import NotFound from "./pages/NotFound";
@@ -42,6 +45,9 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/start" element={<Start />} />
+            <Route path="/checkout/return" element={<CheckoutReturn />} />
+            <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/reset-password" element={<ResetPassword />} />
             <Route path="/admin" element={<Navigate to="/admin/posts" replace />} />
