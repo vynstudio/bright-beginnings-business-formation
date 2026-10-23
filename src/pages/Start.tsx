@@ -133,7 +133,7 @@ const Start = () => {
                     <div className="grid sm:grid-cols-2 gap-3" role="radiogroup" aria-label={t("Company type")}>
                       {(["llc", "corp"] as Entity[]).map((e) => (
                         <button key={e} type="button" role="radio" aria-checked={entity === e} onClick={() => setEntity(e)}
-                          className={`text-left rounded-2xl border p-4 transition-colors ${entity === e ? "border-accent bg-accent/5" : "border-border hover:border-foreground/30"}`}>
+                          className={`text-left flex flex-col justify-start h-full rounded-2xl border p-4 transition-colors ${entity === e ? "border-accent bg-accent/5" : "border-border hover:border-foreground/30"}`}>
                           <p className="font-semibold text-foreground">{e === "llc" ? t("Florida LLC") : t("Florida corporation")}</p>
                           <p className="text-sm text-muted-foreground">
                             {e === "llc" ? t("Simple and flexible. Best for most small businesses.") : t("Best if you plan to raise investment or issue shares.")}
@@ -147,7 +147,7 @@ const Start = () => {
                     <div className="grid md:grid-cols-3 gap-3" role="radiogroup" aria-label={t("Package")}>
                       {PLANS.map((p) => (
                         <button key={p.id} type="button" role="radio" aria-checked={plan === p.id} onClick={() => setPlan(p.id)}
-                          className={`text-left rounded-2xl border p-4 transition-colors ${plan === p.id ? "border-accent bg-accent/5" : "border-border hover:border-foreground/30"}`}>
+                          className={`text-left flex flex-col justify-start h-full rounded-2xl border p-4 transition-colors ${plan === p.id ? "border-accent bg-accent/5" : "border-border hover:border-foreground/30"}`}>
                           <p className="font-semibold text-foreground">{t(p.name)}</p>
                           <p className="text-2xl font-bold text-foreground mt-1">{money(p.price)} <span className="text-xs font-normal text-muted-foreground">{t("+ state fee")}</span></p>
                           <ul className="mt-3 space-y-1.5">
