@@ -68,7 +68,7 @@ const EnterpriseSection = () => {
                 {t("Answer a few questions online and we take care of the paperwork with the State of Florida.")}
               </p>
               <Button asChild variant="lime" size="default" className="rounded-full px-8">
-                <Link to="/contact">{t("START NOW")}</Link>
+                <Link to="/start">{t("START NOW")}</Link>
               </Button>
             </div>
           </div>
