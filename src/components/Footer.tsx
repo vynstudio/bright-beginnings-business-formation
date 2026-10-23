@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import axiomLogo from "@/assets/axiom-logo.svg";
 const Footer = () => {
   const navLinks = [{
     label: "About",
@@ -24,7 +23,7 @@ const Footer = () => {
           {/* Logo - Left */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <img src={axiomLogo} alt="AxiomAI" className="w-[120px]" />
+              <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-primary">Florida</span></span>
             </Link>
           </div>
 

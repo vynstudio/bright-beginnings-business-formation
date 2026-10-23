@@ -9,11 +9,11 @@ const faqs = [
   },
   {
     question: "How long does formation take?",
-    answer: "AxiomAI is designed with privacy-first principles. We offer data encryption at rest and in transit, role-based access controls, and compliance with major regulations including GDPR, HIPAA, and SOC 2.",
+    answer: "Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.",
   },
   {
     question: "LLC or corporation: which is right for me?",
-    answer: "Absolutely. AxiomAI provides a unified interface to orchestrate and manage multiple AI models from various providers, including OpenAI, Anthropic, and custom models.",
+    answer: "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.",
   },
   {
     question: "What does a registered agent do?",

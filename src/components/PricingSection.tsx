@@ -40,34 +40,6 @@ const PricingSection = () => {
           </motion.p>
         </div>
 
-        {/* Toggle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-10"
-        >
-          <div className="inline-flex items-center gap-1 bg-background border border-border rounded-full p-1">
-            <button
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                !isAnnual ? "bg-foreground text-background" : "text-muted-foreground"
-              }`}
-              onClick={() => setIsAnnual(false)}
-            >
-              Monthly
-            </button>
-            <button
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                isAnnual ? "bg-foreground text-background" : "text-muted-foreground"
-              }`}
-              onClick={() => setIsAnnual(true)}
-            >
-              Yearly
-              <span className="text-[11px] font-semibold text-[#FF520A]">20% off</span>
-            </button>
-          </div>
-        </motion.div>
-
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {/* Starter Plan */}

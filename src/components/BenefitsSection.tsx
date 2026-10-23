@@ -67,9 +67,9 @@ const BenefitsSection = () => {
           }} transition={{
             delay: 0.1
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Measurable business value{" "}
+              Why founders choose us{" "}
               <br />
-              from enterprise AI
+              to open in Florida
             </motion.h2>
           </div>
         <motion.div initial={{
@@ -84,9 +84,7 @@ const BenefitsSection = () => {
           delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-base font-light text-muted-foreground max-w-lg">
-              AxiomAI helps organizations move from fragmented AI initiatives to a governed, scalable 
-              AI capability — delivering operational efficiency, reduced risk, and faster time to value 
-              across the enterprise.
+              We handle the paperwork, filings and deadlines so you can focus on running your business — whether you live in Miami or Madrid.
             </p>
           </motion.div>
         </div>

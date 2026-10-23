@@ -5,7 +5,7 @@ import scrollTunnelVideo from "@/assets/scroll-tunnel.mp4";
 
 const steps = [{
   title: "1. Choose your company type",
-  description: "AxiomAI centralizes all AI initiatives into a single governed framework, ensuring compliance, security, and ethical standards across the organization. This gives leadership clear visibility and control over AI projects while reducing operational risks."
+  description: "Pick an LLC or corporation and tell us your company name. We check that the name is available in Florida."
 }, {
   title: "2. We file with the State of Florida",
   description: "We prepare your Articles of Organization or Incorporation and submit them to Sunbiz, acting as your registered agent."

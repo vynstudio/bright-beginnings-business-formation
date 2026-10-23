@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu01Icon, Cancel01Icon } from "hugeicons-react";
-import axiomLogo from "@/assets/axiom-logo.svg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +35,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 px-6 bg-background/80 backdrop-blur-md border border-border/50 rounded-[20px] shadow-sm">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={axiomLogo} alt="AxiomAI" className="w-[120px]" />
+          <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-primary">Florida</span></span>
         </Link>
 
         {/* Desktop Navigation */}
