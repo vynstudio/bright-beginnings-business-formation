@@ -5,20 +5,20 @@ import { AddCircleIcon, MinusSignCircleIcon } from "hugeicons-react";
 
 const faqs = [
   {
-    {t("question: \"Do I need to live in Florida or the US?\",")}
-    {t("answer: \"No. Anyone can own a Florida LLC or corporation. You just need a registered agent with a Florida address, which we provide.\",")}
+    question: "Do I need to live in Florida or the US?",
+    answer: "No. Anyone can own a Florida LLC or corporation. You just need a registered agent with a Florida address, which we provide.",
   },
   {
-    {t("question: \"How long does formation take?\",")}
-    {t("answer: \"Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.\",")}
+    question: "How long does formation take?",
+    answer: "Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.",
   },
   {
-    {t("question: \"LLC or corporation: which is right for me?\",")}
-    {t("answer: \"Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.\",")}
+    question: "LLC or corporation: which is right for me?",
+    answer: "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.",
   },
   {
-    {t("question: \"What does a registered agent do?\",")}
-    {t("answer: \"A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.\",")}
+    question: "What does a registered agent do?",
+    answer: "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.",
   },
 ];
 
@@ -30,7 +30,7 @@ const FAQSection = () => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  {t("return (")}
+  return (
     <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">

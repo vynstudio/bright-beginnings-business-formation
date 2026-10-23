@@ -7,7 +7,7 @@ import LogoStrip from "@/components/LogoStrip";
 
 const HeroSection = () => {
   const { t } = useLang();
-  {t("return (")}
+  return (
     <section className="relative pb-12 md:pb-16 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
         <motion.div 
@@ -49,10 +49,10 @@ const HeroSection = () => {
           <div className="w-full max-w-[1280px] h-[500px] overflow-hidden rounded-[24px] flex items-center justify-center">
             <video
               src={heroVideo}
-              {t("autoPlay")}
-              {t("loop")}
-              {t("muted")}
-              {t("playsInline")}
+              autoPlay
+              loop
+              muted
+              playsInline
               preload="auto"
               className="min-w-[104%] min-h-[104%] object-cover"
             />

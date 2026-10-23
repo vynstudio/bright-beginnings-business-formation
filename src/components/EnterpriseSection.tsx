@@ -6,26 +6,26 @@ import enterpriseVideo from "@/assets/enterprise-ball.mp4";
 
 const features = [
   {
-    {t("title: \"New entrepreneurs\",")}
-    {t("description: \"Start your first LLC the right way\",")}
+    title: "New entrepreneurs",
+    description: "Start your first LLC the right way",
   },
   {
-    {t("title: \"International founders\",")}
-    {t("description: \"Open a US company without living in the US\",")}
+    title: "International founders",
+    description: "Open a US company without living in the US",
   },
   {
-    {t("title: \"Growing businesses\",")}
-    {t("description: \"Convert or add a corporation as you scale\",")}
+    title: "Growing businesses",
+    description: "Convert or add a corporation as you scale",
   },
   {
-    {t("title: \"Existing Florida companies\",")}
-    {t("description: \"Switch your registered agent and catch up on filings\",")}
+    title: "Existing Florida companies",
+    description: "Switch your registered agent and catch up on filings",
   },
 ];
 
 const EnterpriseSection = () => {
   const { t } = useLang();
-  {t("return (")}
+  return (
     <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
@@ -55,10 +55,10 @@ const EnterpriseSection = () => {
           <div className="relative w-full h-[480px] bg-[#E8E6DF] rounded-[24px] overflow-hidden">
             <video
               src={enterpriseVideo}
-              {t("autoPlay")}
-              {t("loop")}
-              {t("muted")}
-              {t("playsInline")}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover object-[center_0%]"
             />
             {/* Floating card */}

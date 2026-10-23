@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const { t } = useLang();
   const navLinks = [{
-    {t("label: \"About\",")}
-    {t("href: \"/about\"")}
+    label: "About",
+    href: "/about"
   }, {
-    {t("label: \"Blog\",")}
-    {t("href: \"/blog\"")}
+    label: "Blog",
+    href: "/blog"
   }, {
-    {t("label: \"Contact us\",")}
-    {t("href: \"/contact\"")}
+    label: "Contact us",
+    href: "/contact"
   }];
   const socialLinks = [{
-    {t("label: \"BUILT WITH LOVABLE\",")}
-    {t("href: \"https://lovable.dev\"")}
+    label: "BUILT WITH LOVABLE",
+    href: "https://lovable.dev"
   }];
   return <footer className="py-6 bg-background">
       <div className="container mx-auto px-4">

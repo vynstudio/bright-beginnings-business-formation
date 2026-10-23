@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  {t("// Close the mobile menu on Escape or a click/tap outside the header")}
+  // Close the mobile menu on Escape or a click/tap outside the header
   useEffect(() => {
     if (!isMenuOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -31,7 +31,7 @@ const Header = () => {
     { label: "Contact us", href: "/contact", isInternal: true },
   ];
 
-  {t("return (")}
+  return (
     <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 pt-5">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 px-6 bg-background/80 backdrop-blur-md border border-border/50 rounded-[20px] shadow-sm">
@@ -43,7 +43,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) =>
-            {t("item.isInternal ? (")}
+            item.isInternal ? (
               <Link
                 key={t(item.label)}
                 to={item.href}
@@ -89,7 +89,7 @@ const Header = () => {
         <div id="mobile-menu" className="md:hidden mt-2 mx-4">
           <nav aria-label="Mobile" className="bg-background/95 backdrop-blur-md border border-border/50 rounded-[16px] px-4 py-4 flex flex-col gap-1 shadow-lg">
             {navItems.map((item) =>
-              {t("item.isInternal ? (")}
+              item.isInternal ? (
                 <Link
                   key={t(item.label)}
                   to={item.href}

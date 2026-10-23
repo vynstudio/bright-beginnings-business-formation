@@ -14,7 +14,7 @@ interface LogoStripProps {
 
 const LogoStrip = ({ label = "Trusted by founders in 30+ countries" }: LogoStripProps) => {
   const { t } = useLang();
-  {t("return (")}
+  return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -29,9 +29,9 @@ const LogoStrip = ({ label = "Trusted by founders in 30+ countries" }: LogoStrip
           className="flex items-center gap-4 md:gap-8"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            {t("duration: 20,")}
-            {t("ease: \"linear\",")}
-            {t("repeat: Infinity,")}
+            duration: 20,
+            ease: "linear",
+            repeat: Infinity,
           }}
         >
           {/* First set of logos */}

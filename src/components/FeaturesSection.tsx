@@ -5,30 +5,30 @@ import looper1 from "@/assets/looper-1.svg";
 import looper2 from "@/assets/looper-2.png";
 import looper3 from "@/assets/looper-3.png";
 const features = [{
-  {t("icon: ColorsIcon,")}
-  {t("title: \"LLC & corporation formation\",")}
-  {t("description: \"We prepare and file your Articles with the Florida Division of Corporations (Sunbiz), usually within 1 business day.\",")}
-  {t("meshType: \"spiral\"")}
+  icon: ColorsIcon,
+  title: "LLC & corporation formation",
+  description: "We prepare and file your Articles with the Florida Division of Corporations (Sunbiz), usually within 1 business day.",
+  meshType: "spiral"
 }, {
-  {t("icon: AiSecurity01Icon,")}
-  {t("title: \"Registered agent service\",")}
-  {t("description: \"A real Florida address to receive legal notices and state mail, scanned and sent to you the same day.\",")}
-  {t("meshType: \"wave\"")}
+  icon: AiSecurity01Icon,
+  title: "Registered agent service",
+  description: "A real Florida address to receive legal notices and state mail, scanned and sent to you the same day.",
+  meshType: "wave"
 }, {
-  {t("icon: Layers01Icon,")}
-  {t("title: \"EIN & compliance\",")}
-  {t("description: \"We get your EIN from the IRS and file your Florida annual report on time, every year.\",")}
-  {t("meshType: \"flow\"")}
+  icon: Layers01Icon,
+  title: "EIN & compliance",
+  description: "We get your EIN from the IRS and file your Florida annual report on time, every year.",
+  meshType: "flow"
 }];
 
-{t("// Decorative mesh SVG components")}
+// Decorative mesh SVG components
 const SpiralMesh = () => <img src={looper1} alt="" className="w-full h-full object-cover" />;
 const WaveMesh = () => <img src={looper2} alt="" className="w-full h-full object-cover" />;
 const FlowMesh = () => <img src={looper3} alt="" className="w-full h-full object-cover" />;
 const meshComponents = {
-  {t("spiral: SpiralMesh,")}
-  {t("wave: WaveMesh,")}
-  {t("flow: FlowMesh")}
+  spiral: SpiralMesh,
+  wave: WaveMesh,
+  flow: FlowMesh
 };
 const FeaturesSection = () => {
   const { t } = useLang();
@@ -38,44 +38,44 @@ const FeaturesSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           <div>
             <motion.div initial={{
-            {t("opacity: 0,")}
+            opacity: 0,
             y: 20
           }} whileInView={{
-            {t("opacity: 1,")}
+            opacity: 1,
             y: 0
           }} viewport={{
-            {t("once: true")}
+            once: true
           }} className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-2">
               <p className="text-[12px] font-medium text-[#1F2420]">
                 {t("// Services //")}
               </p>
             </motion.div>
             <motion.h2 initial={{
-            {t("opacity: 0,")}
+            opacity: 0,
             y: 20
           }} whileInView={{
-            {t("opacity: 1,")}
+            opacity: 1,
             y: 0
           }} viewport={{
-            {t("once: true")}
+            once: true
           }} transition={{
-            {t("delay: 0.1")}
+            delay: 0.1
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
               {t("Everything you need")}{" "}
               <br />
-              {t("to open in Florida")}
+              to open in Florida
             </motion.h2>
           </div>
         <motion.div initial={{
-          {t("opacity: 0,")}
+          opacity: 0,
           y: 20
         }} whileInView={{
-          {t("opacity: 1,")}
+          opacity: 1,
           y: 0
         }} viewport={{
-          {t("once: true")}
+          once: true
         }} transition={{
-          {t("delay: 0.2")}
+          delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-[#59605A] max-w-lg">
               {t("From your first filing to every annual report, we handle the Florida paperwork so your company is legal, protected and ready to do business.")}
@@ -88,15 +88,15 @@ const FeaturesSection = () => {
           {features.map((feature, index) => {
           const MeshComponent = meshComponents[feature.meshType as keyof typeof meshComponents];
           return <motion.div key={index} initial={{
-            {t("opacity: 0,")}
+            opacity: 0,
             y: 30
           }} whileInView={{
-            {t("opacity: 1,")}
+            opacity: 1,
             y: 0
           }} viewport={{
-            {t("once: true")}
+            once: true
           }} transition={{
-            {t("delay: index * 0.1")}
+            delay: index * 0.1
           }} className="bg-[#F6F8F7] border-[#E8E8E8] rounded-2xl overflow-hidden flex flex-col border-0">
                 <div className="m-2 p-5 bg-[#FFFFFF] rounded-xl shadow-[0_1px_4px_rgba(12,12,13,0.1),0_1px_4px_rgba(12,12,13,0.05)] flex flex-col gap-2 relative z-10">
                   <div className="w-12 h-12 bg-[#EFF1EF] rounded-xl flex items-center justify-center">

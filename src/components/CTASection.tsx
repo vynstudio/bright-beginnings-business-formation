@@ -6,7 +6,7 @@ import ctaBackground from "@/assets/cta-background.png";
 
 const CTASection = () => {
   const { t } = useLang();
-  {t("return (")}
+  return (
     <section className="py-12 md:py-20 container mx-auto px-4">
       <div 
         className="bg-cover bg-center bg-no-repeat rounded-[24px] h-[400px] sm:h-[480px] flex items-center justify-center relative overflow-hidden px-4"

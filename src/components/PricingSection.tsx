@@ -10,7 +10,7 @@ const PricingSection = () => {
   const coreFeatures = ["Everything in Basic", "EIN from the IRS", "Operating agreement or bylaws", "Banking resolution", "Phone and WhatsApp support"];
   const customFeatures = ["Everything in Standard", "Annual report filing for 1 year", "Help with ITIN for international owners", "US business bank account guidance", "Priority same-day filing"];
   
-  {t("return (")}
+  return (
     <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Header Section */}
@@ -54,7 +54,7 @@ const PricingSection = () => {
             <div 
               className="bg-white rounded-[16px] p-5 mb-2"
               style={{
-                {t("boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'")}
+                boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
               <h3 className="text-lg font-medium text-foreground mb-4">{t("Basic")}</h3>
@@ -93,7 +93,7 @@ const PricingSection = () => {
             <div 
               className="bg-white rounded-[16px] p-5 mb-2"
               style={{
-                {t("boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'")}
+                boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
               <h3 className="text-lg font-medium text-foreground mb-4">{t("Standard")}</h3>
@@ -133,7 +133,7 @@ const PricingSection = () => {
             <div 
               className="bg-[#2A2F2B] rounded-[16px] p-5 mb-2"
               style={{
-                {t("boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.3), 0px 1px 4px rgba(0, 0, 0, 0.2)'")}
+                boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.3), 0px 1px 4px rgba(0, 0, 0, 0.2)'
               }}
             >
               <h3 className="text-lg font-medium text-white mb-4">{t("Premium")}</h3>
