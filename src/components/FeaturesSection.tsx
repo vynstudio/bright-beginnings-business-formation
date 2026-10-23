@@ -76,9 +76,7 @@ const FeaturesSection = () => {
           delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-[#59605A] max-w-lg">
-              Gain full control over how AI is deployed, accessed, and used across your organization. 
-              Standardize AI workflows, enforce security and compliance policies, and scale adoption 
-              confidently without sacrificing transparency or performance.
+              From your first filing to every annual report, we handle the Florida paperwork so your company is legal, protected and ready to do business.
             </p>
           </motion.div>
         </div>

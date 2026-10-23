@@ -11,7 +11,7 @@ interface LogoStripProps {
   label?: string;
 }
 
-const LogoStrip = ({ label = "Trusted by global enterprises and industry leaders" }: LogoStripProps) => {
+const LogoStrip = ({ label = "Trusted by founders in 30+ countries" }: LogoStripProps) => {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
