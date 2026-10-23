@@ -115,6 +115,75 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          address: string
+          alt_company_name: string | null
+          business_purpose: string | null
+          company_name: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          country: string
+          created_at: string
+          entity_type: string
+          environment: string
+          extras: string[]
+          id: string
+          language: string
+          owners: Json
+          paid_at: string | null
+          plan: string
+          status: string
+          stripe_session_id: string | null
+          total_cents: number
+        }
+        Insert: {
+          address: string
+          alt_company_name?: string | null
+          business_purpose?: string | null
+          company_name: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          country: string
+          created_at?: string
+          entity_type: string
+          environment?: string
+          extras?: string[]
+          id?: string
+          language?: string
+          owners?: Json
+          paid_at?: string | null
+          plan: string
+          status?: string
+          stripe_session_id?: string | null
+          total_cents: number
+        }
+        Update: {
+          address?: string
+          alt_company_name?: string | null
+          business_purpose?: string | null
+          company_name?: string
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string
+          country?: string
+          created_at?: string
+          entity_type?: string
+          environment?: string
+          extras?: string[]
+          id?: string
+          language?: string
+          owners?: Json
+          paid_at?: string | null
+          plan?: string
+          status?: string
+          stripe_session_id?: string | null
+          total_cents?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
