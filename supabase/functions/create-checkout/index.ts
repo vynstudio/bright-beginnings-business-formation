@@ -66,7 +66,7 @@ Deno.serve(async (req) => {
       (await stripe.customers.create({ email: d.contactEmail, name: d.contactName, phone: d.contactPhone })).id;
 
     const planName = { starter: "Starter", professional: "Professional", international: "International+" }[d.plan];
-    const session = await stripe.checkout.sessions.create({
+    const params = {
       line_items,
       mode: "payment",
       ui_mode: "embedded_page",
@@ -77,7 +77,18 @@ Deno.serve(async (req) => {
       customer_update: { address: "auto" },
       payment_intent_data: { description: `${planName} — Florida ${d.entityType === "llc" ? "LLC" : "corporation"}: ${d.companyName}` },
       metadata: { orderId: order.id, managed_payments: "false" },
-    });
+    };
+    // Tax calculation needs a business address in the payments account. Until it's set,
+    // fall back to checkout without tax so customers can still pay.
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create(params as any);
+    } catch (e) {
+      if (!String((e as Error).message).includes("head office address")) throw e;
+      console.warn("Tax not configured yet; creating checkout without automatic tax");
+      const { automatic_tax: _t, customer_update: _c, ...rest } = params;
+      session = await stripe.checkout.sessions.create(rest as any);
+    }
 
     await db.from("orders").update({ stripe_session_id: session.id }).eq("id", order.id);
     return json({ clientSecret: session.client_secret, orderId: order.id });
