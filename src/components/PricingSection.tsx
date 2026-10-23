@@ -25,7 +25,7 @@ const PricingSection = () => {
           >
             {/* Badge */}
             <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-4">
-              <p className="text-[12px] font-medium text-[#1F2420]">// Pricing //</p>
+              <p className="text-[12px] font-medium text-[#1F2420]">{t("// Pricing //")}</p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
               {t("Simple pricing, plus state fees")}

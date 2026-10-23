@@ -298,4 +298,5 @@ export const translations: Record<string, T> = {
   },
   "No order information found.": { es: "No se encontró información del pedido.", pt: "Nenhuma informação de pedido encontrada." },
   "Back to home": { es: "Volver al inicio", pt: "Voltar ao início" },
+  "// Pricing //": { es: "// Precios //", pt: "// Preços //" },
 };
