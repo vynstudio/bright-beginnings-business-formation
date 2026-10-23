@@ -4,43 +4,43 @@ import testimonialAvatar from "@/assets/testimonial-avatar.webp";
 
 const testimonials = [
   {
-    quote: "The missing layer for enterprise AI.",
-    description: "AxiomAI gave us centralized governance without slowing innovation.",
+    quote: "My LLC was ready in two days.",
+    description: "They handled everything, even the EIN, while I was still in Colombia.",
     author: "VP of Technology",
     company: "Global Financial Services Company",
     rating: 5,
   },
   {
-    quote: "Built for real enterprise constraints.",
-    description: "Security, compliance, and scale were clearly first-class priorities.",
+    quote: "Finally, help in Spanish.",
+    description: "Every question was answered clearly in my language.",
     author: "Director of AI",
     company: "Healthcare Enterprise",
     rating: 5,
   },
   {
-    quote: "Collaboration finally works.",
-    description: "AxiomAI enabled teams across departments to share models and insights seamlessly.",
+    quote: "No more missed annual reports.",
+    description: "They remind me and file it for me every year.",
     author: "Director of Data Science",
     company: "Technology Services Company",
     rating: 5,
   },
   {
-    quote: "Transformed our AI operations.",
-    description: "We reduced deployment time by 80% while maintaining full compliance.",
+    quote: "Simple and honest pricing.",
+    description: "I paid exactly what they quoted, plus the state fee.",
     author: "CTO",
     company: "Fortune 500 Retailer",
     rating: 5,
   },
   {
-    quote: "Enterprise-grade from day one.",
-    description: "Finally a platform that understands the complexities of regulated industries.",
+    quote: "Great registered agent service.",
+    description: "Legal mail is scanned and emailed the same day.",
     author: "Head of Innovation",
     company: "Insurance Corporation",
     rating: 5,
   },
   {
-    quote: "Seamless integration experience.",
-    description: "AxiomAI connected with our existing infrastructure without any friction.",
+    quote: "Easy switch from my old agent.",
+    description: "The change was filed with the state in one day.",
     author: "VP Engineering",
     company: "Manufacturing Leader",
     rating: 5,
@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h3 className="text-2xl md:text-3xl lg:text-[48px] lg:leading-none font-medium text-foreground leading-[1.2] mb-8 max-w-4xl mx-auto">
-            "AxiomAI is by far the best enterprise AI platform I have ever used"
+            "Agente Registrado Florida made opening my business in the US simple"
           </h3>
           <div className="flex flex-col items-center gap-2">
             <div className="w-16 h-16 rounded-full bg-muted overflow-hidden">
@@ -70,8 +70,8 @@ const TestimonialsSection = () => {
               />
             </div>
             <div className="flex flex-col items-center">
-              <p className="text-base font-medium text-foreground">Aurora Greenwich</p>
-              <p className="text-sm text-muted-foreground">VP Marketing, Tesla</p>
+              <p className="text-base font-medium text-foreground">María González</p>
+              <p className="text-sm text-muted-foreground">Founder, MG Imports LLC</p>
             </div>
           </div>
         </motion.div>

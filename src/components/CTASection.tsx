@@ -20,12 +20,12 @@ const CTASection = () => {
           className="text-center relative z-10 w-full max-w-2xl"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground mb-6 sm:mb-8 px-2">
-            Bring AI to the enterprise — responsibly
+            Start your Florida business today
           </h2>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-2 sm:px-0">
             <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-full p-2 pl-6 text-base font-medium h-12 transition-colors">
-              TALK TO SALES
+              START MY BUSINESS
               <span className="bg-background rounded-full p-2">
                 <ArrowUpRight size={24} className="text-foreground" />
               </span>

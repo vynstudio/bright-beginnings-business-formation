@@ -4,17 +4,17 @@ import { CheckmarkCircle02Icon } from "hugeicons-react";
 import scrollTunnelVideo from "@/assets/scroll-tunnel.mp4";
 
 const steps = [{
-  title: "Unified AI Governance",
+  title: "1. Choose your company type",
   description: "AxiomAI centralizes all AI initiatives into a single governed framework, ensuring compliance, security, and ethical standards across the organization. This gives leadership clear visibility and control over AI projects while reducing operational risks."
 }, {
-  title: "Scalable AI Infrastructure",
-  description: "Built on enterprise-grade infrastructure that scales with your needs, ensuring reliable performance at any volume."
+  title: "2. We file with the State of Florida",
+  description: "We prepare your Articles of Organization or Incorporation and submit them to Sunbiz, acting as your registered agent."
 }, {
-  title: "Accelerated Deployment & Time-to-Value",
-  description: "Deploy AI solutions faster with pre-built templates, automated workflows, and streamlined integration processes."
+  title: "3. Get your EIN and documents",
+  description: "Receive your approved company documents, operating agreement and IRS EIN so you can open a bank account."
 }, {
-  title: "Operational Efficiency & Optimization",
-  description: "Maximize ROI with intelligent resource allocation, cost optimization, and continuous performance monitoring."
+  title: "4. Stay compliant",
+  description: "We forward state mail, track deadlines and file your annual report every year."
 }];
 
 const TIMER_DURATION = 10000; // 10 seconds
@@ -64,7 +64,7 @@ const HowItWorksSection = () => {
             </p>
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground">
-            How AxiomAI works
+            How it works
           </h2>
         </motion.div>
 

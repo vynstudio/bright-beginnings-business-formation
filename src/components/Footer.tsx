@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Bottom Row */}
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="text-[13px] sm:text-[14px] text-foreground">
-              © 2026 AxiomAI. All rights reserved.
+              © 2026 Agente Registrado Florida. All rights reserved.
             </p>
           </div>
         </div>

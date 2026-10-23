@@ -67,7 +67,7 @@ const Header = () => {
             to="/contact"
             className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-10 text-sm font-medium transition-colors"
           >
-            TALK TO SALES
+            START NOW
           </Link>
         </div>
 
@@ -114,7 +114,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-11 text-base font-medium transition-colors"
               >
-                TALK TO SALES
+                START NOW
               </Link>
             </div>
           </nav>
