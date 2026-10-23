@@ -64,6 +64,7 @@ const Header = () => {
           )}
         </nav>
 
+        <div className="flex items-center gap-3 ml-auto md:ml-0">
         <div className="hidden md:flex">
           <Link
             to="/contact"
@@ -73,7 +74,8 @@ const Header = () => {
           </Link>
         </div>
 
-        <LanguageSwitcher className="ml-auto mr-2 md:ml-3 md:mr-0 md:order-last" />
+        <LanguageSwitcher />
+        </div>
 
         {/* Mobile Menu Button */}
         <button
