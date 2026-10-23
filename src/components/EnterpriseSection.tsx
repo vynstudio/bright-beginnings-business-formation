@@ -63,7 +63,7 @@ const EnterpriseSection = () => {
             />
             {/* Floating card */}
             <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:right-8 md:left-auto bg-background rounded-[16px] p-6 shadow-lg md:max-w-[320px]">
-              <p className="text-[20px] font-semibold text-foreground mb-2">Start in 10 minutes</p>
+              <p className="text-[20px] font-semibold text-foreground mb-2">{t("Start in 10 minutes")}</p>
               <p className="text-[15px] text-muted-foreground mb-6 leading-relaxed">
                 {t("Answer a few questions online and we take care of the paperwork with the State of Florida.")}
               </p>

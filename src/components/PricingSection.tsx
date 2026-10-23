@@ -63,7 +63,7 @@ const PricingSection = () => {
                 <span className="text-4xl font-bold text-foreground">
                   $49
                 </span>
-                <span className="text-muted-foreground">+ state fee</span>
+                <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="outline" className="w-full rounded-full">
@@ -102,7 +102,7 @@ const PricingSection = () => {
                 <span className="text-4xl font-bold text-foreground">
                   $149
                 </span>
-                <span className="text-muted-foreground">+ state fee</span>
+                <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="lime" className="w-full rounded-full">
@@ -140,7 +140,7 @@ const PricingSection = () => {
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-white">$299</span>
-                <span className="text-white/70">+ state fee</span>
+                <span className="text-white/70">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="heroOutline" className="w-full bg-white text-foreground hover:bg-white/90 rounded-full py-2 pr-[2px] pl-6 relative justify-center">
