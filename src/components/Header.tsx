@@ -35,7 +35,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 px-6 bg-background/80 backdrop-blur-md border border-border/50 rounded-[20px] shadow-sm">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-primary">Florida</span></span>
+          <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-lime">Florida</span></span>
         </Link>
 
         {/* Desktop Navigation */}

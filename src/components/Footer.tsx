@@ -23,7 +23,7 @@ const Footer = () => {
           {/* Logo - Left */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-primary">Florida</span></span>
+              <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-lime">Florida</span></span>
             </Link>
           </div>
 

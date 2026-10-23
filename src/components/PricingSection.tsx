@@ -1,10 +1,9 @@
-import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const PricingSection = () => {
-  const [isAnnual, setIsAnnual] = useState(true);
   const starterFeatures = ["Articles filed with Sunbiz", "1 year of registered agent service", "Digital company documents", "Email support", "Name availability check"];
   const coreFeatures = ["Everything in Basic", "EIN from the IRS", "Operating agreement or bylaws", "Banking resolution", "Phone and WhatsApp support"];
   const customFeatures = ["Everything in Standard", "Annual report filing for 1 year", "Help with ITIN for international owners", "US business bank account guidance", "Priority same-day filing"];
