@@ -1,25 +1,27 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckmarkCircle02Icon } from "hugeicons-react";
 import scrollTunnelVideo from "@/assets/scroll-tunnel.mp4";
 
 const steps = [{
-  title: "1. Choose your company type",
-  description: "Pick an LLC or corporation and tell us your company name. We check that the name is available in Florida."
+  {t("title: \"1. Choose your company type\",")}
+  {t("description: \"Pick an LLC or corporation and tell us your company name. We check that the name is available in Florida.\"")}
 }, {
-  title: "2. We file with the State of Florida",
-  description: "We prepare your Articles of Organization or Incorporation and submit them to Sunbiz, acting as your registered agent."
+  {t("title: \"2. We file with the State of Florida\",")}
+  {t("description: \"We prepare your Articles of Organization or Incorporation and submit them to Sunbiz, acting as your registered agent.\"")}
 }, {
-  title: "3. Get your EIN and documents",
-  description: "Receive your approved company documents, operating agreement and IRS EIN so you can open a bank account."
+  {t("title: \"3. Get your EIN and documents\",")}
+  {t("description: \"Receive your approved company documents, operating agreement and IRS EIN so you can open a bank account.\"")}
 }, {
-  title: "4. Stay compliant",
-  description: "We forward state mail, track deadlines and file your annual report every year."
+  {t("title: \"4. Stay compliant\",")}
+  {t("description: \"We forward state mail, track deadlines and file your annual report every year.\"")}
 }];
 
 const TIMER_DURATION = 10000; // 10 seconds
 
 const HowItWorksSection = () => {
+  const { t } = useLang();
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -50,21 +52,21 @@ const HowItWorksSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div initial={{
-        opacity: 0,
+        {t("opacity: 0,")}
         y: 20
       }} whileInView={{
-        opacity: 1,
+        {t("opacity: 1,")}
         y: 0
       }} viewport={{
-        once: true
+        {t("once: true")}
       }} className="mb-12">
           <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-2">
             <p className="text-[12px] font-medium text-[#1F2420]">
-              // Product explanation //
+              {t("// Product explanation //")}
             </p>
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground">
-            How it works
+            {t("How it works")}
           </h2>
         </motion.div>
 
@@ -72,13 +74,13 @@ const HowItWorksSection = () => {
         <div className="grid lg:grid-cols-2 gap-[24px] items-stretch">
           {/* Left - Accordion Cards */}
           <motion.div initial={{
-          opacity: 0,
+          {t("opacity: 0,")}
           y: 20
         }} whileInView={{
-          opacity: 1,
+          {t("opacity: 1,")}
           y: 0
         }} viewport={{
-          once: true
+          {t("once: true")}
         }} className="bg-[#F7F8F7] rounded-[24px] p-3 flex flex-col gap-2 py-[8px] px-[8px]">
             {steps.map((step, index) => <div key={index} role="button" tabIndex={0} aria-expanded={expandedIndex === index} onClick={() => handleManualClick(index)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleManualClick(index); } }} className={`relative bg-background rounded-[16px] p-5 cursor-pointer transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${expandedIndex === index ? "shadow-sm" : "hover:shadow-sm"}`} style={{
             boxShadow: expandedIndex === index ? '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)' : undefined
@@ -98,24 +100,24 @@ const HowItWorksSection = () => {
                     <CheckmarkCircle02Icon className="w-5 h-5 text-[#5A6B5D]" />
                   </div>
                   <h3 className="text-[18px] font-medium text-foreground">
-                    {step.title}
+                    {t(step.title)}
                   </h3>
                 </div>
                 <AnimatePresence>
                   {expandedIndex === index && <motion.div initial={{
-                height: 0,
-                opacity: 0
+                {t("height: 0,")}
+                {t("opacity: 0")}
               }} animate={{
-                height: "auto",
-                opacity: 1
+                {t("height: \"auto\",")}
+                {t("opacity: 1")}
               }} exit={{
-                height: 0,
-                opacity: 0
+                {t("height: 0,")}
+                {t("opacity: 0")}
               }} transition={{
-                duration: 0.3
+                {t("duration: 0.3")}
               }} className="overflow-hidden">
                       <p className="text-[15px] text-muted-foreground leading-relaxed mt-4 pl-0 sm:pl-[60px]">
-                        {step.description}
+                        {t(step.description)}
                       </p>
                     </motion.div>}
                 </AnimatePresence>
@@ -124,15 +126,15 @@ const HowItWorksSection = () => {
 
           {/* Right - Looper Image */}
           <motion.div initial={{
-          opacity: 0,
-          scale: 0.95
+          {t("opacity: 0,")}
+          {t("scale: 0.95")}
         }} whileInView={{
-          opacity: 1,
-          scale: 1
+          {t("opacity: 1,")}
+          {t("scale: 1")}
         }} viewport={{
-          once: true
+          {t("once: true")}
         }} transition={{
-          duration: 0.6
+          {t("duration: 0.6")}
         }} className="bg-[#F7F8F7] rounded-[24px] flex items-center justify-center min-h-[400px] lg:min-h-0">
             <video src={scrollTunnelVideo} autoPlay loop muted playsInline className="w-full h-full object-cover rounded-[24px]" />
           </motion.div>

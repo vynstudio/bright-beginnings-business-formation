@@ -1,34 +1,36 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AddCircleIcon, MinusSignCircleIcon } from "hugeicons-react";
 
 const faqs = [
   {
-    question: "Do I need to live in Florida or the US?",
-    answer: "No. Anyone can own a Florida LLC or corporation. You just need a registered agent with a Florida address, which we provide.",
+    {t("question: \"Do I need to live in Florida or the US?\",")}
+    {t("answer: \"No. Anyone can own a Florida LLC or corporation. You just need a registered agent with a Florida address, which we provide.\",")}
   },
   {
-    question: "How long does formation take?",
-    answer: "Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.",
+    {t("question: \"How long does formation take?\",")}
+    {t("answer: \"Most Florida filings are submitted within 1 business day and approved by the state in 1–5 business days. Your EIN usually follows within a few days.\",")}
   },
   {
-    question: "LLC or corporation: which is right for me?",
-    answer: "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.",
+    {t("question: \"LLC or corporation: which is right for me?\",")}
+    {t("answer: \"Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.\",")}
   },
   {
-    question: "What does a registered agent do?",
-    answer: "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.",
+    {t("question: \"What does a registered agent do?\",")}
+    {t("answer: \"A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.\",")}
   },
 ];
 
 const FAQSection = () => {
+  const { t } = useLang();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const handleClick = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  return (
+  {t("return (")}
     <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -41,11 +43,11 @@ const FAQSection = () => {
           >
             <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-6">
               <p className="text-[12px] font-medium text-[#1F2420]">
-                // FAQ //
+                {t("// FAQ //")}
               </p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              We're here to answer your questions
+              {t("We're here to answer your questions")}
             </h2>
           </motion.div>
 
@@ -72,7 +74,7 @@ const FAQSection = () => {
               >
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-[18px] font-medium text-foreground">
-                    {faq.question}
+                    {t(faq.question)}
                   </h3>
                   <div className="flex-shrink-0">
                     {expandedIndex === index ? (
@@ -92,7 +94,7 @@ const FAQSection = () => {
                       className="overflow-hidden"
                     >
                       <p className="text-[15px] text-muted-foreground leading-relaxed mt-4">
-                        {faq.answer}
+                        {t(faq.answer)}
                       </p>
                     </motion.div>
                   )}

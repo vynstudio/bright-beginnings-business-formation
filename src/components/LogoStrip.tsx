@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import logoShopify from "@/assets/logo-shopify.png";
 import logoWebflow from "@/assets/logo-webflow.png";
@@ -12,7 +13,8 @@ interface LogoStripProps {
 }
 
 const LogoStrip = ({ label = "Trusted by founders in 30+ countries" }: LogoStripProps) => {
-  return (
+  const { t } = useLang();
+  {t("return (")}
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -20,16 +22,16 @@ const LogoStrip = ({ label = "Trusted by founders in 30+ countries" }: LogoStrip
       className="flex flex-col md:flex-row items-center gap-4 md:gap-8"
     >
       <p className="text-[14px] md:text-[16px] text-[#59605A] shrink-0 text-center md:text-left max-w-[210px]">
-        {label}
+        {t(label)}
       </p>
       <div className="flex-1 w-full max-w-full overflow-hidden">
         <motion.div
           className="flex items-center gap-4 md:gap-8"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 20,
-            ease: "linear",
-            repeat: Infinity,
+            {t("duration: 20,")}
+            {t("ease: \"linear\",")}
+            {t("repeat: Infinity,")}
           }}
         >
           {/* First set of logos */}

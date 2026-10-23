@@ -1,12 +1,14 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu01Icon, Cancel01Icon } from "hugeicons-react";
 
 const Header = () => {
+  const { t } = useLang();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  // Close the mobile menu on Escape or a click/tap outside the header
+  {t("// Close the mobile menu on Escape or a click/tap outside the header")}
   useEffect(() => {
     if (!isMenuOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -29,33 +31,33 @@ const Header = () => {
     { label: "Contact us", href: "/contact", isInternal: true },
   ];
 
-  return (
+  {t("return (")}
     <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 pt-5">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 px-6 bg-background/80 backdrop-blur-md border border-border/50 rounded-[20px] shadow-sm">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-lime">Florida</span></span>
+          <span className="text-[17px] font-semibold text-foreground leading-tight">{t("Agente Registrado ")}<span className="text-lime">{t("Florida")}</span></span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) =>
-            item.isInternal ? (
+            {t("item.isInternal ? (")}
               <Link
-                key={item.label}
+                key={t(item.label)}
                 to={item.href}
                 className="font-medium text-muted-foreground hover:text-foreground transition-colors text-base"
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             ) : (
               <a
-                key={item.label}
+                key={t(item.label)}
                 href={item.href}
                 className="font-medium text-muted-foreground hover:text-foreground transition-colors text-base"
               >
-                {item.label}
+                {t(item.label)}
               </a>
             )
           )}
@@ -66,7 +68,7 @@ const Header = () => {
             to="/contact"
             className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-10 text-sm font-medium transition-colors"
           >
-            START NOW
+            {t("START NOW")}
           </Link>
         </div>
 
@@ -87,23 +89,23 @@ const Header = () => {
         <div id="mobile-menu" className="md:hidden mt-2 mx-4">
           <nav aria-label="Mobile" className="bg-background/95 backdrop-blur-md border border-border/50 rounded-[16px] px-4 py-4 flex flex-col gap-1 shadow-lg">
             {navItems.map((item) =>
-              item.isInternal ? (
+              {t("item.isInternal ? (")}
                 <Link
-                  key={item.label}
+                  key={t(item.label)}
                   to={item.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors py-3 px-3 rounded-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               ) : (
                 <a
-                  key={item.label}
+                  key={t(item.label)}
                   href={item.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors py-3 px-3 rounded-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </a>
               )
             )}
@@ -113,7 +115,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-11 text-base font-medium transition-colors"
               >
-                START NOW
+                {t("START NOW")}
               </Link>
             </div>
           </nav>

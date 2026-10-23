@@ -1,54 +1,56 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import testimonialAvatar from "@/assets/testimonial-avatar.webp";
 
 const testimonials = [
   {
-    quote: "My LLC was ready in two days.",
-    description: "They handled everything, even the EIN, while I was still in Colombia.",
-    author: "Carlos R.",
-    company: "Bogotá",
-    rating: 5,
+    {t("quote: \"My LLC was ready in two days.\",")}
+    {t("description: \"They handled everything, even the EIN, while I was still in Colombia.\",")}
+    {t("author: \"Carlos R.\",")}
+    {t("company: \"Bogotá\",")}
+    {t("rating: 5,")}
   },
   {
-    quote: "Finally, help in Spanish.",
-    description: "Every question was answered clearly in my language.",
-    author: "Ana P.",
-    company: "Miami",
-    rating: 5,
+    {t("quote: \"Finally, help in Spanish.\",")}
+    {t("description: \"Every question was answered clearly in my language.\",")}
+    {t("author: \"Ana P.\",")}
+    {t("company: \"Miami\",")}
+    {t("rating: 5,")}
   },
   {
-    quote: "No more missed annual reports.",
-    description: "They remind me and file it for me every year.",
-    author: "James T.",
-    company: "Orlando",
-    rating: 5,
+    {t("quote: \"No more missed annual reports.\",")}
+    {t("description: \"They remind me and file it for me every year.\",")}
+    {t("author: \"James T.\",")}
+    {t("company: \"Orlando\",")}
+    {t("rating: 5,")}
   },
   {
-    quote: "Simple and honest pricing.",
-    description: "I paid exactly what they quoted, plus the state fee.",
-    author: "Lucía M.",
-    company: "Madrid",
-    rating: 5,
+    {t("quote: \"Simple and honest pricing.\",")}
+    {t("description: \"I paid exactly what they quoted, plus the state fee.\",")}
+    {t("author: \"Lucía M.\",")}
+    {t("company: \"Madrid\",")}
+    {t("rating: 5,")}
   },
   {
-    quote: "Great registered agent service.",
-    description: "Legal mail is scanned and emailed the same day.",
-    author: "Daniel S.",
-    company: "Tampa",
-    rating: 5,
+    {t("quote: \"Great registered agent service.\",")}
+    {t("description: \"Legal mail is scanned and emailed the same day.\",")}
+    {t("author: \"Daniel S.\",")}
+    {t("company: \"Tampa\",")}
+    {t("rating: 5,")}
   },
   {
-    quote: "Easy switch from my old agent.",
-    description: "The change was filed with the state in one day.",
-    author: "Sofía V.",
-    company: "Mexico City",
-    rating: 5,
+    {t("quote: \"Easy switch from my old agent.\",")}
+    {t("description: \"The change was filed with the state in one day.\",")}
+    {t("author: \"Sofía V.\",")}
+    {t("company: \"Mexico City\",")}
+    {t("rating: 5,")}
   },
 ];
 
 const TestimonialsSection = () => {
-  return (
+  const { t } = useLang();
+  {t("return (")}
     <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Featured Testimonial */}
@@ -59,7 +61,7 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h3 className="text-2xl md:text-3xl lg:text-[48px] lg:leading-none font-medium text-foreground leading-[1.2] mb-8 max-w-4xl mx-auto">
-            "Agente Registrado Florida made opening my business in the US simple"
+            {t("\"Agente Registrado Florida made opening my business in the US simple\"")}
           </h3>
           <div className="flex flex-col items-center gap-2">
             <div className="w-16 h-16 rounded-full bg-muted overflow-hidden">
@@ -71,7 +73,7 @@ const TestimonialsSection = () => {
             </div>
             <div className="flex flex-col items-center">
               <p className="text-base font-medium text-foreground">María González</p>
-              <p className="text-sm text-muted-foreground">Founder, MG Imports LLC</p>
+              <p className="text-sm text-muted-foreground">{t("Founder, MG Imports LLC")}</p>
             </div>
           </div>
         </motion.div>
@@ -90,9 +92,9 @@ const TestimonialsSection = () => {
             }}
             transition={{
               x: {
-                duration: 30,
-                repeat: Infinity,
-                ease: "linear",
+                {t("duration: 30,")}
+                {t("repeat: Infinity,")}
+                {t("ease: \"linear\",")}
               },
             }}
           >
@@ -105,7 +107,7 @@ const TestimonialsSection = () => {
                 <div
                   className="bg-white rounded-[16px] p-5 mb-2"
                   style={{
-                    boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
+                    {t("boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'")}
                   }}
                 >
                   {/* Stars */}
@@ -117,12 +119,12 @@ const TestimonialsSection = () => {
 
                   {/* Quote Title */}
                   <h3 className="text-[18px] font-semibold text-[#1F2420] mb-3 leading-snug">
-                    "{testimonial.quote}"
+                    "{t(testimonial.quote)}"
                   </h3>
 
                   {/* Description */}
                   <p className="text-[15px] text-[#6B7280] leading-relaxed">
-                    {testimonial.description}
+                    {t(testimonial.description)}
                   </p>
                 </div>
 
