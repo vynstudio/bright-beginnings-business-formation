@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckmarkCircle02Icon } from "hugeicons-react";
@@ -20,6 +21,7 @@ const steps = [{
 const TIMER_DURATION = 10000; // 10 seconds
 
 const HowItWorksSection = () => {
+  const { t } = useLang();
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -60,11 +62,11 @@ const HowItWorksSection = () => {
       }} className="mb-12">
           <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-2">
             <p className="text-[12px] font-medium text-[#1F2420]">
-              // Product explanation //
+              {t("// Product explanation //")}
             </p>
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground">
-            How it works
+            {t("How it works")}
           </h2>
         </motion.div>
 
@@ -98,7 +100,7 @@ const HowItWorksSection = () => {
                     <CheckmarkCircle02Icon className="w-5 h-5 text-[#5A6B5D]" />
                   </div>
                   <h3 className="text-[18px] font-medium text-foreground">
-                    {step.title}
+                    {t(step.title)}
                   </h3>
                 </div>
                 <AnimatePresence>
@@ -115,7 +117,7 @@ const HowItWorksSection = () => {
                 duration: 0.3
               }} className="overflow-hidden">
                       <p className="text-[15px] text-muted-foreground leading-relaxed mt-4 pl-0 sm:pl-[60px]">
-                        {step.description}
+                        {t(step.description)}
                       </p>
                     </motion.div>}
                 </AnimatePresence>

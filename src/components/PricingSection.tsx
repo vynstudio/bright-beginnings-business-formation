@@ -1,9 +1,11 @@
+import { useLang } from "@/i18n/LanguageContext";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const PricingSection = () => {
+  const { t } = useLang();
   const starterFeatures = ["Articles filed with Sunbiz", "1 year of registered agent service", "Digital company documents", "Email support", "Name availability check"];
   const coreFeatures = ["Everything in Basic", "EIN from the IRS", "Operating agreement or bylaws", "Banking resolution", "Phone and WhatsApp support"];
   const customFeatures = ["Everything in Standard", "Annual report filing for 1 year", "Help with ITIN for international owners", "US business bank account guidance", "Priority same-day filing"];
@@ -24,7 +26,7 @@ const PricingSection = () => {
               <p className="text-[12px] font-medium text-[#1F2420]">// Pricing //</p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Simple pricing, plus state fees
+              {t("Simple pricing, plus state fees")}
             </h2>
           </motion.div>
           
@@ -35,7 +37,7 @@ const PricingSection = () => {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground lg:max-w-xs lg:text-right lg:pt-12"
           >
-            One-time formation fee. Florida state filing fee ($125 for an LLC, $70 for a corporation) is added at checkout.
+            {t("One-time formation fee. Florida state filing fee ($125 for an LLC, $70 for a corporation) is added at checkout.")}
           </motion.p>
         </div>
 
@@ -55,17 +57,17 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">Basic</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">{t("Basic")}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
                   $49
                 </span>
-                <span className="text-muted-foreground">+ state fee</span>
+                <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="outline" className="w-full rounded-full">
-                <Link to="/contact">GET STARTED</Link>
+                <Link to="/contact">{t("GET STARTED")}</Link>
               </Button>
             </div>
 
@@ -74,7 +76,7 @@ const PricingSection = () => {
               {starterFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm">
                   <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FF520A' }} />
-                  <span className="text-foreground">{feature}</span>
+                  <span className="text-foreground">{t(feature)}</span>
                 </li>
               ))}
             </ul>
@@ -94,17 +96,17 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">Standard</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">{t("Standard")}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
                   $149
                 </span>
-                <span className="text-muted-foreground">+ state fee</span>
+                <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="lime" className="w-full rounded-full">
-                <Link to="/contact">GET STARTED</Link>
+                <Link to="/contact">{t("GET STARTED")}</Link>
               </Button>
             </div>
 
@@ -113,7 +115,7 @@ const PricingSection = () => {
               {coreFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm">
                   <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FF520A' }} />
-                  <span className="text-foreground">{feature}</span>
+                  <span className="text-foreground">{t(feature)}</span>
                 </li>
               ))}
             </ul>
@@ -134,16 +136,16 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.3), 0px 1px 4px rgba(0, 0, 0, 0.2)'
               }}
             >
-              <h3 className="text-lg font-medium text-white mb-4">Premium</h3>
+              <h3 className="text-lg font-medium text-white mb-4">{t("Premium")}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-white">$299</span>
-                <span className="text-white/70">+ state fee</span>
+                <span className="text-white/70">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="heroOutline" className="w-full bg-white text-foreground hover:bg-white/90 rounded-full py-2 pr-[2px] pl-6 relative justify-center">
                 <Link to="/contact">
-                  GET STARTED
+                  {t("GET STARTED")}
                   <span className="bg-foreground rounded-full p-2 absolute right-2">
                     <ArrowUpRight size={18} className="text-background" />
                   </span>
@@ -156,7 +158,7 @@ const PricingSection = () => {
               {customFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm">
                   <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FF520A' }} />
-                  <span className="text-white/90">{feature}</span>
+                  <span className="text-white/90">{t(feature)}</span>
                 </li>
               ))}
             </ul>

@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import testimonialAvatar from "@/assets/testimonial-avatar.webp";
@@ -48,6 +49,7 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const { t } = useLang();
   return (
     <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -59,7 +61,7 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h3 className="text-2xl md:text-3xl lg:text-[48px] lg:leading-none font-medium text-foreground leading-[1.2] mb-8 max-w-4xl mx-auto">
-            "Agente Registrado Florida made opening my business in the US simple"
+            {t("\"Agente Registrado Florida made opening my business in the US simple\"")}
           </h3>
           <div className="flex flex-col items-center gap-2">
             <div className="w-16 h-16 rounded-full bg-muted overflow-hidden">
@@ -71,7 +73,7 @@ const TestimonialsSection = () => {
             </div>
             <div className="flex flex-col items-center">
               <p className="text-base font-medium text-foreground">María González</p>
-              <p className="text-sm text-muted-foreground">Founder, MG Imports LLC</p>
+              <p className="text-sm text-muted-foreground">{t("Founder, MG Imports LLC")}</p>
             </div>
           </div>
         </motion.div>
@@ -117,12 +119,12 @@ const TestimonialsSection = () => {
 
                   {/* Quote Title */}
                   <h3 className="text-[18px] font-semibold text-[#1F2420] mb-3 leading-snug">
-                    "{testimonial.quote}"
+                    "{t(testimonial.quote)}"
                   </h3>
 
                   {/* Description */}
                   <p className="text-[15px] text-[#6B7280] leading-relaxed">
-                    {testimonial.description}
+                    {t(testimonial.description)}
                   </p>
                 </div>
 

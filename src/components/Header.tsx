@@ -1,8 +1,11 @@
+import { useLang } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu01Icon, Cancel01Icon } from "hugeicons-react";
 
 const Header = () => {
+  const { t } = useLang();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -35,7 +38,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 px-6 bg-background/80 backdrop-blur-md border border-border/50 rounded-[20px] shadow-sm">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-[17px] font-semibold text-foreground leading-tight">Agente Registrado <span className="text-lime">Florida</span></span>
+          <span className="text-[17px] font-semibold text-foreground leading-tight">{t("Agente Registrado ")}<span className="text-lime">{t("Florida")}</span></span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -43,31 +46,35 @@ const Header = () => {
           {navItems.map((item) =>
             item.isInternal ? (
               <Link
-                key={item.label}
+                key={t(item.label)}
                 to={item.href}
                 className="font-medium text-muted-foreground hover:text-foreground transition-colors text-base"
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             ) : (
               <a
-                key={item.label}
+                key={t(item.label)}
                 href={item.href}
                 className="font-medium text-muted-foreground hover:text-foreground transition-colors text-base"
               >
-                {item.label}
+                {t(item.label)}
               </a>
             )
           )}
         </nav>
 
+        <div className="flex items-center gap-3 ml-auto md:ml-0">
         <div className="hidden md:flex">
           <Link
             to="/contact"
             className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-10 text-sm font-medium transition-colors"
           >
-            START NOW
+            {t("START NOW")}
           </Link>
+        </div>
+
+        <LanguageSwitcher />
         </div>
 
         {/* Mobile Menu Button */}
@@ -89,21 +96,21 @@ const Header = () => {
             {navItems.map((item) =>
               item.isInternal ? (
                 <Link
-                  key={item.label}
+                  key={t(item.label)}
                   to={item.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors py-3 px-3 rounded-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               ) : (
                 <a
-                  key={item.label}
+                  key={t(item.label)}
                   href={item.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors py-3 px-3 rounded-xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </a>
               )
             )}
@@ -113,7 +120,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-11 text-base font-medium transition-colors"
               >
-                START NOW
+                {t("START NOW")}
               </Link>
             </div>
           </nav>

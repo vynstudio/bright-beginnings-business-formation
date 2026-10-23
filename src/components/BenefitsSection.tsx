@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 const benefits = [{
   title: "Clear, flat pricing",
@@ -13,7 +14,7 @@ const benefits = [{
   filled: 4
 }, {
   title: "Bilingual support",
-  description: "Talk to us in English or Spanish, by phone, email or WhatsApp.",
+  description: "Talk to us in English, Spanish or Portuguese, by phone, email or WhatsApp.",
   filled: 4
 }, {
   title: "Open from abroad",
@@ -38,6 +39,7 @@ const ProgressIndicator = ({
     </div>;
 };
 const BenefitsSection = () => {
+  const { t } = useLang();
   return <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
@@ -53,7 +55,7 @@ const BenefitsSection = () => {
             once: true
           }} className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-2">
               <p className="text-[12px] font-medium text-[#1F2420]">
-                // Benefits //
+                {t("// Benefits //")}
               </p>
             </motion.div>
             <motion.h2 initial={{
@@ -67,9 +69,9 @@ const BenefitsSection = () => {
           }} transition={{
             delay: 0.1
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Why founders choose us{" "}
+              {t("Why founders choose us")}{" "}
               <br />
-              to open in Florida
+              {t("to open in Florida")}
             </motion.h2>
           </div>
         <motion.div initial={{
@@ -84,7 +86,7 @@ const BenefitsSection = () => {
           delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-base font-light text-muted-foreground max-w-lg">
-              We handle the paperwork, filings and deadlines so you can focus on running your business — whether you live in Miami or Madrid.
+              {t("We handle the paperwork, filings and deadlines so you can focus on running your business — whether you live in Miami or Madrid.")}
             </p>
           </motion.div>
         </div>
@@ -106,10 +108,10 @@ const BenefitsSection = () => {
         }}>
               <ProgressIndicator filled={benefit.filled} />
               <h3 className="text-[18px] font-semibold text-foreground mb-2 leading-tight">
-                {benefit.title}
+                {t(benefit.title)}
               </h3>
               <p className="text-[15px] text-muted-foreground leading-relaxed">
-                {benefit.description}
+                {t(benefit.description)}
               </p>
             </motion.div>)}
         </div>

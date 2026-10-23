@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { ColorsIcon, AiSecurity01Icon, Layers01Icon } from "hugeicons-react";
 import looper1 from "@/assets/looper-1.svg";
@@ -30,6 +31,7 @@ const meshComponents = {
   flow: FlowMesh
 };
 const FeaturesSection = () => {
+  const { t } = useLang();
   return <section id="about" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
@@ -45,7 +47,7 @@ const FeaturesSection = () => {
             once: true
           }} className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-2">
               <p className="text-[12px] font-medium text-[#1F2420]">
-                // Services //
+                {t("// Services //")}
               </p>
             </motion.div>
             <motion.h2 initial={{
@@ -59,9 +61,9 @@ const FeaturesSection = () => {
           }} transition={{
             delay: 0.1
           }} className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              Everything you need{" "}
+              {t("Everything you need")}{" "}
               <br />
-              to open in Florida
+              {t("to open in Florida")}
             </motion.h2>
           </div>
         <motion.div initial={{
@@ -76,7 +78,7 @@ const FeaturesSection = () => {
           delay: 0.2
         }} className="flex items-end justify-start lg:justify-end">
             <p className="text-[#59605A] max-w-lg">
-              From your first filing to every annual report, we handle the Florida paperwork so your company is legal, protected and ready to do business.
+              {t("From your first filing to every annual report, we handle the Florida paperwork so your company is legal, protected and ready to do business.")}
             </p>
           </motion.div>
         </div>
@@ -101,10 +103,10 @@ const FeaturesSection = () => {
                     <feature.icon className="w-6 h-6 text-[#6B7280]" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl font-semibold text-[#1F2420]">
-                    {feature.title}
+                    {t(feature.title)}
                   </h3>
                   <p className="text-sm text-[#6B7280] leading-relaxed">
-                    {feature.description}
+                    {t(feature.description)}
                   </p>
                 </div>
                 <div className="h-40 -mt-2 overflow-hidden">

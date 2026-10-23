@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AddCircleIcon, MinusSignCircleIcon } from "hugeicons-react";
@@ -22,6 +23,7 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  const { t } = useLang();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const handleClick = (index: number) => {
@@ -41,11 +43,11 @@ const FAQSection = () => {
           >
             <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-6">
               <p className="text-[12px] font-medium text-[#1F2420]">
-                // FAQ //
+                {t("// FAQ //")}
               </p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
-              We're here to answer your questions
+              {t("We're here to answer your questions")}
             </h2>
           </motion.div>
 
@@ -72,7 +74,7 @@ const FAQSection = () => {
               >
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-[18px] font-medium text-foreground">
-                    {faq.question}
+                    {t(faq.question)}
                   </h3>
                   <div className="flex-shrink-0">
                     {expandedIndex === index ? (
@@ -92,7 +94,7 @@ const FAQSection = () => {
                       className="overflow-hidden"
                     >
                       <p className="text-[15px] text-muted-foreground leading-relaxed mt-4">
-                        {faq.answer}
+                        {t(faq.answer)}
                       </p>
                     </motion.div>
                   )}
