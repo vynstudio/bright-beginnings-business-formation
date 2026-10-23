@@ -67,7 +67,7 @@ const Header = () => {
         <div className="flex items-center gap-3 ml-auto md:ml-0">
         <div className="hidden md:flex">
           <Link
-            to="/contact"
+            to="/start"
             className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-10 text-sm font-medium transition-colors"
           >
             {t("START NOW")}
@@ -116,7 +116,7 @@ const Header = () => {
             )}
             <div className="pt-2 mt-1 border-t border-border/50">
               <Link
-                to="/contact"
+                to="/start"
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-5 h-11 text-base font-medium transition-colors"
               >

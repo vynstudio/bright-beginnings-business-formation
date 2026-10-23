@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { PLANS, EXTRAS, money } from "@/lib/catalog";
 const PricingSection = () => {
   const { t } = useLang();
-  const starterFeatures = ["Articles filed with Sunbiz", "1 year of registered agent service", "Digital company documents", "Email support", "Name availability check"];
-  const coreFeatures = ["Everything in Basic", "EIN from the IRS", "Operating agreement or bylaws", "Banking resolution", "Phone and WhatsApp support"];
-  const customFeatures = ["Everything in Standard", "Annual report filing for 1 year", "Help with ITIN for international owners", "US business bank account guidance", "Priority same-day filing"];
+  const [starter, professional, international] = PLANS;
+  const starterFeatures = starter.features;
+  const coreFeatures = professional.features;
+  const customFeatures = international.features;
   
   return (
     <section className="py-12 md:py-20 bg-background">
@@ -23,7 +25,7 @@ const PricingSection = () => {
           >
             {/* Badge */}
             <div className="inline-block px-6 py-2 bg-[#F6F8F7] border border-[#E8E8E8] rounded-[100px] mb-4">
-              <p className="text-[12px] font-medium text-[#1F2420]">// Pricing //</p>
+              <p className="text-[12px] font-medium text-[#1F2420]">{t("// Pricing //")}</p>
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-medium text-foreground leading-tight">
               {t("Simple pricing, plus state fees")}
@@ -57,17 +59,17 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">{t("Basic")}</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">{t(starter.name)}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
-                  $49
+                  {money(starter.price)}
                 </span>
                 <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="outline" className="w-full rounded-full">
-                <Link to="/contact">{t("GET STARTED")}</Link>
+                <Link to="/start?plan=starter">{t("GET STARTED")}</Link>
               </Button>
             </div>
 
@@ -96,17 +98,17 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)'
               }}
             >
-              <h3 className="text-lg font-medium text-foreground mb-4">{t("Standard")}</h3>
+              <h3 className="text-lg font-medium text-foreground mb-4">{t(professional.name)}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-foreground">
-                  $149
+                  {money(professional.price)}
                 </span>
                 <span className="text-muted-foreground">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="lime" className="w-full rounded-full">
-                <Link to="/contact">{t("GET STARTED")}</Link>
+                <Link to="/start?plan=professional">{t("GET STARTED")}</Link>
               </Button>
             </div>
 
@@ -136,15 +138,15 @@ const PricingSection = () => {
                 boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.3), 0px 1px 4px rgba(0, 0, 0, 0.2)'
               }}
             >
-              <h3 className="text-lg font-medium text-white mb-4">{t("Premium")}</h3>
+              <h3 className="text-lg font-medium text-white mb-4">{t(international.name)}</h3>
               
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-bold text-white">$299</span>
+                <span className="text-4xl font-bold text-white">{money(international.price)}</span>
                 <span className="text-white/70">{t("+ state fee")}</span>
               </div>
 
               <Button asChild variant="heroOutline" className="w-full bg-white text-foreground hover:bg-white/90 rounded-full py-2 pr-[2px] pl-6 relative justify-center">
-                <Link to="/contact">
+                <Link to="/start?plan=international">
                   {t("GET STARTED")}
                   <span className="bg-foreground rounded-full p-2 absolute right-2">
                     <ArrowUpRight size={18} className="text-background" />
@@ -163,6 +165,26 @@ const PricingSection = () => {
               ))}
             </ul>
           </motion.div>
+        </div>
+
+        <div className="mt-8 rounded-[20px] bg-[#F7F8F7] p-5 md:p-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h3 className="text-lg font-medium text-foreground">{t("Add-ons")}</h3>
+              <p className="text-sm text-muted-foreground">{t("Add these at checkout. We prepare documents only and refer you to partner CPAs and attorneys for legal or tax advice.")}</p>
+            </div>
+            <Link to="/start" className="shrink-0 inline-flex items-center justify-center rounded-full border border-border bg-background px-5 h-10 text-sm font-medium text-foreground hover:bg-muted">
+              {t("Not sure? Ask our AI advisor")}
+            </Link>
+          </div>
+          <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {EXTRAS.map((x) => (
+              <li key={x.id} className="rounded-xl bg-background p-3 text-sm">
+                <p className="text-foreground">{t(x.name)}</p>
+                <p className="font-semibold text-foreground">{money(x.price)}{x.note && <span className="font-normal text-muted-foreground"> {t(x.note)}</span>}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

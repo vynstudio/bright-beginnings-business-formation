@@ -1,12 +1,16 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { File01Icon, Tag01Icon, Mail01Icon, UserGroupIcon, Logout03Icon, SidebarLeftIcon, SidebarRightIcon } from "hugeicons-react";
+import { ShoppingBag01Icon, File01Icon, Tag01Icon, Mail01Icon, UserGroupIcon, Logout03Icon, SidebarLeftIcon, SidebarRightIcon } from "hugeicons-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 import axiomLogo from "@/assets/axiom-logo.svg";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 
 const navItems = [{
+  title: "Orders",
+  url: "/admin/orders",
+  icon: ShoppingBag01Icon
+}, {
   title: "Posts",
   url: "/admin/posts",
   icon: File01Icon
