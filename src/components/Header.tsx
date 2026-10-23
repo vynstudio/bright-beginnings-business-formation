@@ -1,4 +1,5 @@
 import { useLang } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu01Icon, Cancel01Icon } from "hugeicons-react";
@@ -71,6 +72,8 @@ const Header = () => {
             {t("START NOW")}
           </Link>
         </div>
+
+        <LanguageSwitcher className="ml-auto mr-2 md:ml-3 md:mr-0 md:order-last" />
 
         {/* Mobile Menu Button */}
         <button
