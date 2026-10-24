@@ -18,6 +18,7 @@ import AdminMessages from "./pages/AdminMessages";
 import AdminOrders from "./pages/AdminOrders";
 import Start from "./pages/Start";
 import CheckoutReturn from "./pages/CheckoutReturn";
+import PublicInformation from "./pages/PublicInformation";
 import ResetPassword from "./pages/ResetPassword";
 import RequireAdmin from "./components/auth/RequireAdmin";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,11 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<PublicInformation pageKey="privacy" />} />
+            <Route path="/legal-disclaimer" element={<PublicInformation pageKey="legal-disclaimer" />} />
+            <Route path="/florida-llc-vs-corporation" element={<PublicInformation pageKey="florida-llc-vs-corporation" />} />
+            <Route path="/ein-application" element={<PublicInformation pageKey="ein-application" />} />
+            <Route path="/registered-agent-renewal" element={<PublicInformation pageKey="registered-agent-renewal" />} />
             <Route path="/start" element={<Start />} />
             <Route path="/checkout/return" element={<CheckoutReturn />} />
             <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />

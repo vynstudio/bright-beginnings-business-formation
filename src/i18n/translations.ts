@@ -1,7 +1,9 @@
 // English text is the key. Add Spanish (es) and Portuguese (pt) for each phrase.
+import { publicPageTranslations } from "./publicPageTranslations";
 type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
+  ...publicPageTranslations,
   // Navigation
   "Home": { es: "Inicio", pt: "Início" },
   "About": { es: "Nosotros", pt: "Sobre nós" },
