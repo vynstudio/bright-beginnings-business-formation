@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
+import Photo from "@/components/Photo";
 
 const values = [
   {
@@ -35,6 +36,9 @@ const About = () => {
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
             {t("Agente Registrado Florida helps entrepreneurs form a Florida LLC or corporation, get an EIN, and keep a registered agent in Florida. We handle the paperwork so you can focus on your business.")}
           </p>
+          <div className="h-[220px] sm:h-[380px] overflow-hidden rounded-[24px] mb-12">
+            <Photo name="man-leading-team" priority sizes="(min-width: 928px) 896px, calc(100vw - 32px)" className="w-full h-full" />
+          </div>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {values.map((v) => (
               <div key={v.title} className="rounded-2xl border border-border bg-card p-6">

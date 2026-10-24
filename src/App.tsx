@@ -4,29 +4,33 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "@/hooks/useAuth";
+import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Contact from "./pages/Contact";
-import AdminBlog from "./pages/AdminBlog";
-import AdminCategories from "./pages/AdminCategories";
-import AdminLogin from "./pages/AdminLogin";
-import AdminUsers from "./pages/AdminUsers";
-import AdminMessages from "./pages/AdminMessages";
-import AdminOrders from "./pages/AdminOrders";
-import Start from "./pages/Start";
-import CheckoutReturn from "./pages/CheckoutReturn";
-import PublicInformation from "./pages/PublicInformation";
-import ResetPassword from "./pages/ResetPassword";
-import RequireAdmin from "./components/auth/RequireAdmin";
-import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import SkipLink from "./components/SkipLink";
-import DemoAdminBlog from "./pages/demo/DemoAdminBlog";
-import DemoAdminCategories from "./pages/demo/DemoAdminCategories";
-import DemoAdminUsers from "./pages/demo/DemoAdminUsers";
+
+// Every page except the home page is downloaded only when it's opened, so the first
+// visit doesn't pay for the blog editor, admin screens or checkout code.
+const About = lazy(() => import("./pages/About"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Contact = lazy(() => import("./pages/Contact"));
+const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const AdminCategories = lazy(() => import("./pages/AdminCategories"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminUsers = lazy(() => import("./pages/AdminUsers"));
+const AdminMessages = lazy(() => import("./pages/AdminMessages"));
+const AdminOrders = lazy(() => import("./pages/AdminOrders"));
+const Start = lazy(() => import("./pages/Start"));
+const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn"));
+const PublicInformation = lazy(() => import("./pages/PublicInformation"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AdminAuth = lazy(() => import("./components/auth/AdminAuth"));
+const RequireAdmin = lazy(() => import("./components/auth/RequireAdmin"));
+const DemoAdminBlog = lazy(() => import("./pages/demo/DemoAdminBlog"));
+const DemoAdminCategories = lazy(() => import("./pages/demo/DemoAdminCategories"));
+const DemoAdminUsers = lazy(() => import("./pages/demo/DemoAdminUsers"));
 
 const queryClient = new QueryClient();
 
@@ -34,12 +38,12 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
   <LanguageProvider>
     <TooltipProvider>
-      <AuthProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
           <SkipLink />
+          <Suspense fallback={<div className="min-h-dvh bg-background" />}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
@@ -53,42 +57,16 @@ const App = () => (
             <Route path="/registered-agent-renewal" element={<PublicInformation pageKey="registered-agent-renewal" />} />
             <Route path="/start" element={<Start />} />
             <Route path="/checkout/return" element={<CheckoutReturn />} />
-            <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/reset-password" element={<ResetPassword />} />
-            <Route path="/admin" element={<Navigate to="/admin/posts" replace />} />
-            <Route
-              path="/admin/posts"
-              element={
-                <RequireAdmin>
-                  <AdminBlog />
-                </RequireAdmin>
-              }
-            />
-            <Route
-              path="/admin/categories"
-              element={
-                <RequireAdmin>
-                  <AdminCategories />
-                </RequireAdmin>
-              }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <RequireAdmin>
-                  <AdminUsers />
-                </RequireAdmin>
-              }
-            />
-            <Route
-              path="/admin/messages"
-              element={
-                <RequireAdmin>
-                  <AdminMessages />
-                </RequireAdmin>
-              }
-            />
+            <Route element={<AdminAuth />}>
+              <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/reset-password" element={<ResetPassword />} />
+              <Route path="/admin" element={<Navigate to="/admin/posts" replace />} />
+              <Route path="/admin/posts" element={<RequireAdmin><AdminBlog /></RequireAdmin>} />
+              <Route path="/admin/categories" element={<RequireAdmin><AdminCategories /></RequireAdmin>} />
+              <Route path="/admin/users" element={<RequireAdmin><AdminUsers /></RequireAdmin>} />
+              <Route path="/admin/messages" element={<RequireAdmin><AdminMessages /></RequireAdmin>} />
+            </Route>
             {/* Demo routes — no auth, seed data only */}
             <Route path="/demo" element={<Navigate to="/demo/admin/posts" replace />} />
             <Route path="/demo/admin" element={<Navigate to="/demo/admin/posts" replace />} />
@@ -98,8 +76,8 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
-      </AuthProvider>
     </TooltipProvider>
   </LanguageProvider>
   </QueryClientProvider>

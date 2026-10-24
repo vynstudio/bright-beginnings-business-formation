@@ -5,6 +5,13 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import { publicPages, type PublicPageKey } from "@/content/publicPages";
+import Photo, { type PhotoName } from "@/components/Photo";
+
+const pagePhotos: Partial<Record<PublicPageKey, PhotoName>> = {
+  "florida-llc-vs-corporation": "signing-contract",
+  "ein-application": "man-signing-documents",
+  "registered-agent-renewal": "colleagues-discussing",
+};
 
 export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey }) {
   const { t } = useLang();
@@ -20,6 +27,9 @@ export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey 
           {(pageKey === "privacy" || pageKey === "legal-disclaimer") && <p className="mt-4 text-sm text-muted-foreground">{t("Updated October 24, 2026")}</p>}
           {page.draft && <p className="mt-4 border-l-4 border-accent pl-4 font-medium">{t("Draft — owner review required")}</p>}
         </header>
+        {pagePhotos[pageKey] && <div className="mt-8 h-[220px] sm:h-[340px] overflow-hidden rounded-[24px]">
+          <Photo name={pagePhotos[pageKey]!} priority sizes="(min-width: 1056px) 1024px, calc(100vw - 32px)" className="w-full h-full" />
+        </div>}
         <div className="grid lg:grid-cols-[minmax(0,1fr)_220px] gap-12 py-10">
           <article className="space-y-10 min-w-0">
             {page.sections.map(section => <section key={section.title}>

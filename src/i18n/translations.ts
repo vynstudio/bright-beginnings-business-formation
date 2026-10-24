@@ -4,6 +4,15 @@ type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
   ...publicPageTranslations,
+  // Photo descriptions (alt text)
+  "Aerial view of the Miami skyline over Biscayne Bay": { es: "Vista aérea de los rascacielos de Miami sobre la bahía de Biscayne", pt: "Vista aérea dos arranha-céus de Miami sobre a baía de Biscayne" },
+  "Florida skyline with palm trees at sunset": { es: "Ciudad de Florida con palmeras al atardecer", pt: "Cidade da Flórida com palmeiras ao pôr do sol" },
+  "Business owners signing company formation documents": { es: "Empresarios firmando los documentos de formación de su empresa", pt: "Empresários assinando os documentos de abertura da empresa" },
+  "Business owner signing an application at his desk": { es: "Empresario firmando una solicitud en su escritorio", pt: "Empresário assinando um formulário em sua mesa" },
+  "Smiling businesswoman at her desk": { es: "Empresaria sonriente en su escritorio", pt: "Empresária sorridente em sua mesa" },
+  "Business partners discussing plans in an office": { es: "Socios de negocio conversando sobre sus planes en una oficina", pt: "Sócios conversando sobre planos em um escritório" },
+  "Business owner leading a meeting with his team": { es: "Empresario dirigiendo una reunión con su equipo", pt: "Empresário conduzindo uma reunião com sua equipe" },
+  "Entrepreneur working on a laptop in a modern office": { es: "Emprendedor trabajando en su laptop en una oficina moderna", pt: "Empreendedor trabalhando no notebook em um escritório moderno" },
   // Checkout test-mode banner
   "Checkout is not configured yet. Payments are unavailable.": { es: "El pago aún no está configurado. Los pagos no están disponibles.", pt: "O checkout ainda não está configurado. Os pagamentos não estão disponíveis." },
   "Test mode: no real payments are charged. Use card 4242 4242 4242 4242.": { es: "Modo de prueba: no se cobran pagos reales. Use la tarjeta 4242 4242 4242 4242.", pt: "Modo de teste: nenhum pagamento real é cobrado. Use o cartão 4242 4242 4242 4242." },

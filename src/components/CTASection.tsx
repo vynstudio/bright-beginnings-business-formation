@@ -2,18 +2,16 @@ import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ctaBackground from "@/assets/cta-background.png";
+import Photo from "@/components/Photo";
 
 const CTASection = () => {
   const { t } = useLang();
   return (
     <section className="py-12 md:py-20 container mx-auto px-4">
-      <div 
-        className="bg-cover bg-center bg-no-repeat rounded-[24px] h-[400px] sm:h-[480px] flex items-center justify-center relative overflow-hidden px-4"
-        style={{ backgroundImage: `url(${ctaBackground})` }}
-      >
-        {/* White gradient overlay */}
-        <div className="absolute inset-0 rounded-[24px]" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.05) 100%)' }} />
+      <div className="rounded-[24px] h-[400px] sm:h-[480px] flex items-center justify-center relative overflow-hidden px-4">
+        <Photo name="tropical-sunset-palms" sizes="(min-width: 1312px) 1280px, calc(100vw - 32px)" className="absolute inset-0 w-full h-full" />
+        {/* White gradient overlay keeps the dark heading readable over the photo */}
+        <div className="absolute inset-0 rounded-[24px]" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.45) 100%)' }} />
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}

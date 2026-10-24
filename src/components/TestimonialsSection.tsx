@@ -1,7 +1,7 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import testimonialAvatar from "@/assets/testimonial-avatar.webp";
+import testimonialAvatar from "@/assets/testimonial-avatar-128.webp";
 
 const testimonials = [
   {

@@ -2,7 +2,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import enterpriseVideo from "@/assets/enterprise-ball.mp4";
+import Photo from "@/components/Photo";
 
 const features = [
   {
@@ -53,14 +53,7 @@ const EnterpriseSection = () => {
           className="relative mb-8"
         >
           <div className="relative w-full h-[480px] bg-[#E8E6DF] rounded-[24px] overflow-hidden">
-            <video
-              src={enterpriseVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover object-[center_0%]"
-            />
+            <Photo name="man-leading-team" sizes="(min-width: 1312px) 1280px, calc(100vw - 32px)" className="w-full h-full" />
             {/* Floating card */}
             <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:right-8 md:left-auto bg-background rounded-[16px] p-6 shadow-lg md:max-w-[320px]">
               <p className="text-[20px] font-semibold text-foreground mb-2">{t("Start in 10 minutes")}</p>

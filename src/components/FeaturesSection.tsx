@@ -2,8 +2,8 @@ import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { ColorsIcon, AiSecurity01Icon, Layers01Icon } from "hugeicons-react";
 import looper1 from "@/assets/looper-1.svg";
-import looper2 from "@/assets/looper-2.png";
-import looper3 from "@/assets/looper-3.png";
+import looper2 from "@/assets/looper-2.webp";
+import looper3 from "@/assets/looper-3.webp";
 const features = [{
   icon: ColorsIcon,
   title: "LLC & corporation formation",
@@ -22,9 +22,9 @@ const features = [{
 }];
 
 // Decorative mesh SVG components
-const SpiralMesh = () => <img src={looper1} alt="" className="w-full h-full object-cover" />;
-const WaveMesh = () => <img src={looper2} alt="" className="w-full h-full object-cover" />;
-const FlowMesh = () => <img src={looper3} alt="" className="w-full h-full object-cover" />;
+const SpiralMesh = () => <img src={looper1} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />;
+const WaveMesh = () => <img src={looper2} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />;
+const FlowMesh = () => <img src={looper3} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />;
 const meshComponents = {
   spiral: SpiralMesh,
   wave: WaveMesh,

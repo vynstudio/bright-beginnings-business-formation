@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Photo from "@/components/Photo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -127,6 +128,9 @@ const Contact = () => {
               message and we'll respond as soon as possible.
             </p>
           </motion.div>
+          <div className="max-w-6xl mx-auto mt-10 h-[220px] sm:h-[320px] overflow-hidden rounded-[24px]">
+            <Photo name="woman-at-desk" priority sizes="(min-width: 1184px) 1152px, calc(100vw - 32px)" className="w-full h-full object-[center_25%]" />
+          </div>
         </section>
 
         {/* Contact Section */}

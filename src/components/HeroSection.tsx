@@ -2,8 +2,8 @@ import { useLang } from "@/i18n/LanguageContext";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/hero-video.mp4";
 import LogoStrip from "@/components/LogoStrip";
+import Photo from "@/components/Photo";
 
 const HeroSection = () => {
   const { t } = useLang();
@@ -38,26 +38,13 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Hero Video - container width */}
+      {/* Hero photo - container width. Not animated: it's the largest element, so it shows immediately. */}
       <div className="container mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mt-8 mb-12"
-        >
-          <div className="w-full max-w-[1280px] h-[500px] overflow-hidden rounded-[24px] flex items-center justify-center">
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="min-w-[104%] min-h-[104%] object-cover"
-            />
+        <div className="relative mt-8 mb-12">
+          <div className="w-full max-w-[1280px] h-[320px] sm:h-[500px] overflow-hidden rounded-[24px]">
+            <Photo name="miami-skyline" priority sizes="(min-width: 1312px) 1280px, calc(100vw - 32px)" className="w-full h-full" />
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="container mx-auto px-4">

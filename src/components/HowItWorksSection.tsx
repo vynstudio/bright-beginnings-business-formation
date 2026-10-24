@@ -2,7 +2,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckmarkCircle02Icon } from "hugeicons-react";
-import scrollTunnelVideo from "@/assets/scroll-tunnel.mp4";
+import Photo from "@/components/Photo";
 
 const steps = [{
   title: "1. Choose your company type",
@@ -136,7 +136,7 @@ const HowItWorksSection = () => {
         }} transition={{
           duration: 0.6
         }} className="bg-[#F7F8F7] rounded-[24px] flex items-center justify-center min-h-[400px] lg:min-h-0">
-            <video src={scrollTunnelVideo} autoPlay loop muted playsInline className="w-full h-full object-cover rounded-[24px]" />
+            <Photo name="man-on-laptop" sizes="(min-width: 1024px) 640px, calc(100vw - 32px)" className="w-full h-full min-h-[400px] rounded-[24px]" />
           </motion.div>
         </div>
       </div>
