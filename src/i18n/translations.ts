@@ -4,6 +4,19 @@ type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
   ...publicPageTranslations,
+  // About page
+  "Florida business formation for US and international founders": { es: "Formación de empresas en Florida para fundadores de EE. UU. e internacionales", pt: "Abertura de empresas na Flórida para fundadores dos EUA e internacionais" },
+  "Agente Registrado Florida helps entrepreneurs form a Florida LLC or corporation, get an EIN, and keep a registered agent in Florida. We handle the paperwork so you can focus on your business.": { es: "Agente Registrado Florida ayuda a emprendedores a formar una LLC o corporación en Florida, obtener un EIN y mantener un agente registrado en Florida. Nos encargamos del papeleo para que usted se enfoque en su negocio.", pt: "A Agente Registrado Florida ajuda empreendedores a abrir uma LLC ou corporação na Flórida, obter um EIN e manter um agente registrado na Flórida. Cuidamos da papelada para você focar no seu negócio." },
+  "Florida filings, done right": { es: "Trámites en Florida, bien hechos", pt: "Registros na Flórida, bem feitos" },
+  "We prepare and submit your Florida LLC or corporation filing with the State of Florida (Sunbiz) and keep you updated.": { es: "Preparamos y presentamos la solicitud de su LLC o corporación ante el Estado de Florida (Sunbiz) y lo mantenemos informado.", pt: "Preparamos e enviamos o registro da sua LLC ou corporação ao Estado da Flórida (Sunbiz) e mantemos você informado." },
+  "Built for US and international founders": { es: "Para fundadores de EE. UU. e internacionales", pt: "Para fundadores dos EUA e internacionais" },
+  "Help in English, Spanish, and Portuguese, whether you live in Florida or abroad.": { es: "Atención en inglés, español y portugués, viva en Florida o en el extranjero.", pt: "Atendimento em inglês, espanhol e português, morando na Flórida ou no exterior." },
+  "Clear, one-time prices": { es: "Precios claros y únicos", pt: "Preços claros e únicos" },
+  "Packages are priced upfront, and the Florida state fee is shown separately at checkout.": { es: "Los paquetes tienen precio fijo y la tarifa estatal de Florida se muestra aparte al pagar.", pt: "Os pacotes têm preço definido e a taxa estadual da Flórida aparece separada no pagamento." },
+  "We are not a law firm and do not give legal or tax advice. When you need it, we can refer you to partner CPAs and attorneys.": { es: "No somos un bufete de abogados y no damos asesoría legal ni fiscal. Cuando la necesite, podemos referirle a contadores y abogados aliados.", pt: "Não somos um escritório de advocacia e não damos consultoria jurídica ou fiscal. Quando precisar, podemos indicar contadores e advogados parceiros." },
+  // Blog header
+  "Florida business formation guides": { es: "Guías para formar empresas en Florida", pt: "Guias para abrir empresas na Flórida" },
+  "Practical guides on forming and maintaining a Florida LLC or corporation, EINs, and registered agents.": { es: "Guías prácticas para formar y mantener una LLC o corporación en Florida, EIN y agentes registrados.", pt: "Guias práticos para abrir e manter uma LLC ou corporação na Flórida, EIN e agentes registrados." },
   // Navigation
   "Home": { es: "Inicio", pt: "Início" },
   "About": { es: "Nosotros", pt: "Sobre nós" },
