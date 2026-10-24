@@ -210,13 +210,13 @@ const Blog = () => {
         duration: 0.6
       }} className="text-center mb-16">
           <span className="inline-block mb-6 text-sm text-muted-foreground bg-muted/50 border border-border rounded-full py-[4px] px-[12px] font-light">
-            AxiomAI's blog
+            {t("Blog")}
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Blog & Insights
+            {t("Florida business formation guides")}
           </h1>
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Explore innovative strategies, insights, and a wealth of inspiration every week on the AxiomAI blog, where we empower businesses with cutting-edge AI solutions.
+            {t("Practical guides on forming and maintaining a Florida LLC or corporation, EINs, and registered agents.")}
           </p>
         </motion.div>
 
