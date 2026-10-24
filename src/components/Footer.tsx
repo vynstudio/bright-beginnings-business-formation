@@ -1,5 +1,4 @@
 import { useLang } from "@/i18n/LanguageContext";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const Footer = () => {
   const { t } = useLang();
@@ -28,10 +27,6 @@ const Footer = () => {
     label: "Privacy policy",
     href: "/privacy"
   }];
-  const socialLinks = [{
-    label: "BUILT WITH LOVABLE",
-    href: "https://lovable.dev"
-  }];
   return <footer className="py-6 bg-background">
       <div className="container mx-auto px-4">
         <div className="bg-muted rounded-[24px] px-6 md:px-8 pt-12 pb-6 lg:px-12">
@@ -54,14 +49,6 @@ const Footer = () => {
                 </li>)}
             </ul>
           </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex flex-wrap items-center gap-4 md:gap-8 mb-8">
-          {socialLinks.map(link => <a key={t(link.label)} href={link.href} target="_blank" rel="noopener noreferrer" className="text-[13px] font-normal text-foreground hover:text-foreground/70 transition-colors inline-flex items-center gap-1.5 tracking-wide group">
-              {t(link.label)}
-              <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:rotate-45" />
-            </a>)}
         </div>
 
         {/* Divider */}

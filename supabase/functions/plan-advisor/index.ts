@@ -1,10 +1,9 @@
-import { createOpenAI } from "npm:@ai-sdk/openai@3";
-import { streamText, Output } from "npm:ai@6";
+import Anthropic from "npm:@anthropic-ai/sdk@0.134.0";
 import { z } from "npm:zod@3";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-lovable-aig-run-id",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 const json = (body: unknown, status = 200) =>
@@ -23,6 +22,21 @@ const recommendation = z.object({
   reasons: z.array(z.string()),
   talkToProfessional: z.array(z.string()),
 });
+
+// Same shape as `recommendation`, as JSON Schema for Claude's structured output.
+const recommendationJsonSchema = {
+  type: "object",
+  properties: {
+    entityType: { type: "string", enum: ["llc", "corp"] },
+    plan: { type: "string", enum: ["starter", "professional", "international"] },
+    extras: { type: "array", items: { type: "string", enum: ["ein", "annual_report", "registered_agent", "expedited"] } },
+    summary: { type: "string" },
+    reasons: { type: "array", items: { type: "string" } },
+    talkToProfessional: { type: "array", items: { type: "string" } },
+  },
+  required: ["entityType", "plan", "extras", "summary", "reasons", "talkToProfessional"],
+  additionalProperties: false,
+};
 
 const LANG = { en: "English", es: "Spanish", pt: "Brazilian Portuguese" } as const;
 
@@ -50,40 +64,32 @@ Deno.serve(async (req) => {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
   const parsed = input.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return json({ error: "Please describe your business in a few sentences." }, 400);
-  const apiKey = Deno.env.get("LOVABLE_API_KEY");
+  const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
   if (!apiKey) return json({ error: "The advisor is not configured." }, 500);
 
   try {
-    const runId = req.headers.get("X-Lovable-AIG-Run-ID")?.trim() || undefined;
-    const provider = createOpenAI({
-      baseURL: "https://ai.gateway.lovable.dev/v1",
-      apiKey,
-      headers: {
-        "Lovable-API-Key": apiKey,
-        "X-Lovable-AIG-SDK": "vercel-ai-sdk",
-        ...(runId ? { "X-Lovable-AIG-Run-ID": runId } : {}),
+    const client = new Anthropic({ apiKey });
+    const response = await client.beta.messages.create(
+      {
+        model: "claude-opus-5-5",
+        max_tokens: 4000,
+        output_config: { effort: "low", format: { type: "json_schema", schema: recommendationJsonSchema } },
+        // On a safety decline, the API re-runs the request on a fallback model in the same call.
+        betas: ["server-side-fallback-2026-07-01"],
+        fallbacks: "default",
+        system: instructions(parsed.data.language),
+        messages: [{ role: "user", content: parsed.data.description }],
       },
-    });
-    const result = streamText({
-      model: provider.responses("openai/gpt-6-astra"),
-      system: instructions(parsed.data.language),
-      messages: [{ role: "user", content: parsed.data.description }],
-      output: Output.object({ schema: recommendation }),
-      abortSignal: req.signal,
-      providerOptions: {
-        openai: {
-          store: false,
-          forceReasoning: true,
-          reasoningEffort: "low",
-          reasoningSummary: "auto",
-          include: ["reasoning.encrypted_content"],
-        },
-      },
-    });
-    const output = await result.output;
+      { signal: req.signal },
+    );
+    if (response.stop_reason === "refusal") {
+      return json({ error: "The advisor could not answer right now. Please try again." }, 500);
+    }
+    const text = response.content.flatMap((b) => (b.type === "text" ? [b.text] : [])).join("");
+    const output = recommendation.parse(JSON.parse(text));
     return json({ recommendation: output });
   } catch (e) {
-    const status = (e as any)?.statusCode ?? (e as any)?.status;
+    const status = e instanceof Anthropic.APIError ? e.status : undefined;
     console.error("plan-advisor error", status, (e as Error).message);
     if (status === 429) return json({ error: "The advisor is busy. Please try again in a minute." }, 429);
     if (status === 402) return json({ error: "The advisor is temporarily unavailable." }, 402);

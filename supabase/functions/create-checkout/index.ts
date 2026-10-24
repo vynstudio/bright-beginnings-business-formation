@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
       automatic_tax: { enabled: true },
       customer_update: { address: "auto" },
       payment_intent_data: { description: `${planName} — Florida ${d.entityType === "llc" ? "LLC" : "corporation"}: ${d.companyName}` },
-      metadata: { orderId: order.id, managed_payments: "false" },
+      metadata: { orderId: order.id },
     };
     // Tax calculation needs a business address in the payments account. Until it's set,
     // fall back to checkout without tax so customers can still pay.
