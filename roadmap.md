@@ -10,7 +10,7 @@
 - [ ] Add legal disclaimer and privacy policy in EN/ES/PT; final privacy practices and contact details need owner approval
 - [ ] Add Florida LLC vs corporation, EIN application, and registered agent renewal pages in EN/ES/PT
 - [ ] Connect GitHub for deployment: owner completes Git sync in Project settings → Git
-- [ ] Go live with real payments: owner connects their existing Stripe account in the Payments tab
+- [ ] Restore payments and go live: owner disconnected Stripe; reconnect a provider and complete live setup
 - [ ] Sales tax: add business address in Stripe so tax is calculated (checkout works without it until then)
 - [ ] Confirm add-on prices (EIN $79, annual report $99, registered agent $99, expedited $49)
 
