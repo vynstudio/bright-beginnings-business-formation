@@ -12,7 +12,7 @@ const page = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Volvemos pronto | Agente Registrado Florida</title>
+<title>En mantenimiento | Agente Registrado Florida</title>
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
@@ -31,12 +31,11 @@ const page = `<!doctype html>
 <body>
 <main>
   <div class="brand">Agente Registrado <span>Florida</span></div>
-  <h1>Estamos haciendo mejoras</h1>
-  <p>Nuestro sitio está en mantenimiento por un breve tiempo mientras actualizamos los pagos y precios. Volvemos muy pronto.</p>
-  <p>Gracias por su paciencia.</p>
+  <h1>Estamos en mantenimiento</h1>
+  <p>Volvemos pronto.</p>
   <div class="other">
-    <p lang="en"><strong>We'll be back soon.</strong> We're briefly updating payments and pricing.</p>
-    <p lang="pt"><strong>Voltamos em breve.</strong> Estamos atualizando pagamentos e preços.</p>
+    <p lang="en"><strong>We're in maintenance.</strong> We'll be back soon.</p>
+    <p lang="pt"><strong>Estamos em manutenção.</strong> Voltamos em breve.</p>
   </div>
 </main>
 </body>
