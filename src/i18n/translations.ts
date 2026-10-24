@@ -4,6 +4,11 @@ type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
   ...publicPageTranslations,
+  // Footer
+  "Services": { es: "Servicios", pt: "Serviços" },
+  "Legal": { es: "Legal", pt: "Legal" },
+  "Form your company": { es: "Forme su empresa", pt: "Abra sua empresa" },
+  "Operated by Diler Services, LLC. We are not a law firm and do not give legal or tax advice.": { es: "Operado por Diler Services, LLC. No somos un bufete de abogados y no ofrecemos asesoría legal ni fiscal.", pt: "Operado por Diler Services, LLC. Não somos um escritório de advocacia e não oferecemos consultoria jurídica ou tributária." },
   // Photo descriptions (alt text)
   "Aerial view of the Miami skyline over Biscayne Bay": { es: "Vista aérea de los rascacielos de Miami sobre la bahía de Biscayne", pt: "Vista aérea dos arranha-céus de Miami sobre a baía de Biscayne" },
   "Florida skyline with palm trees at sunset": { es: "Ciudad de Florida con palmeras al atardecer", pt: "Cidade da Flórida com palmeiras ao pôr do sol" },

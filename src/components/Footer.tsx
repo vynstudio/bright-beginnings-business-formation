@@ -1,64 +1,77 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+
+const columns = [{
+  title: "Services",
+  links: [
+    { label: "Form your company", href: "/start" },
+    { label: "Florida LLC vs corporation", href: "/florida-llc-vs-corporation" },
+    { label: "EIN application", href: "/ein-application" },
+    { label: "Registered agent renewal", href: "/registered-agent-renewal" },
+  ],
+}, {
+  title: "Company",
+  links: [
+    { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact us", href: "/contact" },
+  ],
+}, {
+  title: "Legal",
+  links: [
+    { label: "Legal disclaimer", href: "/legal-disclaimer" },
+    { label: "Privacy policy", href: "/privacy" },
+  ],
+}];
+
 const Footer = () => {
   const { t } = useLang();
-  const navLinks = [{
-    label: "About",
-    href: "/about"
-  }, {
-    label: "Blog",
-    href: "/blog"
-  }, {
-    label: "Contact us",
-    href: "/contact"
-  }, {
-    label: "Florida LLC vs corporation",
-    href: "/florida-llc-vs-corporation"
-  }, {
-    label: "EIN application",
-    href: "/ein-application"
-  }, {
-    label: "Registered agent renewal",
-    href: "/registered-agent-renewal"
-  }, {
-    label: "Legal disclaimer",
-    href: "/legal-disclaimer"
-  }, {
-    label: "Privacy policy",
-    href: "/privacy"
-  }];
   return <footer className="py-6 bg-background">
       <div className="container mx-auto px-4">
         <div className="bg-muted rounded-[24px] px-6 md:px-8 pt-12 pb-6 lg:px-12">
-        {/* Top Section */}
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 mb-12 lg:mb-16">
-          {/* Logo - Left */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
+        {/* Top Section: brand + link columns */}
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] lg:gap-12 mb-12">
+          <div className="max-w-sm">
+            <Link to="/" className="inline-flex items-center">
               <span className="text-[17px] font-semibold text-foreground leading-tight">{t("Agente Registrado ")}<span className="text-lime">{t("Florida")}</span></span>
+            </Link>
+            <p className="mt-4 text-[15px] text-muted-foreground leading-relaxed">
+              {t("Form your Florida LLC or corporation, get your EIN and stay compliant — from anywhere in the world.")}
+            </p>
+            <p className="mt-3 text-[14px] text-muted-foreground">
+              {t("Help in English, Spanish, and Portuguese, whether you live in Florida or abroad.")}
+            </p>
+            <Link to="/start" className="mt-6 inline-flex items-center gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-full py-2 pr-2 pl-5 text-sm font-medium h-10 transition-colors">
+              {t("START MY BUSINESS")}
+              <span className="bg-background rounded-full p-1.5">
+                <ArrowUpRight size={16} className="text-foreground" />
+              </span>
             </Link>
           </div>
 
-          {/* Navigation Links - Right */}
-          <div className="lg:flex-shrink-0">
-            <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 lg:flex-col lg:space-y-3 lg:gap-0">
-              {navLinks.map(link => <li key={t(link.label)}>
-                  <Link to={link.href} className="text-[15px] text-foreground hover:text-foreground/70 transition-colors">
-                    {t(link.label)}
-                  </Link>
-                </li>)}
-            </ul>
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:contents">
+            {columns.map(column => <nav key={column.title} aria-label={t(column.title)}>
+                <h2 className="text-[13px] font-semibold uppercase tracking-wide text-foreground mb-4">{t(column.title)}</h2>
+                <ul className="flex flex-col gap-3">
+                  {column.links.map(link => <li key={link.href}>
+                      <Link to={link.href} className="text-[15px] text-muted-foreground hover:text-foreground transition-colors">
+                        {t(link.label)}
+                      </Link>
+                    </li>)}
+                </ul>
+              </nav>)}
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-border pt-6">
-          {/* Bottom Row */}
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="text-[13px] sm:text-[14px] text-foreground">
-              {t("© 2026 Agente Registrado Florida. All rights reserved.")}
-            </p>
-          </div>
+        {/* Bottom Row */}
+        <div className="border-t border-border pt-6 flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-8">
+          <p className="text-[13px] sm:text-[14px] text-foreground shrink-0">
+            {t("© 2026 Agente Registrado Florida. All rights reserved.")}
+          </p>
+          <p className="text-[13px] text-muted-foreground md:text-right md:max-w-xl">
+            {t("Operated by Diler Services, LLC. We are not a law firm and do not give legal or tax advice.")}
+          </p>
         </div>
         </div>
       </div>
