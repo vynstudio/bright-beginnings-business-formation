@@ -8,15 +8,16 @@ export const LANGS: { code: Lang; label: string }[] = [
   { code: "pt", label: "PT" },
 ];
 
+// The site serves the Spanish-speaking market (agenteregistradofl.com): new visitors
+// get Spanish; a language picked with the EN/ES/PT buttons is remembered.
 const detect = (): Lang => {
   const saved = localStorage.getItem("lang");
   if (saved === "en" || saved === "es" || saved === "pt") return saved;
-  const nav = navigator.language.slice(0, 2);
-  return nav === "es" || nav === "pt" ? nav : "en";
+  return "es";
 };
 
 interface Ctx { lang: Lang; setLang: (l: Lang) => void; t: (text: string) => string }
-const LanguageContext = createContext<Ctx>({ lang: "en", setLang: () => {}, t: (s) => s });
+const LanguageContext = createContext<Ctx>({ lang: "es", setLang: () => {}, t: (s) => s });
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(detect);
