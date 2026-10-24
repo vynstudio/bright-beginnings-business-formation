@@ -7,6 +7,7 @@
 - [x] ES/PT translations for new text
 - [x] Legal disclaimer and draft privacy page in EN/ES/PT, identifying Diler Services, LLC
 - [x] Florida LLC vs corporation, EIN application, and registered agent renewal pages in EN/ES/PT; verified all languages and formation link
+- [x] Database export: each table's data saved as CSV in Files (full schema export is done by the owner via Database → Settings → Export data)
 
 ## Open
 - [ ] Finalize privacy policy: owner must supply contact email/address and approve tracking, referral sharing, retention and deletion practices; obtain legal review
