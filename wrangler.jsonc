@@ -3,6 +3,12 @@
 {
   "name": "agente-registrado-florida",
   "compatibility_date": "2026-10-01",
+  // Small worker in front of the site; it only adds the maintenance switch below.
+  "main": "worker/maintenance.js",
+  "vars": {
+    // "on" shows the "back soon" page on agenteregistradofl.com (the preview stays normal); "off" serves the site.
+    "MAINTENANCE": "on"
+  },
   // Keeps the *.workers.dev preview address working alongside the domain.
   "workers_dev": true,
   "routes": [
@@ -11,6 +17,9 @@
   ],
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    // Every request goes through the worker first, so the maintenance page also covers files and deep links.
+    "run_worker_first": true,
     // Single-page app: unknown paths like /blog/my-post load index.html and React Router takes over.
     "not_found_handling": "single-page-application"
   }
