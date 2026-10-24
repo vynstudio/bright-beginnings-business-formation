@@ -12,6 +12,21 @@ const Footer = () => {
   }, {
     label: "Contact us",
     href: "/contact"
+  }, {
+    label: "Florida LLC vs corporation",
+    href: "/florida-llc-vs-corporation"
+  }, {
+    label: "EIN application",
+    href: "/ein-application"
+  }, {
+    label: "Registered agent renewal",
+    href: "/registered-agent-renewal"
+  }, {
+    label: "Legal disclaimer",
+    href: "/legal-disclaimer"
+  }, {
+    label: "Privacy policy",
+    href: "/privacy"
   }];
   const socialLinks = [{
     label: "BUILT WITH LOVABLE",
@@ -19,7 +34,7 @@ const Footer = () => {
   }];
   return <footer className="py-6 bg-background">
       <div className="container mx-auto px-4">
-        <div className="bg-[#F7F8F7] rounded-[24px] px-6 md:px-8 pt-12 pb-6 lg:px-12">
+        <div className="bg-muted rounded-[24px] px-6 md:px-8 pt-12 pb-6 lg:px-12">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Logo - Left */}
@@ -50,7 +65,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#E8E8E8] pt-6">
+        <div className="border-t border-border pt-6">
           {/* Bottom Row */}
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="text-[13px] sm:text-[14px] text-foreground">
