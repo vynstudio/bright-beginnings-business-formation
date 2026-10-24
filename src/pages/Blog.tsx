@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/i18n/LanguageContext";
 import {
   Popover,
   PopoverContent,
@@ -126,6 +127,7 @@ const sanitizeSearchQuery = (query: string): string => {
   return sanitized;
 };
 const Blog = () => {
+  const { t } = useLang();
   const [searchInput, setSearchInput] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
