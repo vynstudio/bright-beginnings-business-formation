@@ -7,3 +7,6 @@ verify_jwt = false
 
 [functions.plan-advisor]
 verify_jwt = false
+
+[functions.contact-message]
+verify_jwt = false

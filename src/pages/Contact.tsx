@@ -52,7 +52,7 @@ type ContactFormData = z.infer<ReturnType<typeof makeContactSchema>>;
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   usePageTitle("Contact us");
 
   const form = useForm<ContactFormData>({
@@ -68,12 +68,10 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    const { error } = await supabase.from("contact_messages" as any).insert({
-      name: data.name,
-      email: data.email,
-      subject: data.subject,
-      message: data.message,
-    } as any);
+    // Saved by the contact-message function, which also alerts us on Telegram.
+    const { error } = await supabase.functions.invoke("contact-message", {
+      body: { ...data, language: lang },
+    });
     setIsSubmitting(false);
 
     if (error) {

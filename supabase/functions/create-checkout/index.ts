@@ -2,6 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3";
 import { type StripeEnv, createStripeClient } from "../_shared/stripe.ts";
 import { buildLineItems } from "../_shared/catalog.ts";
+import { alertText, money, sendTelegram } from "../_shared/telegram.ts";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -127,6 +128,16 @@ Deno.serve(async (req) => {
     }
 
     await db.from("orders").update({ stripe_session_id: session.id }).eq("id", order.id);
+    // A lead: they reached payment but haven't paid yet. A separate alert follows if they pay.
+    await sendTelegram(alertText(`${env === "sandbox" ? "[TEST] " : ""}🟡 New lead — checkout started`, [
+      ["Company", d.companyName],
+      ["Package", `${planName} · ${d.entityType === "llc" ? "LLC" : "Corporation"}`],
+      ["Total", money(totalCents)],
+      ["Name", d.contactName],
+      ["Phone", d.contactPhone],
+      ["Email", d.contactEmail],
+      ["Lives in", d.country],
+    ]));
     return json({ clientSecret: session.client_secret, orderId: order.id });
   } catch (e) {
     console.error("create-checkout error", e);

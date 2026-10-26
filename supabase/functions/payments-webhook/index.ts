@@ -1,15 +1,34 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 import { type StripeEnv, verifyWebhook } from "../_shared/stripe.ts";
+import { ADMIN_ORDERS_URL, alertText, money, sendTelegram } from "../_shared/telegram.ts";
 
-let _db: ReturnType<typeof createClient> | null = null;
+let _db: SupabaseClient | null = null;
 const db = () => (_db ??= createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!));
+
+const PLAN_NAMES: Record<string, string> = { starter: "Starter", professional: "Professional", international: "International+", business_website: "Business + Website" };
 
 async function setStatus(session: any, env: StripeEnv, status: string) {
   const orderId = session.metadata?.orderId;
   if (!orderId) return;
-  await db().from("orders")
+  const { data: order } = await db().from("orders")
     .update({ status, ...(status === "paid" && { paid_at: new Date().toISOString() }) })
-    .eq("id", orderId).eq("environment", env);
+    .eq("id", orderId).eq("environment", env).neq("status", status)
+    .select("*").maybeSingle();
+  // Only on the change to "paid" (Stripe may resend an event), so each new client alerts once.
+  if (order && status === "paid") {
+    await sendTelegram(alertText(`${env === "sandbox" ? "[TEST] " : ""}✅ New client — order paid`, [
+      ["Company", order.company_name],
+      ["Package", `${PLAN_NAMES[order.plan] ?? order.plan} · ${order.entity_type === "llc" ? "LLC" : "Corporation"}`],
+      ["Add-ons", order.extras?.join(", ")],
+      ["Paid", money(order.total_cents)],
+      ["Client", order.contact_name],
+      ["Phone", order.contact_phone],
+      ["Email", order.contact_email],
+      ["Language", order.language?.toUpperCase()],
+      ["EIN", order.ein ? (order.ein.taxId === "none" ? "yes (no SSN/ITIN)" : `yes — call client for ${order.ein.taxId.toUpperCase()}`) : undefined],
+      ["Details", ADMIN_ORDERS_URL],
+    ]));
+  }
 }
 
 Deno.serve(async (req) => {
