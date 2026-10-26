@@ -16,7 +16,7 @@ const input = z.object({
 
 const recommendation = z.object({
   entityType: z.enum(["llc", "corp"]),
-  plan: z.enum(["starter", "professional", "international"]),
+  plan: z.enum(["starter", "professional", "international", "business_website"]),
   extras: z.array(z.enum(["ein", "annual_report", "registered_agent", "expedited"])),
   summary: z.string(),
   reasons: z.array(z.string()),
@@ -28,7 +28,7 @@ const recommendationJsonSchema = {
   type: "object",
   properties: {
     entityType: { type: "string", enum: ["llc", "corp"] },
-    plan: { type: "string", enum: ["starter", "professional", "international"] },
+    plan: { type: "string", enum: ["starter", "professional", "international", "business_website"] },
     extras: { type: "array", items: { type: "string", enum: ["ein", "annual_report", "registered_agent", "expedited"] } },
     summary: { type: "string" },
     reasons: { type: "array", items: { type: "string" } },
@@ -51,12 +51,14 @@ Packages (one-time):
 - starter ($149): articles filed, operating agreement or bylaws, 1 year registered agent (our Florida address in the registered agent section on Sunbiz; owner and company addresses may still be public). For US residents who already have or don't need an EIN.
 - professional ($249): starter + EIN application assistance, expedited same-day submission, certificate of status (+ state fee), one amendment in the first 90 days (+ state fee). For most US-based founders.
 - international ($449): professional + EIN assistance for non-US owners without SSN, apostille (+ state fee), certificate of incumbency, one fictitious name (DBA) filing (+ state fee), bank account guidance. For owners living outside the US.
+- business_website ($1,199): professional + a 7-page website in Spanish and English, 2 revision rounds, Google Business Profile setup and business email setup, delivered within 21 business days after the client sends content; hosting and updates need a $29/month care plan after launch. For US-based founders who say they want or need a website.
 State approval and IRS processing times vary; never promise approval, timing, a bank account or privacy of owner information.
 
 Optional extras (only suggest if clearly useful and not included in the plan): ein (starter only), annual_report (prepay first annual report), registered_agent (already included in all plans, normally don't suggest), expedited (starter only).
 
 Rules:
 - If the owner lives outside the US, recommend international.
+- Recommend business_website only when the visitor mentions wanting or needing a website, online presence or customers finding them online, and they live in the US.
 - Write summary (1-2 sentences), reasons (2-4 short bullets) and talkToProfessional (1-3 short bullets on questions they should ask a CPA or attorney, e.g. taxes, S-corp election, licenses) in ${LANG[lang]}.
 - Never promise tax savings or legal outcomes.`;
 

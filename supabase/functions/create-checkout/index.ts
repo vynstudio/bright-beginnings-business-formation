@@ -14,7 +14,7 @@ const schema = z.object({
   environment: z.enum(["sandbox", "live"]),
   returnUrl: z.string().url().max(500),
   language: z.enum(["en", "es", "pt"]).default("en"),
-  plan: z.enum(["starter", "professional", "international"]),
+  plan: z.enum(["starter", "professional", "international", "business_website"]),
   entityType: z.enum(["llc", "corp"]),
   extras: z.array(z.enum(["ein", "annual_report", "registered_agent", "expedited"])).max(4).default([]),
   companyName: text(120),
@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
     const customer = existing.data[0]?.id ??
       (await stripe.customers.create({ email: d.contactEmail, name: d.contactName, phone: d.contactPhone })).id;
 
-    const planName = { starter: "Starter", professional: "Professional", international: "International+" }[d.plan];
+    const planName = { starter: "Starter", professional: "Professional", international: "International+", business_website: "Business + Website" }[d.plan];
     // Shown above the pay button; also the customer's agreement record if a charge is disputed.
     const termsNotice = {
       en: "By paying, you agree to our [Terms of Service](https://agenteregistradofl.com/terms) and [Refund policy](https://agenteregistradofl.com/refund-policy). Full refund until we submit your filing; state fees paid on your behalf are non-refundable.",

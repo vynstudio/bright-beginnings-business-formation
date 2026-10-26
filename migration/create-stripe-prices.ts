@@ -22,6 +22,7 @@ const names: Record<string, string> = {
   [PLAN_PRICES.starter.priceId]: "Starter package",
   [PLAN_PRICES.professional.priceId]: "Professional package",
   [PLAN_PRICES.international.priceId]: "International+ package",
+  [PLAN_PRICES.business_website.priceId]: "Business + Website package",
   [STATE_FEE.llc.priceId]: "Florida state filing fee (LLC)",
   [STATE_FEE.corp.priceId]: "Florida state filing fee (corporation)",
   [EXTRA_PRICES.ein.priceId]: "EIN application",

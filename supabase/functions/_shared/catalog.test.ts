@@ -20,3 +20,7 @@ Deno.test("Annual report adds $119 plus the Florida annual report fee", () => {
 Deno.test("Starter extras: EIN $99 and expedited $69", () => {
   assertEquals(buildLineItems("starter", "llc", ["ein", "expedited"]).totalCents, 27400 + 9900 + 6900);
 });
+
+Deno.test("Business + Website LLC is $1,199 + $125 state fee, with EIN and expedited included", () => {
+  assertEquals(buildLineItems("business_website", "llc", ["ein", "expedited"]).totalCents, 132400);
+});

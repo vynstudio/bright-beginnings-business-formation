@@ -224,6 +224,15 @@ export const publicPages = {
         ]
       },
       {
+        "title": "Website services",
+        "paragraphs": [
+          "The Business + Website package includes a 7-page website in Spanish and English, 2 rounds of revisions, Google Business Profile setup and business email setup. We deliver the website within 21 business days after we receive the content we request from you (logo, photos, texts and business details). Delays in sending content or feedback extend the delivery date.",
+          "Changes beyond the 2 included revision rounds, additional pages and new features are quoted separately. Domain registration and email service are paid to their providers and are registered in your name.",
+          "Keeping the website online requires our care plan ($29 per month, starting at launch), which covers hosting, software updates and small text or photo edits. You can cancel the care plan at any time; the website stops being hosted by us at the end of the paid month, and on request we provide a copy of your site files.",
+          "You keep ownership of the content you provide and, once paid in full, of your website's design and pages. You confirm you have the rights to the logos, photos and texts you send us. Stock photos we add are licensed for use on your website only."
+        ]
+      },
+      {
         "title": "Refunds and payment disputes",
         "paragraphs": [
           "Refunds are governed by our Refund policy. Government filing fees we have already paid to the State of Florida or another agency on your behalf are non-refundable, because the agency does not return them.",
@@ -294,6 +303,13 @@ export const publicPages = {
         "title": "Registered agent service",
         "paragraphs": [
           "Registered agent service is refundable until your formation filing is submitted, because the state record then names us as your agent. After that, the current service period is non-refundable."
+        ]
+      },
+      {
+        "title": "Website services",
+        "paragraphs": [
+          "For the Business + Website package, the website part ($999 of the package price) is fully refundable until we deliver the first design draft. After the first draft is delivered, cancelling refunds 50% of the website part. After the website is launched, the website part is non-refundable. The formation part follows the rules above.",
+          "The monthly care plan can be cancelled at any time and is not refunded for the month already paid."
         ]
       },
       {

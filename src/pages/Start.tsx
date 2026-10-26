@@ -18,7 +18,8 @@ import { EXTRAS, INCLUDED, PLANS, STATE_FEE, money, orderTotal, type Entity, typ
 
 type Owner = { name: string; ownership: string };
 
-const isPlan = (v: string | null): v is Plan => v === "starter" || v === "professional" || v === "international";
+const isPlan = (v: string | null): v is Plan =>
+  v === "starter" || v === "professional" || v === "international" || v === "business_website";
 
 const Start = () => {
   const { t, lang } = useLang();
@@ -144,7 +145,7 @@ const Start = () => {
                     </div>
 
                     <h2 className="text-xl font-semibold text-foreground pt-4">{t("Package")}</h2>
-                    <div className="grid md:grid-cols-3 gap-3" role="radiogroup" aria-label={t("Package")}>
+                    <div className="grid sm:grid-cols-2 gap-3" role="radiogroup" aria-label={t("Package")}>
                       {PLANS.map((p) => (
                         <button key={p.id} type="button" role="radio" aria-checked={plan === p.id} onClick={() => setPlan(p.id)}
                           className={`text-left flex flex-col justify-start h-full rounded-2xl border p-4 transition-colors ${plan === p.id ? "border-accent bg-accent/5" : "border-border hover:border-foreground/30"}`}>

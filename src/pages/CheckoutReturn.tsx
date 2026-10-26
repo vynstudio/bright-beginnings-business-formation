@@ -20,6 +20,9 @@ const CheckoutReturn = () => {
               <p className="mt-3 text-muted-foreground">
                 {t("We'll review your details and file with the State of Florida, usually within 1 business day. You'll get a receipt by email, and we'll contact you if anything is missing.")}
               </p>
+              <p className="mt-3 text-muted-foreground">
+                {t("If your order includes a website, we'll email you within 1 business day to collect your logo, photos and content.")}
+              </p>
             </>
           ) : (
             <h1 className="text-2xl font-medium text-foreground">{t("No order information found.")}</h1>

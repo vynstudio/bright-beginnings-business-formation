@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { PLANS, EXTRAS, money } from "@/lib/catalog";
 const PricingSection = () => {
   const { t } = useLang();
-  const [starter, professional, international] = PLANS;
+  const [starter, professional, international, bundle] = PLANS;
   const starterFeatures = starter.features;
   const coreFeatures = professional.features;
   const customFeatures = international.features;
@@ -166,6 +166,37 @@ const PricingSection = () => {
             </ul>
           </motion.div>
         </div>
+
+        {/* Business + Website bundle: formation and a website in one order */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 rounded-[20px] border-2 border-[#FF7732] bg-[#FFF6F1] p-2"
+        >
+          <div className="grid gap-2 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
+            <div className="bg-white rounded-[16px] p-5" style={{ boxShadow: '0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05)' }}>
+              <p className="inline-block rounded-full bg-[#FF7732] px-3 py-1 text-xs font-semibold text-white mb-3">{t("Company + website")}</p>
+              <h3 className="text-lg font-medium text-foreground mb-1">{t(bundle.name)}</h3>
+              <p className="text-sm text-muted-foreground mb-4">{t(bundle.tagline)}</p>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold text-foreground">{money(bundle.price)}</span>
+                <span className="text-muted-foreground">{t("+ state fee")}</span>
+              </div>
+              <Button asChild variant="lime" className="w-full rounded-full">
+                <Link to="/start?plan=business_website">{t("GET STARTED")}</Link>
+              </Button>
+            </div>
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 px-3 py-4 content-start">
+              {bundle.features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-2 text-sm">
+                  <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FF520A' }} />
+                  <span className="text-foreground">{t(feature)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
 
         <div className="mt-8 rounded-[20px] bg-[#F7F8F7] p-5 md:p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

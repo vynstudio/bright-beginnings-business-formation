@@ -1,6 +1,6 @@
 // Server-side source of truth for what can be bought and what it costs.
 // Keep in sync with src/lib/catalog.ts (display only).
-export type Plan = "starter" | "professional" | "international";
+export type Plan = "starter" | "professional" | "international" | "business_website";
 export type Entity = "llc" | "corp";
 export type Extra = "ein" | "annual_report" | "registered_agent" | "expedited";
 
@@ -8,6 +8,8 @@ export const PLAN_PRICES: Record<Plan, { priceId: string; cents: number }> = {
   starter: { priceId: "plan_starter_onetime", cents: 14900 },
   professional: { priceId: "plan_professional_onetime", cents: 24900 },
   international: { priceId: "plan_international_onetime", cents: 44900 },
+  // Professional formation + 7-page bilingual website (care plan billed separately after launch).
+  business_website: { priceId: "plan_business_website_onetime", cents: 119900 },
 };
 export const STATE_FEE: Record<Entity, { priceId: string; cents: number }> = {
   llc: { priceId: "fl_state_fee_llc_onetime", cents: 12500 },
@@ -28,6 +30,7 @@ export const INCLUDED: Record<Plan, Extra[]> = {
   starter: ["registered_agent"],
   professional: ["registered_agent", "ein", "expedited"],
   international: ["registered_agent", "ein", "expedited"],
+  business_website: ["registered_agent", "ein", "expedited"],
 };
 
 export function buildLineItems(plan: Plan, entity: Entity, extras: Extra[]) {

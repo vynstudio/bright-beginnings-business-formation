@@ -1,6 +1,6 @@
 // Display copy for plans and extras. Prices charged are decided server-side
 // (supabase/functions/_shared/catalog.ts) — keep amounts in sync.
-export type Plan = "starter" | "professional" | "international";
+export type Plan = "starter" | "professional" | "international" | "business_website";
 export type Entity = "llc" | "corp";
 export type Extra = "ein" | "annual_report" | "registered_agent" | "expedited";
 
@@ -45,6 +45,21 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
       "US business bank account guidance",
     ],
   },
+  {
+    id: "business_website",
+    name: "Business + Website",
+    price: 1199,
+    tagline: "For founders who want to launch with a professional website.",
+    features: [
+      "Everything in Professional",
+      "7-page website in Spanish and English",
+      "2 rounds of revisions",
+      "Google Business Profile setup",
+      "Business email setup (email service billed by the provider)",
+      "Delivered within 21 business days after we receive your content",
+      "Hosting, updates and small edits: care plan $29/month after launch",
+    ],
+  },
 ];
 
 export const STATE_FEE: Record<Entity, number> = { llc: 125, corp: 70 };
@@ -61,6 +76,7 @@ export const INCLUDED: Record<Plan, Extra[]> = {
   starter: ["registered_agent"],
   professional: ["registered_agent", "ein", "expedited"],
   international: ["registered_agent", "ein", "expedited"],
+  business_website: ["registered_agent", "ein", "expedited"],
 };
 
 export function orderTotal(plan: Plan, entity: Entity, extras: Extra[]) {

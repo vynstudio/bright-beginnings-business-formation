@@ -4,6 +4,17 @@ type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
   ...publicPageTranslations,
+  // Business + Website bundle
+  "Business + Website": { es: "Empresa + Sitio web", pt: "Empresa + Site" },
+  "Company + website": { es: "Empresa + sitio web", pt: "Empresa + site" },
+  "For founders who want to launch with a professional website.": { es: "Para emprendedores que quieren lanzar su negocio con un sitio web profesional.", pt: "Para empreendedores que querem lançar o negócio com um site profissional." },
+  "7-page website in Spanish and English": { es: "Sitio web de 7 páginas en español e inglés", pt: "Site de 7 páginas em espanhol e inglês" },
+  "2 rounds of revisions": { es: "2 rondas de revisiones", pt: "2 rodadas de revisões" },
+  "Google Business Profile setup": { es: "Configuración de Perfil de Empresa en Google", pt: "Configuração do Perfil da Empresa no Google" },
+  "Business email setup (email service billed by the provider)": { es: "Configuración de correo empresarial (el servicio de correo lo cobra el proveedor)", pt: "Configuração de e-mail empresarial (o serviço de e-mail é cobrado pelo provedor)" },
+  "Delivered within 21 business days after we receive your content": { es: "Entregado en un plazo de 21 días hábiles después de recibir su contenido", pt: "Entregue em até 21 dias úteis após recebermos seu conteúdo" },
+  "Hosting, updates and small edits: care plan $29/month after launch": { es: "Hospedaje, actualizaciones y cambios menores: plan de mantenimiento de $29/mes después del lanzamiento", pt: "Hospedagem, atualizações e pequenas alterações: plano de manutenção de US$29/mês após o lançamento" },
+  "If your order includes a website, we'll email you within 1 business day to collect your logo, photos and content.": { es: "Si su pedido incluye un sitio web, le escribiremos en 1 día hábil para pedirle su logo, fotos y contenido.", pt: "Se o seu pedido inclui um site, enviaremos um e-mail em 1 dia útil para pedir seu logo, fotos e conteúdo." },
   // Contact page
   "How we reply": { es: "Cómo respondemos", pt: "Como respondemos" },
   "Send us a message with the form and we'll reply by email. We help in Spanish, English and Portuguese.": { es: "Envíenos un mensaje con el formulario y le responderemos por correo electrónico. Atendemos en español, inglés y portugués.", pt: "Envie uma mensagem pelo formulário e responderemos por e-mail. Atendemos em espanhol, inglês e português." },

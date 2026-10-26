@@ -375,5 +375,32 @@ export const publicPageTranslations: Record<string, { es: string; pt: string }> 
     "es": "Los reembolsos aprobados se devuelven a su método de pago original a través de Stripe, normalmente en 5 a 10 días hábiles según su banco.",
     "pt": "Os reembolsos aprovados voltam para o seu meio de pagamento original pela Stripe, normalmente em 5 a 10 dias úteis, dependendo do seu banco."
   },
-
+  "Website services": {
+    "es": "Servicios de sitio web",
+    "pt": "Serviços de site"
+  },
+  "The Business + Website package includes a 7-page website in Spanish and English, 2 rounds of revisions, Google Business Profile setup and business email setup. We deliver the website within 21 business days after we receive the content we request from you (logo, photos, texts and business details). Delays in sending content or feedback extend the delivery date.": {
+    "es": "El paquete Empresa + Sitio web incluye un sitio web de 7 páginas en español e inglés, 2 rondas de revisiones, configuración del Perfil de Empresa en Google y configuración de correo empresarial. Entregamos el sitio web en un plazo de 21 días hábiles después de recibir el contenido que le solicitemos (logo, fotos, textos y datos del negocio). Las demoras en el envío de contenido o comentarios extienden la fecha de entrega.",
+    "pt": "O pacote Empresa + Site inclui um site de 7 páginas em espanhol e inglês, 2 rodadas de revisões, configuração do Perfil da Empresa no Google e configuração de e-mail empresarial. Entregamos o site em até 21 dias úteis após recebermos o conteúdo que solicitarmos (logo, fotos, textos e dados do negócio). Atrasos no envio de conteúdo ou comentários estendem a data de entrega."
+  },
+  "Changes beyond the 2 included revision rounds, additional pages and new features are quoted separately. Domain registration and email service are paid to their providers and are registered in your name.": {
+    "es": "Los cambios adicionales a las 2 rondas de revisiones incluidas, las páginas adicionales y las nuevas funciones se cotizan por separado. El registro del dominio y el servicio de correo se pagan a sus proveedores y quedan registrados a su nombre.",
+    "pt": "Alterações além das 2 rodadas de revisões incluídas, páginas adicionais e novos recursos são orçados à parte. O registro do domínio e o serviço de e-mail são pagos aos respectivos provedores e ficam registrados em seu nome."
+  },
+  "Keeping the website online requires our care plan ($29 per month, starting at launch), which covers hosting, software updates and small text or photo edits. You can cancel the care plan at any time; the website stops being hosted by us at the end of the paid month, and on request we provide a copy of your site files.": {
+    "es": "Mantener el sitio web en línea requiere nuestro plan de mantenimiento ($29 al mes, desde el lanzamiento), que cubre hospedaje, actualizaciones de software y cambios menores de texto o fotos. Puede cancelar el plan en cualquier momento; dejaremos de hospedar el sitio al final del mes pagado y, si lo solicita, le entregamos una copia de los archivos de su sitio.",
+    "pt": "Manter o site no ar exige nosso plano de manutenção (US$29 por mês, a partir do lançamento), que cobre hospedagem, atualizações de software e pequenas alterações de textos ou fotos. Você pode cancelar o plano a qualquer momento; deixaremos de hospedar o site ao fim do mês pago e, se solicitado, entregamos uma cópia dos arquivos do seu site."
+  },
+  "You keep ownership of the content you provide and, once paid in full, of your website's design and pages. You confirm you have the rights to the logos, photos and texts you send us. Stock photos we add are licensed for use on your website only.": {
+    "es": "Usted conserva la propiedad del contenido que proporciona y, una vez pagado en su totalidad, del diseño y las páginas de su sitio web. Usted confirma que tiene los derechos de los logos, fotos y textos que nos envía. Las fotos de stock que agreguemos tienen licencia solo para usarse en su sitio web.",
+    "pt": "Você mantém a propriedade do conteúdo que fornece e, após o pagamento integral, do design e das páginas do seu site. Você confirma que possui os direitos sobre os logos, fotos e textos que nos envia. As fotos de banco de imagens que adicionarmos são licenciadas apenas para uso no seu site."
+  },
+  "For the Business + Website package, the website part ($999 of the package price) is fully refundable until we deliver the first design draft. After the first draft is delivered, cancelling refunds 50% of the website part. After the website is launched, the website part is non-refundable. The formation part follows the rules above.": {
+    "es": "En el paquete Empresa + Sitio web, la parte del sitio web ($999 del precio del paquete) es totalmente reembolsable hasta que entreguemos el primer borrador del diseño. Después de entregar el primer borrador, la cancelación reembolsa el 50 % de la parte del sitio web. Una vez lanzado el sitio, la parte del sitio web no es reembolsable. La parte de formación sigue las reglas anteriores.",
+    "pt": "No pacote Empresa + Site, a parte do site (US$999 do preço do pacote) é totalmente reembolsável até entregarmos o primeiro rascunho do design. Após a entrega do primeiro rascunho, o cancelamento reembolsa 50% da parte do site. Depois que o site é lançado, a parte do site não é reembolsável. A parte de abertura da empresa segue as regras acima."
+  },
+  "The monthly care plan can be cancelled at any time and is not refunded for the month already paid.": {
+    "es": "El plan de mantenimiento mensual puede cancelarse en cualquier momento y no se reembolsa el mes ya pagado.",
+    "pt": "O plano de manutenção mensal pode ser cancelado a qualquer momento e o mês já pago não é reembolsado."
+  }
 };
