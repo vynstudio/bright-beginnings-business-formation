@@ -15,12 +15,15 @@ import { Writable } from "node:stream";
 const PROJECT_REF = "ofitimdebbncfdhvxwub";
 const SUPABASE_CLI = "supabase@2.120.0";
 
+// One reader for the whole run; hidden input mutes the echo while the token is typed.
+let muted = false;
+const echo = new Writable({ write: (chunk, _enc, done) => { if (!muted) process.stdout.write(chunk); done(); } });
+const rl = createInterface({ input: process.stdin, output: echo, terminal: true });
 async function ask(question: string, hidden = false): Promise<string> {
   process.stdout.write(question);
-  const output = hidden ? new Writable({ write: (_chunk, _enc, done) => done() }) : process.stdout;
-  const rl = createInterface({ input: process.stdin, output, terminal: true });
+  muted = hidden;
   const answer = await new Promise<string>((resolve) => rl.question("", resolve));
-  rl.close();
+  muted = false;
   if (hidden) process.stdout.write("\n");
   return answer.trim();
 }
@@ -36,6 +39,7 @@ const tg = async (method: string, body?: unknown) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body ?? {}),
+    signal: AbortSignal.timeout(20_000),
   });
   const data = await res.json();
   if (!data.ok) throw new Error(`${method}: ${data.description}`);
@@ -56,6 +60,7 @@ const findChats = async (): Promise<Chat[]> => {
   return [...chats.values()];
 };
 
+console.log("Looking for your chat with the bot...");
 let chats = await findChats();
 while (!chats.length) {
   await ask(`\nOpen Telegram, find @${bot.username}, press Start (or send "hola"), then press Enter here... `);
@@ -74,6 +79,7 @@ await tg("sendMessage", {
   text: "✅ Agente Registrado Florida: alerts connected. You'll get new clients, leads and contact messages here.",
 });
 
+console.log("Saving the bot settings to Supabase...");
 const dir = mkdtempSync(join(tmpdir(), "telegram-secrets-"));
 const envFile = join(dir, "secrets.env");
 try {
@@ -84,4 +90,5 @@ try {
 } finally {
   rmSync(dir, { recursive: true, force: true });
 }
+rl.close();
 console.log("saved    TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID\n\nDone. Check Telegram for the test message.");
