@@ -32,13 +32,13 @@ async function askHidden(question: string): Promise<string> {
 }
 
 const key = process.env.STRIPE_SECRET_KEY || (await askHidden("Paste your Stripe secret key (hidden) and press Enter: "));
-if (!/^sk_(test|live)_/.test(key)) {
-  console.error("That doesn't look like a Stripe secret key (sk_test_... or sk_live_...).");
+// sk_ = standard secret key, rk_ = restricted key (recommended: "Full access — except sensitive operations").
+if (!/^(sk|rk)_(test|live)_/.test(key)) {
+  console.error("That doesn't look like a Stripe secret key (sk_test_/rk_test_... or sk_live_/rk_live_...).");
   process.exit(1);
 }
-const env = key.startsWith("sk_live_") ? "live" : "sandbox";
+const env = /^(sk|rk)_live_/.test(key) ? "live" : "sandbox";
 const ENV = env.toUpperCase();
-console.log(`Stripe mode: ${env === "live" ? "LIVE" : "test (sandbox)"}\n`);
 
 async function stripe(method: string, path: string, params?: Record<string, string>) {
   const res = await fetch(`https://api.stripe.com/v1/${path}`, {
@@ -50,6 +50,22 @@ async function stripe(method: string, path: string, params?: Record<string, stri
   if (!res.ok) throw new Error(`${path}: ${body.error?.message ?? res.status}`);
   return body;
 }
+
+// Sandboxes look alike in the dashboard, so show which account this key belongs to before changing anything.
+// Restricted keys may not be allowed to read the account; fall back to the ID inside the key.
+const account = await stripe("GET", "account").catch(() => null);
+const accountName = account?.settings?.dashboard?.display_name || account?.business_profile?.name || "(name not readable with this key)";
+const accountId = account?.id || `acct_1${key.split("_")[2]?.slice(2, 16) ?? "?"}…`;
+console.log(`Stripe account: ${accountName}  (${accountId})`);
+console.log(`Stripe mode:    ${env === "live" ? "LIVE" : "test (sandbox)"}\n`);
+const confirm = createInterface({ input: process.stdin, output: process.stdout });
+const answer = await new Promise<string>((resolve) => confirm.question("Is this the right account? Type y to continue: ", resolve));
+confirm.close();
+if (answer.trim().toLowerCase() !== "y") {
+  console.log("Stopped. Nothing was changed.");
+  process.exit(0);
+}
+console.log();
 
 console.log("1/3 Prices");
 execFileSync(process.execPath, [join(import.meta.dirname, "create-stripe-prices.ts")], {

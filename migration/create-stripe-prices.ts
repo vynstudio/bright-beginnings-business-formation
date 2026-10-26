@@ -13,8 +13,8 @@ import {
 } from "../supabase/functions/_shared/catalog.ts";
 
 const key = process.env.STRIPE_SECRET_KEY;
-if (!key?.startsWith("sk_")) {
-  console.error("Set STRIPE_SECRET_KEY to your Stripe secret key (sk_test_... or sk_live_...).");
+if (!key || !/^(sk|rk)_(test|live)_/.test(key)) {
+  console.error("Set STRIPE_SECRET_KEY to your Stripe secret or restricted key (sk_/rk_ test or live).");
   process.exit(1);
 }
 
@@ -50,13 +50,27 @@ async function stripe(path: string, params?: Record<string, string>) {
   return body;
 }
 
-console.log(`Stripe mode: ${key.startsWith("sk_live_") ? "LIVE" : "test"}`);
+console.log(`Stripe mode: ${/^(sk|rk)_live_/.test(key) ? "LIVE" : "test"}`);
 for (const { priceId, cents } of prices) {
   const existing = await stripe(`prices?lookup_keys[]=${priceId}&limit=1`);
   const found = existing.data[0];
+  if (found && found.unit_amount === cents) {
+    console.log(`exists   ${priceId}`);
+    continue;
+  }
   if (found) {
-    const note = found.unit_amount === cents ? "" : `  ⚠️ amount is ${found.unit_amount}, catalog says ${cents}`;
-    console.log(`exists   ${priceId}${note}`);
+    // Stripe prices can't change amount: add a new price on the same product, move the
+    // lookup key to it (checkout finds prices by lookup key) and archive the old one.
+    await stripe("prices", {
+      product: found.product,
+      currency: "usd",
+      unit_amount: String(cents),
+      lookup_key: priceId,
+      transfer_lookup_key: "true",
+      tax_behavior: "exclusive",
+    });
+    await stripe(`prices/${found.id}`, { active: "false" });
+    console.log(`updated  ${priceId}  $${(found.unit_amount / 100).toFixed(2)} → $${(cents / 100).toFixed(2)}`);
     continue;
   }
   const product = await stripe("products", { name: names[priceId] });
