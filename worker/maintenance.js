@@ -1,10 +1,5 @@
-// Cloudflare Worker in front of the static site (see wrangler.jsonc).
-// When MAINTENANCE is "on", visitors to the public domain get a "back soon" page
-// (HTTP 503, so search engines keep the site indexed); the *.workers.dev preview
-// keeps serving the real site so we can keep testing.
+// "Back soon" page shown by worker/index.js while MAINTENANCE is "on".
 // Turn off: npx wrangler deploy --var MAINTENANCE:off  (or set "off" in wrangler.jsonc)
-
-const PUBLIC_HOSTS = new Set(["agenteregistradofl.com", "www.agenteregistradofl.com"]);
 
 const page = `<!doctype html>
 <html lang="es">
@@ -41,19 +36,11 @@ const page = `<!doctype html>
 </body>
 </html>`;
 
-export default {
-  async fetch(request, env) {
-    const host = new URL(request.url).hostname;
-    if (env.MAINTENANCE === "on" && PUBLIC_HOSTS.has(host)) {
-      return new Response(page, {
-        status: 503,
-        headers: {
-          "content-type": "text/html; charset=utf-8",
-          "retry-after": "3600",
-          "cache-control": "no-store",
-        },
-      });
-    }
-    return env.ASSETS.fetch(request);
+export const maintenancePage = () => new Response(page, {
+  status: 503,
+  headers: {
+    "content-type": "text/html; charset=utf-8",
+    "retry-after": "3600",
+    "cache-control": "no-store",
   },
-};
+});
