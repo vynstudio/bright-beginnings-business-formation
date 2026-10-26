@@ -12,10 +12,10 @@ const steps = [{
   description: "We prepare your Articles of Organization or Incorporation and submit them to Sunbiz, acting as your registered agent."
 }, {
   title: "3. Get your EIN and documents",
-  description: "Receive your approved company documents, operating agreement and IRS EIN so you can open a bank account."
+  description: "Receive your approved company documents and operating agreement, plus your IRS EIN if it's included in your order."
 }, {
   title: "4. Stay compliant",
-  description: "We forward state mail, track deadlines and file your annual report every year."
+  description: "We forward state mail, remind you of deadlines and can file your annual report for you."
 }];
 
 const TIMER_DURATION = 10000; // 10 seconds

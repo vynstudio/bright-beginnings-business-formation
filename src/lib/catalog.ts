@@ -14,7 +14,7 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
       "Articles prepared and filed with Sunbiz",
       "Operating agreement (LLC) or bylaws (corporation)",
       "1 year of registered agent service",
-      "Privacy: our address on public records",
+      "Our address as your registered agent on Sunbiz",
       "Referrals to partner CPAs and attorneys",
     ],
   },
@@ -26,9 +26,9 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
     features: [
       "Everything in Starter",
       "EIN (tax ID) from the IRS",
-      "Expedited 24-hour filing",
-      "Certificate of status",
-      "Free amendment or name change in first 90 days",
+      "Expedited same-day submission",
+      "Certificate of status (+ state fee)",
+      "One amendment or name change in first 90 days (+ state fee)",
     ],
   },
   {
@@ -39,9 +39,9 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
     features: [
       "Everything in Professional",
       "EIN for non-US owners (no SSN needed)",
-      "Apostille of formation documents",
+      "Apostille of formation documents (+ state fee)",
       "Certificate of incumbency",
-      "One free fictitious name (DBA)",
+      "One fictitious name (DBA) filing (+ state fee)",
       "US business bank account guidance",
     ],
   },
@@ -54,7 +54,7 @@ export const EXTRAS: { id: Extra; name: string; price: number; note?: string }[]
   { id: "ein", name: "EIN (tax ID) application", price: 99 },
   { id: "annual_report", name: "Annual report filing", price: 119, note: "+ state fee" },
   { id: "registered_agent", name: "Registered agent service (1 year)", price: 119 },
-  { id: "expedited", name: "Expedited same-day filing", price: 69 },
+  { id: "expedited", name: "Expedited same-day submission", price: 69 },
 ];
 
 export const INCLUDED: Record<Plan, Extra[]> = {

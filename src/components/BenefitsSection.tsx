@@ -2,7 +2,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 const benefits = [{
   title: "Clear, flat pricing",
-  description: "One price plus the state fee. No hidden charges or surprise renewals.",
+  description: "Package price plus the state fee, shown before you pay. Registered agent renewal after the first year is $119/year.",
   filled: 1
 }, {
   title: "Fast filing",
@@ -10,19 +10,19 @@ const benefits = [{
   filled: 2
 }, {
   title: "Never miss a deadline",
-  description: "We remind you and file your annual report before the May 1 deadline.",
+  description: "We remind you before the May 1 annual report deadline and can file it for you.",
   filled: 4
 }, {
   title: "Bilingual support",
-  description: "Talk to us in English, Spanish or Portuguese, by phone, email or WhatsApp.",
+  description: "Write to us in Spanish, English or Portuguese.",
   filled: 4
 }, {
   title: "Open from abroad",
-  description: "International founders can form a Florida company without traveling or a US address.",
+  description: "International founders can form a Florida company without traveling. Our Florida address serves as your registered agent.",
   filled: 5
 }, {
   title: "Privacy protected",
-  description: "Use our registered agent address on public records instead of your home address.",
+  description: "Our address appears as your registered agent on Sunbiz. Owner and company addresses you list may still be public.",
   filled: 6
 }];
 const ProgressIndicator = ({

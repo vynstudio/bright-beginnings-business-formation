@@ -28,9 +28,6 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminAuth = lazy(() => import("./components/auth/AdminAuth"));
 const RequireAdmin = lazy(() => import("./components/auth/RequireAdmin"));
-const DemoAdminBlog = lazy(() => import("./pages/demo/DemoAdminBlog"));
-const DemoAdminCategories = lazy(() => import("./pages/demo/DemoAdminCategories"));
-const DemoAdminUsers = lazy(() => import("./pages/demo/DemoAdminUsers"));
 
 const queryClient = new QueryClient();
 
@@ -67,12 +64,6 @@ const App = () => (
               <Route path="/admin/users" element={<RequireAdmin><AdminUsers /></RequireAdmin>} />
               <Route path="/admin/messages" element={<RequireAdmin><AdminMessages /></RequireAdmin>} />
             </Route>
-            {/* Demo routes — no auth, seed data only */}
-            <Route path="/demo" element={<Navigate to="/demo/admin/posts" replace />} />
-            <Route path="/demo/admin" element={<Navigate to="/demo/admin/posts" replace />} />
-            <Route path="/demo/admin/posts" element={<DemoAdminBlog />} />
-            <Route path="/demo/admin/categories" element={<DemoAdminCategories />} />
-            <Route path="/demo/admin/users" element={<DemoAdminUsers />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

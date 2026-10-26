@@ -64,20 +64,11 @@ export const translations: Record<string, T> = {
     pt: "Do primeiro registro a cada relatório anual, cuidamos da papelada na Flórida para que sua empresa esteja regular, protegida e pronta para operar.",
   },
   "LLC & corporation formation": { es: "Formación de LLC y corporaciones", pt: "Abertura de LLC e corporações" },
-  "We prepare and file your Articles with the Florida Division of Corporations (Sunbiz), usually within 1 business day.": {
-    es: "Preparamos y presentamos sus Artículos ante la División de Corporaciones de Florida (Sunbiz), normalmente en 1 día hábil.",
-    pt: "Preparamos e protocolamos seus Artigos na Divisão de Corporações da Flórida (Sunbiz), normalmente em 1 dia útil.",
-  },
+  "We prepare your Articles and submit them to the Florida Division of Corporations (Sunbiz), usually within 1 business day. State approval times vary.": { es: "Preparamos sus Artículos y los presentamos ante la División de Corporaciones de Florida (Sunbiz), normalmente en 1 día hábil. Los tiempos de aprobación del estado varían.", pt: "Preparamos seus Artigos e os enviamos à Divisão de Corporações da Flórida (Sunbiz), normalmente em 1 dia útil. Os prazos de aprovação do estado variam." },
   "Registered agent service": { es: "Servicio de agente registrado", pt: "Serviço de agente registrado" },
-  "A real Florida address to receive legal notices and state mail, scanned and sent to you the same day.": {
-    es: "Una dirección real en Florida para recibir notificaciones legales y correo estatal, escaneados y enviados el mismo día.",
-    pt: "Um endereço real na Flórida para receber notificações legais e correspondência do estado, digitalizadas e enviadas no mesmo dia.",
-  },
+  "A Florida street address where legal notices and state mail for your company are received and forwarded to you.": { es: "Una dirección física en Florida donde se reciben las notificaciones legales y el correo del estado de su empresa, y se le reenvían.", pt: "Um endereço físico na Flórida onde as notificações legais e a correspondência do estado da sua empresa são recebidas e encaminhadas a você." },
   "EIN & compliance": { es: "EIN y cumplimiento", pt: "EIN e conformidade" },
-  "We get your EIN from the IRS and file your Florida annual report on time, every year.": {
-    es: "Obtenemos su EIN del IRS y presentamos su informe anual de Florida a tiempo, cada año.",
-    pt: "Obtemos seu EIN junto ao IRS e entregamos seu relatório anual da Flórida no prazo, todo ano.",
-  },
+  "We can apply for your EIN with the IRS and file your Florida annual report before the May 1 deadline.": { es: "Podemos solicitar su EIN ante el IRS y presentar su informe anual de Florida antes del plazo del 1 de mayo.", pt: "Podemos solicitar seu EIN ao IRS e enviar seu relatório anual da Flórida antes do prazo de 1º de maio." },
 
   // Benefits
   "// Benefits //": { es: "// Beneficios //", pt: "// Benefícios //" },
@@ -87,35 +78,20 @@ export const translations: Record<string, T> = {
     pt: "Cuidamos da papelada, dos registros e dos prazos para você focar no seu negócio — more em Miami ou em São Paulo.",
   },
   "Clear, flat pricing": { es: "Precios claros y fijos", pt: "Preços claros e fixos" },
-  "One price plus the state fee. No hidden charges or surprise renewals.": {
-    es: "Un solo precio más la tarifa estatal. Sin cargos ocultos ni renovaciones sorpresa.",
-    pt: "Um único preço mais a taxa estadual. Sem cobranças ocultas nem renovações surpresa.",
-  },
+  "Package price plus the state fee, shown before you pay. Registered agent renewal after the first year is $119/year.": { es: "Precio del paquete más la tarifa estatal, mostrado antes de pagar. La renovación del agente registrado después del primer año es de $119/año.", pt: "Preço do pacote mais a taxa estadual, mostrado antes de pagar. A renovação do agente registrado após o primeiro ano é de US$119/ano." },
   "Fast filing": { es: "Registro rápido", pt: "Registro rápido" },
   "Most filings are submitted to the state within one business day.": {
     es: "La mayoría de los registros se presentan al estado en un día hábil.",
     pt: "A maioria dos registros é enviada ao estado em um dia útil.",
   },
   "Never miss a deadline": { es: "Nunca pierda un plazo", pt: "Nunca perca um prazo" },
-  "We remind you and file your annual report before the May 1 deadline.": {
-    es: "Le avisamos y presentamos su informe anual antes del plazo del 1 de mayo.",
-    pt: "Avisamos você e entregamos seu relatório anual antes do prazo de 1º de maio.",
-  },
+  "We remind you before the May 1 annual report deadline and can file it for you.": { es: "Le recordamos antes del plazo del informe anual del 1 de mayo y podemos presentarlo por usted.", pt: "Lembramos você antes do prazo do relatório anual de 1º de maio e podemos enviá-lo por você." },
   "Bilingual support": { es: "Atención en su idioma", pt: "Atendimento no seu idioma" },
-  "Talk to us in English, Spanish or Portuguese, by phone, email or WhatsApp.": {
-    es: "Hable con nosotros en inglés, español o portugués, por teléfono, correo o WhatsApp.",
-    pt: "Fale conosco em inglês, espanhol ou português, por telefone, e-mail ou WhatsApp.",
-  },
+  "Write to us in Spanish, English or Portuguese.": { es: "Escríbanos en español, inglés o portugués.", pt: "Escreva para nós em espanhol, inglês ou português." },
   "Open from abroad": { es: "Abra desde el exterior", pt: "Abra do exterior" },
-  "International founders can form a Florida company without traveling or a US address.": {
-    es: "Los emprendedores internacionales pueden formar una empresa en Florida sin viajar ni tener dirección en EE. UU.",
-    pt: "Empreendedores internacionais podem abrir uma empresa na Flórida sem viajar nem ter endereço nos EUA.",
-  },
+  "International founders can form a Florida company without traveling. Our Florida address serves as your registered agent.": { es: "Los emprendedores internacionales pueden formar una empresa en Florida sin viajar. Nuestra dirección en Florida funciona como su agente registrado.", pt: "Empreendedores internacionais podem abrir uma empresa na Flórida sem viajar. Nosso endereço na Flórida funciona como seu agente registrado." },
   "Privacy protected": { es: "Privacidad protegida", pt: "Privacidade protegida" },
-  "Use our registered agent address on public records instead of your home address.": {
-    es: "Use nuestra dirección de agente registrado en los registros públicos en lugar de la de su casa.",
-    pt: "Use nosso endereço de agente registrado nos registros públicos em vez do seu endereço residencial.",
-  },
+  "Our address appears as your registered agent on Sunbiz. Owner and company addresses you list may still be public.": { es: "Nuestra dirección aparece como su agente registrado en Sunbiz. Las direcciones de los dueños y de la empresa que indique pueden seguir siendo públicas.", pt: "Nosso endereço aparece como seu agente registrado no Sunbiz. Os endereços dos sócios e da empresa que você informar ainda podem ser públicos." },
 
   // How it works
   "// Product explanation //": { es: "// Cómo funciona //", pt: "// Como funciona //" },
@@ -131,15 +107,9 @@ export const translations: Record<string, T> = {
     pt: "Preparamos seus Artigos de Organização ou Incorporação e os enviamos ao Sunbiz, atuando como seu agente registrado.",
   },
   "3. Get your EIN and documents": { es: "3. Reciba su EIN y documentos", pt: "3. Receba seu EIN e documentos" },
-  "Receive your approved company documents, operating agreement and IRS EIN so you can open a bank account.": {
-    es: "Reciba los documentos aprobados, el acuerdo operativo y el EIN del IRS para abrir su cuenta bancaria.",
-    pt: "Receba os documentos aprovados, o acordo operacional e o EIN do IRS para abrir sua conta bancária.",
-  },
+  "Receive your approved company documents and operating agreement, plus your IRS EIN if it's included in your order.": { es: "Reciba los documentos aprobados de su empresa y su acuerdo operativo, además de su EIN del IRS si está incluido en su pedido.", pt: "Receba os documentos aprovados da sua empresa e o acordo operacional, além do seu EIN do IRS se estiver incluído no pedido." },
   "4. Stay compliant": { es: "4. Manténgase al día", pt: "4. Fique em dia" },
-  "We forward state mail, track deadlines and file your annual report every year.": {
-    es: "Reenviamos el correo estatal, controlamos los plazos y presentamos su informe anual cada año.",
-    pt: "Encaminhamos a correspondência do estado, acompanhamos os prazos e entregamos seu relatório anual todo ano.",
-  },
+  "We forward state mail, remind you of deadlines and can file your annual report for you.": { es: "Le reenviamos el correo del estado, le recordamos los plazos y podemos presentar su informe anual por usted.", pt: "Encaminhamos a correspondência do estado, lembramos você dos prazos e podemos enviar seu relatório anual por você." },
 
   // Who it's for
   "// Who it's for //": { es: "// Para quién //", pt: "// Para quem //" },
@@ -220,10 +190,7 @@ export const translations: Record<string, T> = {
     pt: "A maioria dos registros é enviada em 1 dia útil e aprovada pelo estado em 1–5 dias úteis. O EIN costuma sair poucos dias depois.",
   },
   "LLC or corporation: which is right for me?": { es: "LLC o corporación: ¿cuál me conviene?", pt: "LLC ou corporação: qual é a melhor para mim?" },
-  "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.": {
-    es: "La mayoría de los pequeños negocios elige una LLC por su sencillez y flexibilidad fiscal. Una corporación puede ser mejor si planea buscar inversión. Le ayudamos a decidir.",
-    pt: "A maioria dos pequenos negócios escolhe uma LLC pela simplicidade e flexibilidade tributária. Uma corporação pode ser melhor se você pretende captar investimento. Ajudamos você a decidir.",
-  },
+  "Many small businesses choose an LLC for its simplicity. A corporation can fit some plans to raise investment. Our guide and AI advisor give general information; a CPA or attorney can advise on your situation.": { es: "Muchos pequeños negocios eligen una LLC por su sencillez. Una corporación puede convenir en algunos planes de buscar inversión. Nuestra guía y nuestro asesor con IA ofrecen información general; un contador (CPA) o un abogado puede asesorarle según su caso.", pt: "Muitos pequenos negócios escolhem uma LLC pela simplicidade. Uma corporação pode servir para alguns planos de buscar investimento. Nosso guia e nosso consultor com IA oferecem informações gerais; um contador (CPA) ou advogado pode orientar no seu caso." },
   "What does a registered agent do?": { es: "¿Qué hace un agente registrado?", pt: "O que faz um agente registrado?" },
   "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $119/year.": {
     es: "Un agente registrado recibe notificaciones legales y correo oficial del estado para su empresa. Florida exige que toda empresa tenga uno. El nuestro está incluido el primer año, luego $119/año.",
@@ -245,18 +212,18 @@ export const translations: Record<string, T> = {
   "For founders who live outside the US.": { es: "Para emprendedores que viven fuera de EE. UU.", pt: "Para empreendedores que moram fora dos EUA." },
   "Articles prepared and filed with Sunbiz": { es: "Artículos preparados y presentados en Sunbiz", pt: "Artigos preparados e registrados no Sunbiz" },
   "Operating agreement (LLC) or bylaws (corporation)": { es: "Acuerdo operativo (LLC) o estatutos (corporación)", pt: "Acordo operacional (LLC) ou estatuto (corporação)" },
-  "Privacy: our address on public records": { es: "Privacidad: nuestra dirección en registros públicos", pt: "Privacidade: nosso endereço nos registros públicos" },
+  "Our address as your registered agent on Sunbiz": { es: "Nuestra dirección como su agente registrado en Sunbiz", pt: "Nosso endereço como seu agente registrado no Sunbiz" },
   "Referrals to partner CPAs and attorneys": { es: "Referidos a contadores (CPA) y abogados aliados", pt: "Indicação de contadores (CPA) e advogados parceiros" },
   "Everything in Starter": { es: "Todo lo del Inicial", pt: "Tudo do Inicial" },
   "Everything in Professional": { es: "Todo lo del Profesional", pt: "Tudo do Profissional" },
   "EIN (tax ID) from the IRS": { es: "EIN (número fiscal) del IRS", pt: "EIN (número fiscal) do IRS" },
-  "Expedited 24-hour filing": { es: "Registro urgente en 24 horas", pt: "Registro expresso em 24 horas" },
-  "Certificate of status": { es: "Certificado de estatus", pt: "Certidão de regularidade" },
-  "Free amendment or name change in first 90 days": { es: "Enmienda o cambio de nombre gratis en los primeros 90 días", pt: "Alteração ou troca de nome grátis nos primeiros 90 dias" },
+  "Expedited same-day submission": { es: "Presentación urgente el mismo día", pt: "Envio urgente no mesmo dia" },
+  "Certificate of status (+ state fee)": { es: "Certificado de estatus (+ tarifa estatal)", pt: "Certidão de situação (+ taxa estadual)" },
+  "One amendment or name change in first 90 days (+ state fee)": { es: "Una enmienda o cambio de nombre en los primeros 90 días (+ tarifa estatal)", pt: "Uma alteração ou mudança de nome nos primeiros 90 dias (+ taxa estadual)" },
   "EIN for non-US owners (no SSN needed)": { es: "EIN para dueños fuera de EE. UU. (sin SSN)", pt: "EIN para sócios fora dos EUA (sem SSN)" },
-  "Apostille of formation documents": { es: "Apostilla de los documentos de formación", pt: "Apostila dos documentos de abertura" },
+  "Apostille of formation documents (+ state fee)": { es: "Apostilla de los documentos de formación (+ tarifa estatal)", pt: "Apostila dos documentos de abertura (+ taxa estadual)" },
   "Certificate of incumbency": { es: "Certificado de incumbencia", pt: "Certificado de incumbência" },
-  "One free fictitious name (DBA)": { es: "Un nombre comercial (DBA) gratis", pt: "Um nome fantasia (DBA) grátis" },
+  "One fictitious name (DBA) filing (+ state fee)": { es: "Registro de un nombre comercial (DBA) (+ tarifa estatal)", pt: "Registro de um nome fantasia (DBA) (+ taxa estadual)" },
   "EIN (tax ID) application": { es: "Solicitud de EIN (número fiscal)", pt: "Solicitação de EIN (número fiscal)" },
   "Annual report filing": { es: "Presentación del informe anual", pt: "Entrega do relatório anual" },
   "Registered agent service (1 year)": { es: "Agente registrado (1 año)", pt: "Agente registrado (1 ano)" },

@@ -7,17 +7,17 @@ import looper3 from "@/assets/looper-3.webp";
 const features = [{
   icon: ColorsIcon,
   title: "LLC & corporation formation",
-  description: "We prepare and file your Articles with the Florida Division of Corporations (Sunbiz), usually within 1 business day.",
+  description: "We prepare your Articles and submit them to the Florida Division of Corporations (Sunbiz), usually within 1 business day. State approval times vary.",
   meshType: "spiral"
 }, {
   icon: AiSecurity01Icon,
   title: "Registered agent service",
-  description: "A real Florida address to receive legal notices and state mail, scanned and sent to you the same day.",
+  description: "A Florida street address where legal notices and state mail for your company are received and forwarded to you.",
   meshType: "wave"
 }, {
   icon: Layers01Icon,
   title: "EIN & compliance",
-  description: "We get your EIN from the IRS and file your Florida annual report on time, every year.",
+  description: "We can apply for your EIN with the IRS and file your Florida annual report before the May 1 deadline.",
   meshType: "flow"
 }];
 

@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "LLC or corporation: which is right for me?",
-    answer: "Most small businesses choose an LLC for its simplicity and flexible taxes. A corporation can be better if you plan to raise investment. We can help you decide.",
+    answer: "Many small businesses choose an LLC for its simplicity. A corporation can fit some plans to raise investment. Our guide and AI advisor give general information; a CPA or attorney can advise on your situation.",
   },
   {
     question: "What does a registered agent do?",
