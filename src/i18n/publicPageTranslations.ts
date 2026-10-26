@@ -226,5 +226,154 @@ export const publicPageTranslations: Record<string, { es: string; pt: string }> 
   "Related pages": {
     "es": "Páginas relacionadas",
     "pt": "Páginas relacionadas"
-  }
+  },
+  "Updated October 26, 2026": {
+    "es": "Actualizado el 26 de octubre de 2026",
+    "pt": "Atualizado em 26 de outubro de 2026"
+  },
+  "Terms of Service": {
+    "es": "Términos del servicio",
+    "pt": "Termos de serviço"
+  },
+  "These terms apply to services ordered on agenteregistradofl.com from Diler Services, LLC, which operates Agente Registrado Florida (\"we\", \"us\"). By placing an order you agree to these terms and to our Refund policy.": {
+    "es": "Estos términos se aplican a los servicios contratados en agenteregistradofl.com con Diler Services, LLC, que opera Agente Registrado Florida (\"nosotros\"). Al realizar un pedido, usted acepta estos términos y nuestra Política de reembolsos.",
+    "pt": "Estes termos se aplicam aos serviços contratados em agenteregistradofl.com com a Diler Services, LLC, que opera a Agente Registrado Florida (\"nós\"). Ao fazer um pedido, você aceita estes termos e nossa Política de reembolso."
+  },
+  "Our services": {
+    "es": "Nuestros servicios",
+    "pt": "Nossos serviços"
+  },
+  "We provide administrative assistance with Florida business filings: preparing and submitting formation documents, registered agent service, EIN application assistance, annual report filing and the other services described in your order. We are not a law firm and do not give legal, tax or immigration advice.": {
+    "es": "Ofrecemos asistencia administrativa con trámites empresariales en Florida: preparar y presentar documentos de formación, servicio de agente registrado, asistencia para solicitar el EIN, presentación del informe anual y los demás servicios descritos en su pedido. No somos un bufete de abogados y no ofrecemos asesoría legal, fiscal ni migratoria.",
+    "pt": "Oferecemos assistência administrativa com registros empresariais na Flórida: preparar e enviar documentos de abertura, serviço de agente registrado, assistência para solicitar o EIN, envio do relatório anual e os demais serviços descritos no seu pedido. Não somos um escritório de advocacia e não oferecemos orientação jurídica, tributária ou de imigração."
+  },
+  "Your responsibilities": {
+    "es": "Sus responsabilidades",
+    "pt": "Suas responsabilidades"
+  },
+  "You must give us accurate and complete information and keep it up to date. You authorize us to prepare and submit filings on your behalf using the information you provide. You remain responsible for your company's licenses, taxes and other legal obligations.": {
+    "es": "Debe proporcionarnos información exacta y completa y mantenerla actualizada. Nos autoriza a preparar y presentar trámites en su nombre con la información que nos entregue. Usted sigue siendo responsable de las licencias, impuestos y demás obligaciones legales de su empresa.",
+    "pt": "Você deve nos fornecer informações corretas e completas e mantê-las atualizadas. Você nos autoriza a preparar e enviar registros em seu nome com as informações fornecidas. Você continua responsável pelas licenças, impostos e demais obrigações legais da sua empresa."
+  },
+  "Prices and payment": {
+    "es": "Precios y pago",
+    "pt": "Preços e pagamento"
+  },
+  "Prices are shown before you pay and include our service fee plus the Florida state filing fee listed at checkout. Some services carry additional state fees, marked \"+ state fee\", which we charge when that service is used. Payments are processed by Stripe. Sales tax, if any, is shown at checkout.": {
+    "es": "Los precios se muestran antes de pagar e incluyen nuestra tarifa de servicio más la tarifa estatal de Florida indicada al pagar. Algunos servicios tienen tarifas estatales adicionales, marcadas como \"+ tarifa estatal\", que cobramos cuando se usa ese servicio. Los pagos los procesa Stripe. El impuesto sobre las ventas, si corresponde, se muestra al pagar.",
+    "pt": "Os preços são mostrados antes do pagamento e incluem nossa taxa de serviço mais a taxa estadual da Flórida indicada no checkout. Alguns serviços têm taxas estaduais adicionais, marcadas como \"+ taxa estadual\", cobradas quando o serviço é usado. Os pagamentos são processados pela Stripe. O imposto sobre vendas, se houver, é mostrado no checkout."
+  },
+  "Timing and government decisions": {
+    "es": "Plazos y decisiones del gobierno",
+    "pt": "Prazos e decisões do governo"
+  },
+  "We usually submit filings within 1 business day after receiving complete information, or the same day for expedited orders. The State of Florida and the IRS decide approval and processing times. We do not guarantee approval, name availability, EIN issuance, bank account approval or any particular result.": {
+    "es": "Normalmente presentamos los trámites en 1 día hábil después de recibir la información completa, o el mismo día en pedidos urgentes. El Estado de Florida y el IRS deciden la aprobación y los tiempos de procesamiento. No garantizamos la aprobación, la disponibilidad del nombre, la emisión del EIN, la aprobación de una cuenta bancaria ni ningún resultado en particular.",
+    "pt": "Normalmente enviamos os registros em 1 dia útil após receber as informações completas, ou no mesmo dia em pedidos urgentes. O Estado da Flórida e o IRS decidem a aprovação e os prazos de processamento. Não garantimos aprovação, disponibilidade do nome, emissão do EIN, aprovação de conta bancária nem qualquer resultado específico."
+  },
+  "Registered agent service": {
+    "es": "Servicio de agente registrado",
+    "pt": "Serviço de agente registrado"
+  },
+  "When registered agent service is included, we act as your Florida registered agent for the period stated in your order. We receive service of process and official notices at our Florida street address and forward them to the contact information you give us; keep it current. Renewal after the first year is $119 per year and is not charged automatically. If you do not renew, we may resign as your registered agent as permitted by Florida law, after notifying you.": {
+    "es": "Cuando el servicio de agente registrado está incluido, actuamos como su agente registrado en Florida durante el período indicado en su pedido. Recibimos notificaciones judiciales y avisos oficiales en nuestra dirección física en Florida y se los reenviamos a los datos de contacto que nos proporcione; manténgalos actualizados. La renovación después del primer año cuesta $119 al año y no se cobra automáticamente. Si no renueva, podemos renunciar como su agente registrado según lo permita la ley de Florida, después de avisarle.",
+    "pt": "Quando o serviço de agente registrado está incluído, atuamos como seu agente registrado na Flórida pelo período indicado no seu pedido. Recebemos citações judiciais e avisos oficiais em nosso endereço físico na Flórida e os encaminhamos para os contatos que você informar; mantenha-os atualizados. A renovação após o primeiro ano custa US$119 por ano e não é cobrada automaticamente. Se você não renovar, podemos renunciar como seu agente registrado conforme permitido pela lei da Flórida, após avisar você."
+  },
+  "Documents and templates": {
+    "es": "Documentos y plantillas",
+    "pt": "Documentos e modelos"
+  },
+  "Operating agreements and bylaws are standard templates completed with the information you provide. They are not customized legal documents or legal advice; consider having an attorney review them.": {
+    "es": "Los acuerdos operativos y estatutos son plantillas estándar completadas con la información que usted proporciona. No son documentos legales personalizados ni asesoría legal; considere que un abogado los revise.",
+    "pt": "Os acordos operacionais e estatutos são modelos padrão preenchidos com as informações que você fornece. Não são documentos jurídicos personalizados nem orientação jurídica; considere pedir a revisão de um advogado."
+  },
+  "Refunds and payment disputes": {
+    "es": "Reembolsos y disputas de pago",
+    "pt": "Reembolsos e contestações de pagamento"
+  },
+  "Refunds are governed by our Refund policy. Government filing fees we have already paid to the State of Florida or another agency on your behalf are non-refundable, because the agency does not return them.": {
+    "es": "Los reembolsos se rigen por nuestra Política de reembolsos. Las tarifas gubernamentales que ya hayamos pagado al Estado de Florida u otra agencia en su nombre no son reembolsables, porque la agencia no las devuelve.",
+    "pt": "Os reembolsos seguem nossa Política de reembolso. As taxas governamentais que já tivermos pago ao Estado da Flórida ou a outra agência em seu nome não são reembolsáveis, porque a agência não as devolve."
+  },
+  "If you have a problem with a charge, please contact us first so we can resolve it. If you dispute a charge with your bank for a service we have already performed, we will provide the bank with evidence of the work, including the state filing record.": {
+    "es": "Si tiene un problema con un cargo, contáctenos primero para que podamos resolverlo. Si disputa con su banco un cargo por un servicio que ya realizamos, entregaremos al banco la evidencia del trabajo, incluido el registro del trámite estatal.",
+    "pt": "Se você tiver um problema com uma cobrança, fale conosco primeiro para que possamos resolver. Se você contestar junto ao seu banco uma cobrança por um serviço que já realizamos, forneceremos ao banco as provas do trabalho, incluindo o registro do protocolo estadual."
+  },
+  "Limitation of liability": {
+    "es": "Limitación de responsabilidad",
+    "pt": "Limitação de responsabilidade"
+  },
+  "To the extent permitted by law, our total liability for any claim related to an order is limited to the service fees you paid us for that order, excluding government fees. We are not liable for indirect or consequential damages, or for the decisions or delays of government agencies.": {
+    "es": "En la medida permitida por la ley, nuestra responsabilidad total por cualquier reclamo relacionado con un pedido se limita a las tarifas de servicio que nos pagó por ese pedido, sin incluir las tarifas gubernamentales. No somos responsables de daños indirectos o consecuentes, ni de las decisiones o demoras de las agencias gubernamentales.",
+    "pt": "Na medida permitida por lei, nossa responsabilidade total por qualquer reclamação relacionada a um pedido limita-se às taxas de serviço que você nos pagou por esse pedido, excluindo as taxas governamentais. Não somos responsáveis por danos indiretos ou consequentes, nem pelas decisões ou atrasos de agências governamentais."
+  },
+  "Governing law": {
+    "es": "Ley aplicable",
+    "pt": "Lei aplicável"
+  },
+  "These terms are governed by the laws of the State of Florida. Any dispute will be resolved in the state or federal courts located in Polk County, Florida.": {
+    "es": "Estos términos se rigen por las leyes del Estado de Florida. Cualquier disputa se resolverá en los tribunales estatales o federales ubicados en el condado de Polk, Florida.",
+    "pt": "Estes termos são regidos pelas leis do Estado da Flórida. Qualquer disputa será resolvida nos tribunais estaduais ou federais localizados no condado de Polk, Flórida."
+  },
+  "Changes and contact": {
+    "es": "Cambios y contacto",
+    "pt": "Alterações e contato"
+  },
+  "We may update these terms. The version posted when you place an order applies to that order. For questions, use our contact page.": {
+    "es": "Podemos actualizar estos términos. La versión publicada cuando realiza un pedido se aplica a ese pedido. Si tiene preguntas, use nuestra página de contacto.",
+    "pt": "Podemos atualizar estes termos. A versão publicada quando você faz um pedido se aplica a esse pedido. Para dúvidas, use nossa página de contato."
+  },
+  "Refund policy": {
+    "es": "Política de reembolsos",
+    "pt": "Política de reembolso"
+  },
+  "How cancellations and refunds work for orders placed on agenteregistradofl.com.": {
+    "es": "Cómo funcionan las cancelaciones y reembolsos de los pedidos realizados en agenteregistradofl.com.",
+    "pt": "Como funcionam os cancelamentos e reembolsos dos pedidos feitos em agenteregistradofl.com."
+  },
+  "Before we submit your filing": {
+    "es": "Antes de presentar su trámite",
+    "pt": "Antes de enviarmos seu registro"
+  },
+  "You can cancel for a full refund, including the state fee, at any time before we submit your filing to the State of Florida or the IRS. Contact us as soon as possible with your order details.": {
+    "es": "Puede cancelar y recibir un reembolso completo, incluida la tarifa estatal, en cualquier momento antes de que presentemos su trámite ante el Estado de Florida o el IRS. Contáctenos lo antes posible con los datos de su pedido.",
+    "pt": "Você pode cancelar e receber reembolso total, incluindo a taxa estadual, a qualquer momento antes de enviarmos seu registro ao Estado da Flórida ou ao IRS. Fale conosco o quanto antes com os dados do seu pedido."
+  },
+  "After submission": {
+    "es": "Después de presentarlo",
+    "pt": "Após o envio"
+  },
+  "Once a filing has been submitted, the service fee and the state fee for that filing are non-refundable, because the work has been done and the State of Florida does not return filing fees.": {
+    "es": "Una vez presentado el trámite, la tarifa de servicio y la tarifa estatal de ese trámite no son reembolsables, porque el trabajo ya se realizó y el Estado de Florida no devuelve las tarifas de presentación.",
+    "pt": "Depois que o registro é enviado, a taxa de serviço e a taxa estadual desse registro não são reembolsáveis, porque o trabalho já foi feito e o Estado da Flórida não devolve as taxas de registro."
+  },
+  "If the state rejects a filing": {
+    "es": "Si el estado rechaza un trámite",
+    "pt": "Se o estado rejeitar um registro"
+  },
+  "If the State of Florida rejects a filing (for example, because the name is not available), we will correct and resubmit it at no additional service fee. A new state fee applies only if the state requires one.": {
+    "es": "Si el Estado de Florida rechaza un trámite (por ejemplo, porque el nombre no está disponible), lo corregiremos y volveremos a presentar sin tarifa de servicio adicional. Solo se aplica una nueva tarifa estatal si el estado la exige.",
+    "pt": "Se o Estado da Flórida rejeitar um registro (por exemplo, porque o nome não está disponível), vamos corrigi-lo e reenviá-lo sem taxa de serviço adicional. Uma nova taxa estadual só se aplica se o estado exigir."
+  },
+  "Add-ons not yet started": {
+    "es": "Servicios adicionales no iniciados",
+    "pt": "Serviços adicionais não iniciados"
+  },
+  "Add-ons we have not started, such as an annual report filing for a future year, can be cancelled for a refund of that add-on before we begin the work.": {
+    "es": "Los servicios adicionales que no hayamos iniciado, como la presentación del informe anual de un año futuro, pueden cancelarse con reembolso de ese servicio antes de que comencemos el trabajo.",
+    "pt": "Os serviços adicionais que ainda não iniciamos, como o envio do relatório anual de um ano futuro, podem ser cancelados com reembolso desse serviço antes de começarmos o trabalho."
+  },
+  "Registered agent service is refundable until your formation filing is submitted, because the state record then names us as your agent. After that, the current service period is non-refundable.": {
+    "es": "El servicio de agente registrado es reembolsable hasta que se presente su trámite de formación, porque a partir de ese momento el registro estatal nos nombra como su agente. Después, el período de servicio vigente no es reembolsable.",
+    "pt": "O serviço de agente registrado é reembolsável até o envio do seu registro de abertura, porque a partir daí o registro estadual nos nomeia como seu agente. Depois disso, o período de serviço vigente não é reembolsável."
+  },
+  "How refunds are paid": {
+    "es": "Cómo se pagan los reembolsos",
+    "pt": "Como os reembolsos são pagos"
+  },
+  "Approved refunds go back to your original payment method through Stripe, usually within 5 to 10 business days depending on your bank.": {
+    "es": "Los reembolsos aprobados se devuelven a su método de pago original a través de Stripe, normalmente en 5 a 10 días hábiles según su banco.",
+    "pt": "Os reembolsos aprovados voltam para o seu meio de pagamento original pela Stripe, normalmente em 5 a 10 dias úteis, dependendo do seu banco."
+  },
+
 };

@@ -1,4 +1,4 @@
-export type PublicPageKey = "legal-disclaimer" | "privacy" | "florida-llc-vs-corporation" | "ein-application" | "registered-agent-renewal";
+export type PublicPageKey = "legal-disclaimer" | "privacy" | "florida-llc-vs-corporation" | "ein-application" | "registered-agent-renewal" | "terms" | "refund-policy";
 export const publicPages = {
   "legal-disclaimer": {
     "title": "Legal disclaimer",
@@ -181,5 +181,138 @@ export const publicPages = {
       }
     ],
     "draft": false
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "intro": "These terms apply to services ordered on agenteregistradofl.com from Diler Services, LLC, which operates Agente Registrado Florida (\"we\", \"us\"). By placing an order you agree to these terms and to our Refund policy.",
+    "updated": "Updated October 26, 2026",
+    "sections": [
+      {
+        "title": "Our services",
+        "paragraphs": [
+          "We provide administrative assistance with Florida business filings: preparing and submitting formation documents, registered agent service, EIN application assistance, annual report filing and the other services described in your order. We are not a law firm and do not give legal, tax or immigration advice."
+        ]
+      },
+      {
+        "title": "Your responsibilities",
+        "paragraphs": [
+          "You must give us accurate and complete information and keep it up to date. You authorize us to prepare and submit filings on your behalf using the information you provide. You remain responsible for your company's licenses, taxes and other legal obligations."
+        ]
+      },
+      {
+        "title": "Prices and payment",
+        "paragraphs": [
+          "Prices are shown before you pay and include our service fee plus the Florida state filing fee listed at checkout. Some services carry additional state fees, marked \"+ state fee\", which we charge when that service is used. Payments are processed by Stripe. Sales tax, if any, is shown at checkout."
+        ]
+      },
+      {
+        "title": "Timing and government decisions",
+        "paragraphs": [
+          "We usually submit filings within 1 business day after receiving complete information, or the same day for expedited orders. The State of Florida and the IRS decide approval and processing times. We do not guarantee approval, name availability, EIN issuance, bank account approval or any particular result."
+        ]
+      },
+      {
+        "title": "Registered agent service",
+        "paragraphs": [
+          "When registered agent service is included, we act as your Florida registered agent for the period stated in your order. We receive service of process and official notices at our Florida street address and forward them to the contact information you give us; keep it current. Renewal after the first year is $119 per year and is not charged automatically. If you do not renew, we may resign as your registered agent as permitted by Florida law, after notifying you."
+        ]
+      },
+      {
+        "title": "Documents and templates",
+        "paragraphs": [
+          "Operating agreements and bylaws are standard templates completed with the information you provide. They are not customized legal documents or legal advice; consider having an attorney review them."
+        ]
+      },
+      {
+        "title": "Refunds and payment disputes",
+        "paragraphs": [
+          "Refunds are governed by our Refund policy. Government filing fees we have already paid to the State of Florida or another agency on your behalf are non-refundable, because the agency does not return them.",
+          "If you have a problem with a charge, please contact us first so we can resolve it. If you dispute a charge with your bank for a service we have already performed, we will provide the bank with evidence of the work, including the state filing record."
+        ]
+      },
+      {
+        "title": "Limitation of liability",
+        "paragraphs": [
+          "To the extent permitted by law, our total liability for any claim related to an order is limited to the service fees you paid us for that order, excluding government fees. We are not liable for indirect or consequential damages, or for the decisions or delays of government agencies."
+        ]
+      },
+      {
+        "title": "Governing law",
+        "paragraphs": [
+          "These terms are governed by the laws of the State of Florida. Any dispute will be resolved in the state or federal courts located in Polk County, Florida."
+        ]
+      },
+      {
+        "title": "Changes and contact",
+        "paragraphs": [
+          "We may update these terms. The version posted when you place an order applies to that order. For questions, use our contact page."
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "label": "Refund policy",
+        "href": "/refund-policy"
+      },
+      {
+        "label": "Contact us",
+        "href": "/contact"
+      }
+    ],
+    "draft": true
+  },
+  "refund-policy": {
+    "title": "Refund policy",
+    "intro": "How cancellations and refunds work for orders placed on agenteregistradofl.com.",
+    "updated": "Updated October 26, 2026",
+    "sections": [
+      {
+        "title": "Before we submit your filing",
+        "paragraphs": [
+          "You can cancel for a full refund, including the state fee, at any time before we submit your filing to the State of Florida or the IRS. Contact us as soon as possible with your order details."
+        ]
+      },
+      {
+        "title": "After submission",
+        "paragraphs": [
+          "Once a filing has been submitted, the service fee and the state fee for that filing are non-refundable, because the work has been done and the State of Florida does not return filing fees."
+        ]
+      },
+      {
+        "title": "If the state rejects a filing",
+        "paragraphs": [
+          "If the State of Florida rejects a filing (for example, because the name is not available), we will correct and resubmit it at no additional service fee. A new state fee applies only if the state requires one."
+        ]
+      },
+      {
+        "title": "Add-ons not yet started",
+        "paragraphs": [
+          "Add-ons we have not started, such as an annual report filing for a future year, can be cancelled for a refund of that add-on before we begin the work."
+        ]
+      },
+      {
+        "title": "Registered agent service",
+        "paragraphs": [
+          "Registered agent service is refundable until your formation filing is submitted, because the state record then names us as your agent. After that, the current service period is non-refundable."
+        ]
+      },
+      {
+        "title": "How refunds are paid",
+        "paragraphs": [
+          "Approved refunds go back to your original payment method through Stripe, usually within 5 to 10 business days depending on your bank."
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "label": "Terms of Service",
+        "href": "/terms"
+      },
+      {
+        "label": "Contact us",
+        "href": "/contact"
+      }
+    ],
+    "draft": true
   }
 };

@@ -66,6 +66,12 @@ Deno.serve(async (req) => {
       (await stripe.customers.create({ email: d.contactEmail, name: d.contactName, phone: d.contactPhone })).id;
 
     const planName = { starter: "Starter", professional: "Professional", international: "International+" }[d.plan];
+    // Shown above the pay button; also the customer's agreement record if a charge is disputed.
+    const termsNotice = {
+      en: "By paying, you agree to our [Terms of Service](https://agenteregistradofl.com/terms) and [Refund policy](https://agenteregistradofl.com/refund-policy). Full refund until we submit your filing; state fees paid on your behalf are non-refundable.",
+      es: "Al pagar, acepta nuestros [Términos del servicio](https://agenteregistradofl.com/terms) y nuestra [Política de reembolsos](https://agenteregistradofl.com/refund-policy). Reembolso completo hasta que presentemos su trámite; las tarifas estatales pagadas en su nombre no son reembolsables.",
+      pt: "Ao pagar, você aceita nossos [Termos de serviço](https://agenteregistradofl.com/terms) e nossa [Política de reembolso](https://agenteregistradofl.com/refund-policy). Reembolso total até enviarmos seu registro; as taxas estaduais pagas em seu nome não são reembolsáveis.",
+    }[d.language];
     const params = {
       line_items,
       mode: "payment",
@@ -77,6 +83,7 @@ Deno.serve(async (req) => {
       customer_update: { address: "auto" },
       payment_intent_data: { description: `${planName} — Florida ${d.entityType === "llc" ? "LLC" : "corporation"}: ${d.companyName}` },
       metadata: { orderId: order.id },
+      custom_text: { submit: { message: termsNotice } },
     };
     // Tax calculation needs a business address in the payments account. Until it's set,
     // fall back to checkout without tax so customers can still pay.

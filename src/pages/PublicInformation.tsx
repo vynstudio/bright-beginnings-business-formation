@@ -24,7 +24,8 @@ export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey 
           <p className="text-sm font-medium text-muted-foreground mb-4">Agente Registrado Florida · Diler Services, LLC</p>
           <h1 className="text-3xl md:text-5xl leading-tight font-medium break-words">{t(page.title)}</h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-3xl">{t(page.intro)}</p>
-          {(pageKey === "privacy" || pageKey === "legal-disclaimer") && <p className="mt-4 text-sm text-muted-foreground">{t("Updated October 24, 2026")}</p>}
+          {"updated" in page ? <p className="mt-4 text-sm text-muted-foreground">{t(page.updated)}</p>
+            : (pageKey === "privacy" || pageKey === "legal-disclaimer") && <p className="mt-4 text-sm text-muted-foreground">{t("Updated October 24, 2026")}</p>}
           {page.draft && <p className="mt-4 border-l-4 border-accent pl-4 font-medium">{t("Draft — owner review required")}</p>}
         </header>
         {pagePhotos[pageKey] && <div className="mt-8 h-[220px] sm:h-[340px] overflow-hidden rounded-[24px]">

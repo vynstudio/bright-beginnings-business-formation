@@ -52,6 +52,8 @@ const App = () => (
             <Route path="/florida-llc-vs-corporation" element={<PublicInformation pageKey="florida-llc-vs-corporation" />} />
             <Route path="/ein-application" element={<PublicInformation pageKey="ein-application" />} />
             <Route path="/registered-agent-renewal" element={<PublicInformation pageKey="registered-agent-renewal" />} />
+            <Route path="/terms" element={<PublicInformation pageKey="terms" />} />
+            <Route path="/refund-policy" element={<PublicInformation pageKey="refund-policy" />} />
             <Route path="/start" element={<Start />} />
             <Route path="/checkout/return" element={<CheckoutReturn />} />
             <Route element={<AdminAuth />}>

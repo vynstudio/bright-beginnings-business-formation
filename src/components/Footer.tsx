@@ -20,6 +20,8 @@ const columns = [{
 }, {
   title: "Legal",
   links: [
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Refund policy", href: "/refund-policy" },
     { label: "Legal disclaimer", href: "/legal-disclaimer" },
     { label: "Privacy policy", href: "/privacy" },
   ],
