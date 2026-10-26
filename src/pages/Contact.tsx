@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Photo from "@/components/Photo";
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useLang } from "@/i18n/LanguageContext";
 
 const contactSchema = z.object({
   name: z
@@ -49,6 +50,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { t } = useLang();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -86,27 +88,6 @@ const Contact = () => {
     });
     form.reset();
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      details: "hello@axiom.ai",
-      link: "mailto:hello@axiom.ai",
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
-    },
-    {
-      icon: MapPin,
-      title: "Office",
-      details: "123 Innovation Drive, San Francisco, CA 94105",
-      link: null,
-    },
-  ];
 
   return (
     <div className="min-h-dvh bg-background">
@@ -251,57 +232,19 @@ const Contact = () => {
             >
               <div>
                 <h2 className="text-2xl font-semibold text-foreground mb-6">
-                  Contact Information
+                  {t("How we reply")}
                 </h2>
-                <p className="text-muted-foreground mb-8">
-                  Reach out to us through any of the following channels. Our team
-                  is available Monday through Friday, 9am to 6pm PST.
+                <p className="text-muted-foreground mb-4">
+                  {t("Send us a message with the form and we'll reply by email. We help in Spanish, English and Portuguese.")}
+                </p>
+                <p className="text-muted-foreground">
+                  {t("Please don't include Social Security numbers, passport numbers or other sensitive documents in your message.")}
                 </p>
               </div>
 
-              <div className="space-y-6">
-                {contactInfo.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                    className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors"
-                  >
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-foreground">
-                        {item.title}
-                      </h3>
-                      {item.link ? (
-                        <a
-                          href={item.link}
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {item.details}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground">{item.details}</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Additional Info */}
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6">
-                <h3 className="font-semibold text-foreground mb-2">
-                  Looking for support?
-                </h3>
+              <div className="bg-muted rounded-2xl p-6">
                 <p className="text-muted-foreground text-sm">
-                  For technical support or account-related questions, please visit
-                  our{" "}
-                  <a href="/blog" className="text-primary hover:underline">
-                    Help Center
-                  </a>{" "}
-                  or check out our documentation.
+                  {t("Operated by Diler Services, LLC. We are not a law firm and do not give legal or tax advice.")}
                 </p>
               </div>
             </motion.div>

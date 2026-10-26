@@ -4,6 +4,10 @@ type T = { es: string; pt: string };
 
 export const translations: Record<string, T> = {
   ...publicPageTranslations,
+  // Contact page
+  "How we reply": { es: "Cómo respondemos", pt: "Como respondemos" },
+  "Send us a message with the form and we'll reply by email. We help in Spanish, English and Portuguese.": { es: "Envíenos un mensaje con el formulario y le responderemos por correo electrónico. Atendemos en español, inglés y portugués.", pt: "Envie uma mensagem pelo formulário e responderemos por e-mail. Atendemos em espanhol, inglês e português." },
+  "Please don't include Social Security numbers, passport numbers or other sensitive documents in your message.": { es: "Por favor, no incluya números de Seguro Social, de pasaporte ni otros documentos sensibles en su mensaje.", pt: "Por favor, não inclua números de Seguro Social, de passaporte nem outros documentos sensíveis na sua mensagem." },
   // Footer
   "Services": { es: "Servicios", pt: "Serviços" },
   "Legal": { es: "Legal", pt: "Legal" },
