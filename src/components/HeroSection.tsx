@@ -1,11 +1,11 @@
-import { useLang } from "@/i18n/LanguageContext";
+import { BRAND, useLang } from "@/i18n/LanguageContext";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Photo from "@/components/Photo";
 
 const HeroSection = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section className="relative pb-12 md:pb-16 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
@@ -17,7 +17,7 @@ const HeroSection = () => {
         >
           {/* Main Headline */}
           <h1 className="text-[44px] sm:text-[60px] md:text-[76px] font-medium text-foreground leading-none mb-6 text-balance">
-            {t("Agente Registrado Florida")}
+            {BRAND[lang]}
           </h1>
 
           {/* Subheadline */}

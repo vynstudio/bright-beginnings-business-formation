@@ -1,12 +1,10 @@
 import { useEffect } from "react";
-import { useLang } from "@/i18n/LanguageContext";
-
-const SITE = "Agente Registrado Florida";
+import { BRAND, useLang } from "@/i18n/LanguageContext";
 
 // Sets the browser tab title for the current page, in the visitor's language.
 // Text without a translation (blog post titles) is used as is.
 export const usePageTitle = (title: string) => {
-  const { t } = useLang();
-  const text = title ? `${t(title)} | ${SITE}` : SITE;
+  const { t, lang } = useLang();
+  const text = title ? `${t(title)} | ${BRAND[lang]}` : BRAND[lang];
   useEffect(() => { document.title = text; }, [text]);
 };

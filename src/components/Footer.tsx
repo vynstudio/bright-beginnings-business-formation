@@ -1,4 +1,5 @@
 import { useLang } from "@/i18n/LanguageContext";
+import BrandName from "@/components/BrandName";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
@@ -36,7 +37,7 @@ const Footer = () => {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] lg:gap-12 mb-12">
           <div className="max-w-sm">
             <Link to="/" className="inline-flex items-center">
-              <span className="text-[17px] font-semibold text-foreground leading-tight">{t("Agente Registrado ")}<span className="text-lime">{t("Florida")}</span></span>
+              <span className="text-[17px] font-semibold text-foreground leading-tight"><BrandName /></span>
             </Link>
             <p className="mt-4 text-[15px] text-muted-foreground leading-relaxed">
               {t("Form your Florida LLC or corporation, get your EIN and stay compliant — from anywhere in the world.")}
@@ -69,7 +70,7 @@ const Footer = () => {
         {/* Bottom Row */}
         <div className="border-t border-border pt-6 flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-8">
           <p className="text-[13px] sm:text-[14px] text-foreground shrink-0">
-            {t("© 2026 Agente Registrado Florida. All rights reserved.")}
+            {t("© 2026 Florida Registered Agent. All rights reserved.")}
           </p>
           <p className="text-[13px] text-muted-foreground md:text-right md:max-w-xl">
             {t("Operated by Diler Services, LLC. We are not a law firm and do not give legal or tax advice.")}

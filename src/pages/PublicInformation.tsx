@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { useLang } from "@/i18n/LanguageContext";
+import { BRAND, useLang } from "@/i18n/LanguageContext";
 import { publicPages, type PublicPageKey } from "@/content/publicPages";
 import Photo, { type PhotoName } from "@/components/Photo";
 import { usePageTitle } from "@/hooks/usePageTitle";
@@ -15,7 +15,7 @@ const pagePhotos: Partial<Record<PublicPageKey, PhotoName>> = {
 };
 
 export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const page = publicPages[pageKey];
   usePageTitle(page.title);
   return <div className="min-h-dvh bg-background text-foreground">
@@ -23,7 +23,7 @@ export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey 
     <main id="main-content" tabIndex={-1} className="pt-32 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <header className="border-b border-border pb-8">
-          <p className="text-sm font-medium text-muted-foreground mb-4">Agente Registrado Florida · Diler Services, LLC</p>
+          <p className="text-sm font-medium text-muted-foreground mb-4">{BRAND[lang]} · Diler Services, LLC</p>
           <h1 className="text-3xl md:text-5xl leading-tight font-medium break-words">{t(page.title)}</h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-3xl">{t(page.intro)}</p>
           {"updated" in page ? <p className="mt-4 text-sm text-muted-foreground">{t(page.updated)}</p>
