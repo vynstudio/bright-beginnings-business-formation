@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Check, Plus, Trash2, Loader2 } from "lucide-react";
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from "@stripe/react-stripe-js";
 import Header from "@/components/Header";
@@ -16,8 +16,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { getStripe, getStripeEnvironment } from "@/lib/stripe";
 import { EXTRAS, INCLUDED, PLANS, STATE_FEE, money, orderTotal, type Entity, type Extra, type Plan } from "@/lib/catalog";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { ACTIVITIES, ROLES, SUFFIXES, TAX_ID_CHOICES, fullCompanyName } from "@/lib/filing";
 
-type Owner = { name: string; ownership: string };
+type Owner = { name: string; ownership: string; role: string; address: string };
 
 const isPlan = (v: string | null): v is Plan =>
   v === "starter" || v === "professional" || v === "international" || v === "business_website";
@@ -33,8 +34,17 @@ const Start = () => {
   const [form, setForm] = useState({
     companyName: "", altCompanyName: "", businessPurpose: "",
     contactName: "", contactEmail: "", contactPhone: "", country: "", address: "",
+    street: "", city: "", region: "", zip: "", principalCountry: "United States",
+    shares: "1000", effectiveDate: "",
+    einStartDate: "", einActivityOther: "", einEmployees: "0",
+    signatureName: "",
   });
-  const [owners, setOwners] = useState<Owner[]>([{ name: "", ownership: "100" }]);
+  const [suffix, setSuffix] = useState("");
+  const [management, setManagement] = useState<"member" | "manager">("member");
+  const [mailingSame, setMailingSame] = useState(true);
+  const [ein, setEin] = useState({ responsible: "0", taxId: "", activity: "" });
+  const [agreed, setAgreed] = useState(false);
+  const [owners, setOwners] = useState<Owner[]>([{ name: "", ownership: "100", role: "", address: "" }]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [starting, setStarting] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
@@ -42,6 +52,16 @@ const Start = () => {
 
   const available = EXTRAS.filter((x) => !INCLUDED[plan].includes(x.id));
   const chosen = extras.filter((e) => !INCLUDED[plan].includes(e));
+  const needsEin = INCLUDED[plan].includes("ein") || chosen.includes("ein");
+  const nameEnding = SUFFIXES[entity].includes(suffix) ? suffix : SUFFIXES[entity][0];
+  // Member-managed LLC owners are all members; otherwise each person picks a role.
+  const roleOf = (o: Owner, i: number) =>
+    entity === "llc" && management === "member" ? "Member"
+    : ROLES[entity].includes(o.role) ? o.role
+    : entity === "corp" ? (i === 0 ? "President and director" : "Shareholder only")
+    : (i === 0 ? "Member and manager" : "Member");
+  const today = new Date().toISOString().slice(0, 10);
+  const maxEffective = new Date(Date.now() + 90 * 864e5).toISOString().slice(0, 10);
   const summary = useMemo(() => orderTotal(plan, entity, chosen), [plan, entity, chosen]);
 
   const applyRec = (r: Recommendation) => {
@@ -62,14 +82,38 @@ const Start = () => {
     if (!/^\S+@\S+\.\S+$/.test(form.contactEmail.trim())) e.contactEmail = t("Enter a valid email");
     if (form.contactPhone.trim().length < 6) e.contactPhone = req;
     if (!form.country.trim()) e.country = req;
-    if (!form.address.trim()) e.address = req;
-    owners.forEach((o, i) => { if (!o.name.trim()) e[`owner${i}`] = req; });
+    if (!mailingSame && !form.address.trim()) e.address = req;
+    (["street", "city", "region", "zip", "principalCountry"] as const).forEach((k) => { if (!form[k].trim()) e[k] = req; });
+    if (/\bp\.?\s*o\.?\s*box\b|apartado postal|caixa postal/i.test(form.street)) e.street = t("Florida requires a street address, not a P.O. box.");
+    if (form.effectiveDate && (form.effectiveDate < today || form.effectiveDate > maxEffective)) e.effectiveDate = t("Choose a date within the next 90 days.");
+    owners.forEach((o, i) => {
+      if (!o.name.trim()) e[`owner${i}`] = req;
+      if (!o.address.trim()) e[`ownerAddress${i}`] = req;
+    });
     const totalPct = owners.reduce((s, o) => s + (Number(o.ownership) || 0), 0);
     if (Math.round(totalPct) !== 100) e.ownership = t("Ownership must add up to 100%");
+    const roles = owners.map(roleOf);
+    if (entity === "corp") {
+      if (!/^\d+$/.test(form.shares) || Number(form.shares) < 1) e.shares = t("Enter a whole number of shares.");
+      if (roles.every((r) => r === "Shareholder only")) e.roles = t("Add at least one officer or director.");
+    } else if (management === "manager" && !roles.some((r) => r.includes("anager"))) {
+      e.roles = t("Add at least one manager.");
+    }
+    if (needsEin) {
+      if (!ein.taxId) e.einTaxId = req;
+      if (!ein.activity) e.einActivity = req;
+      if (ein.activity === "Other" && !form.einActivityOther.trim()) e.einActivityOther = req;
+      if (!form.einStartDate) e.einStartDate = req;
+      if (!/^\d+$/.test(form.einEmployees)) e.einEmployees = req;
+    }
+    if (form.signatureName.trim().length < 3) e.signatureName = req;
+    if (!agreed) e.agreed = t("Please check the box to continue.");
     setErrors(e);
+    if (Object.keys(e).length) setTimeout(() => document.querySelector('[aria-invalid="true"], [role="alert"]')?.scrollIntoView({ block: "center" }));
     return Object.keys(e).length === 0;
   };
 
+  const principalAddress = [form.street, `${form.city}, ${form.region} ${form.zip}`, form.principalCountry].map((s) => s.trim()).join(", ");
   const goToPayment = async () => {
     if (!validate()) return;
     setStarting(true);
@@ -80,8 +124,29 @@ const Start = () => {
           environment: getStripeEnvironment(),
           returnUrl: `${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
           language: lang, plan, entityType: entity, extras: chosen,
-          ...form,
-          owners: owners.map((o) => ({ name: o.name, ownership: Number(o.ownership) || 0 })),
+          companyName: fullCompanyName(form.companyName, nameEnding, entity),
+          altCompanyName: form.altCompanyName.trim() ? fullCompanyName(form.altCompanyName, nameEnding, entity) : "",
+          businessPurpose: form.businessPurpose,
+          contactName: form.contactName, contactEmail: form.contactEmail, contactPhone: form.contactPhone,
+          country: form.country,
+          address: mailingSame ? principalAddress : form.address,
+          owners: owners.map((o, i) => ({ name: o.name, ownership: Number(o.ownership) || 0, role: roleOf(o, i), address: o.address })),
+          filing: {
+            principalAddress: { street: form.street, city: form.city, region: form.region, zip: form.zip, country: form.principalCountry },
+            mailingSameAsPrincipal: mailingSame,
+            management: entity === "llc" ? management : undefined,
+            shares: entity === "corp" ? Number(form.shares) : undefined,
+            effectiveDate: form.effectiveDate || undefined,
+          },
+          ein: needsEin ? {
+            responsibleParty: owners[Number(ein.responsible)]?.name ?? owners[0].name,
+            taxId: ein.taxId,
+            startDate: form.einStartDate,
+            activity: ein.activity === "Other" ? `Other: ${form.einActivityOther}` : ein.activity,
+            employees: Number(form.einEmployees),
+          } : undefined,
+          signatureName: form.signatureName,
+          agreedToTerms: agreed,
         },
       });
       if (error || !data?.clientSecret) throw new Error();
@@ -95,17 +160,31 @@ const Start = () => {
     }
   };
 
-  const field = (k: keyof typeof form, label: string, opts: { type?: string; textarea?: boolean; optional?: boolean } = {}) => (
+  const field = (k: keyof typeof form, label: string, opts: { type?: string; textarea?: boolean; optional?: boolean; hint?: string; min?: string; max?: string } = {}) => (
     <div className="space-y-1.5">
       <Label htmlFor={k}>{t(label)}{opts.optional && <span className="text-muted-foreground"> ({t("optional")})</span>}</Label>
       {opts.textarea ? (
         <Textarea id={k} value={form[k]} onChange={set(k)} maxLength={500} rows={3} />
       ) : (
-        <Input id={k} type={opts.type ?? "text"} value={form[k]} onChange={set(k)} maxLength={k === "address" ? 300 : 120} aria-invalid={!!errors[k]} />
+        <Input id={k} type={opts.type ?? "text"} value={form[k]} onChange={set(k)} maxLength={k === "address" ? 300 : 120}
+          min={opts.min} max={opts.max} aria-invalid={!!errors[k]} />
       )}
+      {opts.hint && <p className="text-xs text-muted-foreground">{t(opts.hint)}</p>}
       {errors[k] && <p className="text-xs text-destructive">{errors[k]}</p>}
     </div>
   );
+  const select = (id: string, label: string, value: string, onChange: (v: string) => void, options: { value: string; label: string }[], error?: string) => (
+    <div className="space-y-1.5">
+      <Label htmlFor={id}>{t(label)}</Label>
+      <select id={id} value={value} onChange={(e) => onChange(e.target.value)} aria-invalid={!!error}
+        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+        {!value && <option value="">{t("Select…")}</option>}
+        {options.map((o) => <option key={o.value} value={o.value}>{t(o.label)}</option>)}
+      </select>
+      {error && <p className="text-xs text-destructive">{error}</p>}
+    </div>
+  );
+  const updateOwner = (i: number, patch: Partial<Owner>) => setOwners(owners.map((x, j) => (j === i ? { ...x, ...patch } : x)));
 
   const steps = ["Package", "Your details", "Payment"];
 
@@ -186,50 +265,125 @@ const Start = () => {
                 <section className="space-y-8">
                   <div className="space-y-4">
                     <h2 className="text-xl font-semibold text-foreground">{t("Company")}</h2>
-                    {field("companyName", "Company name")}
+                    <div className="grid sm:grid-cols-[1fr_200px] gap-4 items-start">
+                      {field("companyName", "Company name")}
+                      {select("suffix", "Name ending", nameEnding, setSuffix, SUFFIXES[entity].map((s) => ({ value: s, label: s })))}
+                    </div>
                     {field("altCompanyName", "Backup name, in case the first is taken", { optional: true })}
                     {field("businessPurpose", "What will the business do?", { textarea: true, optional: true })}
+                    {entity === "llc" ? (
+                      select("management", "Who will manage the LLC?", management, (v) => setManagement(v as "member" | "manager"), [
+                        { value: "member", label: "The owners (member-managed)" },
+                        { value: "manager", label: "One or more managers (manager-managed)" },
+                      ])
+                    ) : (
+                      field("shares", "Number of shares the corporation can issue", { type: "number", min: "1", hint: "Most small corporations use 1,000. Florida's filing fee is the same for any number." })
+                    )}
+                    {field("effectiveDate", "Start date of the company", { type: "date", optional: true, min: today, max: maxEffective, hint: "Leave empty to start on the day the state approves the filing." })}
+                  </div>
+
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-semibold text-foreground">{t("Principal business address")}</h2>
+                    <p className="text-sm text-muted-foreground -mt-2">{t("Where the business is run. It can be in any country, must be a street address (not a P.O. box), and appears on the public state record.")}</p>
+                    {field("street", "Street address, including suite or apartment")}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {field("city", "City")}
+                      {field("region", "State, province or region")}
+                      {field("zip", "ZIP or postal code")}
+                      {field("principalCountry", "Country")}
+                    </div>
+                    <label className="flex items-center gap-3 text-sm text-foreground cursor-pointer">
+                      <Checkbox checked={mailingSame} onCheckedChange={(c) => setMailingSame(!!c)} />
+                      {t("Mailing address is the same as the principal address")}
+                    </label>
+                    {!mailingSame && field("address", "Mailing address")}
                   </div>
 
                   <div className="space-y-3">
-                    <h2 className="text-xl font-semibold text-foreground">{t("Owners")}</h2>
+                    <h2 className="text-xl font-semibold text-foreground">{entity === "llc" ? t("Owners and managers") : t("Shareholders, officers and directors")}</h2>
+                    <p className="text-sm text-muted-foreground -mt-1">{t("Names and addresses of the people listed on the filing appear on the public state record.")}</p>
                     {owners.map((o, i) => (
-                      <div key={i} className="flex gap-2 items-start">
-                        <div className="flex-1 space-y-1">
-                          <Label htmlFor={`owner-${i}`} className="sr-only">{t("Owner full name")}</Label>
-                          <Input id={`owner-${i}`} placeholder={t("Owner full name")} value={o.name} maxLength={120}
-                            onChange={(e) => setOwners(owners.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)))} />
-                          {errors[`owner${i}`] && <p className="text-xs text-destructive">{errors[`owner${i}`]}</p>}
+                      <div key={i} className="rounded-xl border border-border p-3 space-y-3">
+                        <div className="flex gap-2 items-start">
+                          <div className="flex-1 space-y-1">
+                            <Label htmlFor={`owner-${i}`} className="sr-only">{t("Owner full name")}</Label>
+                            <Input id={`owner-${i}`} placeholder={t("Owner full name")} value={o.name} maxLength={120} aria-invalid={!!errors[`owner${i}`]}
+                              onChange={(e) => updateOwner(i, { name: e.target.value })} />
+                            {errors[`owner${i}`] && <p className="text-xs text-destructive">{errors[`owner${i}`]}</p>}
+                          </div>
+                          <div className="w-24">
+                            <Label htmlFor={`own-${i}`} className="sr-only">{t("Ownership %")}</Label>
+                            <Input id={`own-${i}`} type="number" min={0} max={100} value={o.ownership} aria-label={t("Ownership %")}
+                              onChange={(e) => updateOwner(i, { ownership: e.target.value })} />
+                          </div>
+                          {owners.length > 1 && (
+                            <Button type="button" variant="ghost" size="icon" aria-label={t("Remove owner")} onClick={() => setOwners(owners.filter((_, j) => j !== i))}>
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          )}
                         </div>
-                        <div className="w-24">
-                          <Label htmlFor={`own-${i}`} className="sr-only">{t("Ownership %")}</Label>
-                          <Input id={`own-${i}`} type="number" min={0} max={100} value={o.ownership} aria-label={t("Ownership %")}
-                            onChange={(e) => setOwners(owners.map((x, j) => (j === i ? { ...x, ownership: e.target.value } : x)))} />
+                        <div className="space-y-1">
+                          <Label htmlFor={`owner-address-${i}`} className="sr-only">{t("Home address (street, city, ZIP, country)")}</Label>
+                          <Input id={`owner-address-${i}`} placeholder={t("Home address (street, city, ZIP, country)")} value={o.address} maxLength={300}
+                            aria-invalid={!!errors[`ownerAddress${i}`]} onChange={(e) => updateOwner(i, { address: e.target.value })} />
+                          {errors[`ownerAddress${i}`] && <p className="text-xs text-destructive">{errors[`ownerAddress${i}`]}</p>}
                         </div>
-                        {owners.length > 1 && (
-                          <Button type="button" variant="ghost" size="icon" aria-label={t("Remove owner")} onClick={() => setOwners(owners.filter((_, j) => j !== i))}>
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        )}
+                        {!(entity === "llc" && management === "member") &&
+                          select(`role-${i}`, "Role", roleOf(o, i), (v) => updateOwner(i, { role: v }), ROLES[entity].map((r) => ({ value: r, label: r })))}
                       </div>
                     ))}
                     {errors.ownership && <p className="text-xs text-destructive">{errors.ownership}</p>}
+                    {errors.roles && <p role="alert" className="text-xs text-destructive">{errors.roles}</p>}
                     {owners.length < 10 && (
-                      <Button type="button" variant="outline" size="sm" className="rounded-full" onClick={() => setOwners([...owners, { name: "", ownership: "0" }])}>
-                        <Plus className="w-4 h-4" /> {t("Add owner")}
+                      <Button type="button" variant="outline" size="sm" className="rounded-full" onClick={() => setOwners([...owners, { name: "", ownership: "0", role: "", address: "" }])}>
+                        <Plus className="w-4 h-4" /> {entity === "llc" && management === "member" ? t("Add owner") : t("Add person")}
                       </Button>
                     )}
                   </div>
+
+                  {needsEin && (
+                    <div className="space-y-4">
+                      <h2 className="text-xl font-semibold text-foreground">{t("EIN application")}</h2>
+                      <p className="text-sm text-muted-foreground -mt-2">{t("The IRS asks these questions to issue your EIN.")}</p>
+                      <div className="grid sm:grid-cols-2 gap-4 items-start">
+                        {select("einResponsible", "Responsible person (an owner)", ein.responsible, (v) => setEin({ ...ein, responsible: v }),
+                          owners.map((o, i) => ({ value: String(i), label: o.name.trim() || `${t("Owner")} ${i + 1}` })))}
+                        {select("einTaxId", "Does this person have an SSN or ITIN?", ein.taxId, (v) => setEin({ ...ein, taxId: v }),
+                          TAX_ID_CHOICES.map((c) => ({ value: c.id, label: c.label })), errors.einTaxId)}
+                        {field("einStartDate", "Date the business started or will start", { type: "date" })}
+                        {field("einEmployees", "Employees expected in the next 12 months", { type: "number", min: "0" })}
+                        {select("einActivity", "Main business activity", ein.activity, (v) => setEin({ ...ein, activity: v }),
+                          ACTIVITIES.map((a) => ({ value: a, label: a })), errors.einActivity)}
+                        {ein.activity === "Other" && field("einActivityOther", "Describe the activity")}
+                      </div>
+                      <p className="rounded-xl border border-accent/40 bg-accent/5 p-3 text-sm text-foreground">
+                        {t("Do not type your SSN or ITIN anywhere on this site or send it by email. If you have one, we'll call you after payment to complete the IRS application with you.")}
+                      </p>
+                    </div>
+                  )}
 
                   <div className="space-y-4">
                     <h2 className="text-xl font-semibold text-foreground">{t("Contact person")}</h2>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {field("contactName", "Full name")}
-                      {field("contactEmail", "Email", { type: "email" })}
+                      {field("contactEmail", "Email", { type: "email", hint: "The state also sends annual report reminders to this email." })}
                       {field("contactPhone", "Phone or WhatsApp", { type: "tel" })}
                       {field("country", "Country where you live")}
                     </div>
-                    {field("address", "Mailing address")}
+                  </div>
+
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-semibold text-foreground">{t("Authorization")}</h2>
+                    <label className="flex items-start gap-3 text-sm text-foreground cursor-pointer">
+                      <Checkbox className="mt-0.5" checked={agreed} onCheckedChange={(c) => setAgreed(!!c)} aria-invalid={!!errors.agreed} />
+                      <span>
+                        {t("I authorize Diler Services, LLC to prepare and file my company's formation documents with the Florida Division of Corporations, to act as authorized representative for this filing and, if ordered, to apply for an EIN with the IRS for my company. I confirm the information above is true and complete, and I agree to the")}{" "}
+                        <Link to="/terms" target="_blank" className="underline">{t("Terms of Service")}</Link> {t("and")}{" "}
+                        <Link to="/refund-policy" target="_blank" className="underline">{t("Refund policy")}</Link>.
+                      </span>
+                    </label>
+                    {errors.agreed && <p className="text-xs text-destructive">{errors.agreed}</p>}
+                    {field("signatureName", "Type your full name as your signature")}
                   </div>
 
                   {checkoutError && <p role="alert" className="text-sm text-destructive">{checkoutError}</p>}

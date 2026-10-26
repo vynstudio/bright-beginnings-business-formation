@@ -25,6 +25,9 @@ const CheckoutReturn = () => {
               <p className="mt-3 text-muted-foreground">
                 {t("If your order includes a website, we'll email you within 1 business day to collect your logo, photos and content.")}
               </p>
+              <p className="mt-3 text-muted-foreground">
+                {t("If your order includes an EIN and you have an SSN or ITIN, we'll call you to complete the IRS application. Never send it by email.")}
+              </p>
             </>
           ) : (
             <h1 className="text-2xl font-medium text-foreground">{t("No order information found.")}</h1>

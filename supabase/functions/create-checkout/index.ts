@@ -20,12 +20,34 @@ const schema = z.object({
   companyName: text(120),
   altCompanyName: z.string().trim().max(120).optional().default(""),
   businessPurpose: z.string().trim().max(500).optional().default(""),
-  owners: z.array(z.object({ name: text(120), ownership: z.number().min(0).max(100) })).min(1).max(10),
+  owners: z.array(z.object({
+    name: text(120),
+    ownership: z.number().min(0).max(100),
+    role: z.enum(["Member", "Manager", "Member and manager", "President and director", "President", "Vice president", "Secretary", "Treasurer", "Director", "Shareholder only"]),
+    address: text(300),
+  })).min(1).max(10),
   contactName: text(120),
   contactEmail: z.string().trim().email().max(255),
   contactPhone: text(40),
   country: text(80),
   address: text(300),
+  filing: z.object({
+    principalAddress: z.object({ street: text(200), city: text(80), region: text(80), zip: text(20), country: text(80) }),
+    mailingSameAsPrincipal: z.boolean(),
+    management: z.enum(["member", "manager"]).optional(),
+    shares: z.number().int().min(1).max(1_000_000_000).optional(),
+    effectiveDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  }),
+  // EIN questions only; SSNs and ITINs are collected by phone, never here.
+  ein: z.object({
+    responsibleParty: text(120),
+    taxId: z.enum(["ssn", "itin", "none"]),
+    startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    activity: text(200),
+    employees: z.number().int().min(0).max(100_000),
+  }).optional(),
+  signatureName: text(120),
+  agreedToTerms: z.literal(true),
 });
 
 const json = (body: unknown, status = 200) =>
@@ -49,6 +71,13 @@ Deno.serve(async (req) => {
       contact_name: d.contactName, contact_email: d.contactEmail, contact_phone: d.contactPhone,
       country: d.country, address: d.address, language: d.language,
       total_cents: totalCents, environment: env,
+      filing: d.filing,
+      ein: d.ein ?? null,
+      // Authorization record (typed signature, time, IP, browser), kept as evidence of the client's consent.
+      signature_name: d.signatureName,
+      authorized_at: new Date().toISOString(),
+      client_ip: req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? null,
+      user_agent: req.headers.get("user-agent")?.slice(0, 300) ?? null,
     }).select("id").single();
     if (error) throw error;
 

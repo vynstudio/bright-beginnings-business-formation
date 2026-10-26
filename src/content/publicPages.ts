@@ -45,7 +45,8 @@ export const publicPages = {
       {
         "title": "Orders, payments and AI",
         "paragraphs": [
-          "Order information is used to prepare requested services and communicate about your order. When Stripe payments are connected, Stripe processes checkout information under its own privacy policy. Descriptions submitted to the AI advisor are sent to Lovable AI Gateway for a recommendation. Avoid sensitive information in those descriptions."
+          "Order information is used to prepare requested services and communicate about your order. When Stripe payments are connected, Stripe processes checkout information under its own privacy policy. Descriptions submitted to the AI advisor are sent to Lovable AI Gateway for a recommendation. Avoid sensitive information in those descriptions.",
+          "When you authorize a filing at checkout, we save your typed name, the date and time, your IP address and browser type as a record of your authorization. We never ask for Social Security numbers or ITINs on the website; if one is needed for an EIN application, we get it from you by phone and do not store it."
         ]
       },
       {

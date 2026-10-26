@@ -402,5 +402,9 @@ export const publicPageTranslations: Record<string, { es: string; pt: string }> 
   "The monthly care plan can be cancelled at any time and is not refunded for the month already paid.": {
     "es": "El plan de mantenimiento mensual puede cancelarse en cualquier momento y no se reembolsa el mes ya pagado.",
     "pt": "O plano de manutenção mensal pode ser cancelado a qualquer momento e o mês já pago não é reembolsado."
+  },
+  "When you authorize a filing at checkout, we save your typed name, the date and time, your IP address and browser type as a record of your authorization. We never ask for Social Security numbers or ITINs on the website; if one is needed for an EIN application, we get it from you by phone and do not store it.": {
+    "es": "Cuando autoriza un trámite al pagar, guardamos su nombre escrito, la fecha y hora, su dirección IP y tipo de navegador como registro de su autorización. Nunca pedimos números de Seguro Social ni ITIN en el sitio web; si se necesita uno para solicitar el EIN, se lo pedimos por teléfono y no lo guardamos.",
+    "pt": "Quando você autoriza um registro no pagamento, salvamos seu nome digitado, a data e hora, seu endereço IP e tipo de navegador como registro da sua autorização. Nunca pedimos números de Seguro Social ou ITIN no site; se um for necessário para o pedido de EIN, pedimos por telefone e não o guardamos."
   }
 };
