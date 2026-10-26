@@ -1,5 +1,6 @@
 import { useLang } from "@/i18n/LanguageContext";
 import BrandName from "@/components/BrandName";
+import { PHONE } from "@/lib/contact";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
@@ -45,6 +46,9 @@ const Footer = () => {
             <p className="mt-3 text-[14px] text-muted-foreground">
               {t("Help in English, Spanish, and Portuguese, whether you live in Florida or abroad.")}
             </p>
+            <a href={`tel:${PHONE.tel}`} className="mt-3 inline-block text-[15px] font-medium text-foreground hover:text-accent">
+              <span className="sr-only">{t("Call us")}: </span>{PHONE.display}
+            </a>
             <Link to="/start" className="mt-6 inline-flex items-center gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-full py-2 pr-2 pl-5 text-sm font-medium h-10 transition-colors">
               {t("START MY BUSINESS")}
               <span className="bg-background rounded-full p-1.5">

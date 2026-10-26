@@ -9,6 +9,7 @@
 import { SEO_PAGES } from "../src/content/seo";
 import { faqs } from "../src/content/faqs";
 import { translations } from "../src/i18n/translations";
+import { PHONE } from "../src/lib/contact";
 import { maintenancePage } from "./maintenance";
 
 const ORIGIN = "https://agenteregistradofl.com";
@@ -32,6 +33,14 @@ const organization = {
   description: es(SEO_PAGES["/"].description),
   areaServed: { "@type": "State", name: "Florida" },
   knowsLanguage: ["es", "en", "pt"],
+  telephone: PHONE.tel,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: PHONE.tel,
+    contactType: "customer service",
+    areaServed: "US",
+    availableLanguage: ["Spanish", "English", "Portuguese"],
+  },
 };
 
 const website = {

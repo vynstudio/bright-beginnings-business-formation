@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send } from "lucide-react";
+import { Phone, Send } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Photo from "@/components/Photo";
@@ -21,6 +21,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useLang } from "@/i18n/LanguageContext";
+import { PHONE } from "@/lib/contact";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 const makeContactSchema = (t: (text: string) => string) => z.object({
@@ -238,6 +239,10 @@ const Contact = () => {
                 <p className="text-muted-foreground mb-4">
                   {t("Send us a message with the form and we'll reply by email. We help in Spanish, English and Portuguese.")}
                 </p>
+                <a href={`tel:${PHONE.tel}`} className="mb-4 inline-flex items-center gap-2 text-lg font-medium text-foreground hover:text-accent">
+                  <Phone className="w-5 h-5" aria-hidden />
+                  <span><span className="sr-only">{t("Call us")}: </span>{PHONE.display}</span>
+                </a>
                 <p className="text-muted-foreground">
                   {t("Please don't include Social Security numbers, passport numbers or other sensitive documents in your message.")}
                 </p>
