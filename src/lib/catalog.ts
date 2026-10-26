@@ -8,7 +8,7 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
   {
     id: "starter",
     name: "Starter",
-    price: 99,
+    price: 149,
     tagline: "For simple new companies with basic needs.",
     features: [
       "Articles prepared and filed with Sunbiz",
@@ -21,7 +21,7 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
   {
     id: "professional",
     name: "Professional",
-    price: 199,
+    price: 249,
     tagline: "For running your business with more compliance help.",
     features: [
       "Everything in Starter",
@@ -34,7 +34,7 @@ export const PLANS: { id: Plan; name: string; price: number; tagline: string; fe
   {
     id: "international",
     name: "International+",
-    price: 399,
+    price: 449,
     tagline: "For founders who live outside the US.",
     features: [
       "Everything in Professional",
@@ -51,10 +51,10 @@ export const STATE_FEE: Record<Entity, number> = { llc: 125, corp: 70 };
 export const ANNUAL_REPORT_FEE: Record<Entity, number> = { llc: 138.75, corp: 150 };
 
 export const EXTRAS: { id: Extra; name: string; price: number; note?: string }[] = [
-  { id: "ein", name: "EIN (tax ID) application", price: 79 },
-  { id: "annual_report", name: "Annual report filing", price: 99, note: "+ state fee" },
-  { id: "registered_agent", name: "Registered agent service (1 year)", price: 99 },
-  { id: "expedited", name: "Expedited same-day filing", price: 49 },
+  { id: "ein", name: "EIN (tax ID) application", price: 99 },
+  { id: "annual_report", name: "Annual report filing", price: 119, note: "+ state fee" },
+  { id: "registered_agent", name: "Registered agent service (1 year)", price: 119 },
+  { id: "expedited", name: "Expedited same-day filing", price: 69 },
 ];
 
 export const INCLUDED: Record<Plan, Extra[]> = {

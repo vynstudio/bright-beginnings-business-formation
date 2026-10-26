@@ -221,9 +221,9 @@ export const translations: Record<string, T> = {
     pt: "A maioria dos pequenos negócios escolhe uma LLC pela simplicidade e flexibilidade tributária. Uma corporação pode ser melhor se você pretende captar investimento. Ajudamos você a decidir.",
   },
   "What does a registered agent do?": { es: "¿Qué hace un agente registrado?", pt: "O que faz um agente registrado?" },
-  "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $99/year.": {
-    es: "Un agente registrado recibe notificaciones legales y correo oficial del estado para su empresa. Florida exige que toda empresa tenga uno. El nuestro está incluido el primer año, luego $99/año.",
-    pt: "Um agente registrado recebe notificações legais e correspondência oficial do estado para sua empresa. A Flórida exige que toda empresa tenha um. O nosso está incluído no primeiro ano, depois US$99/ano.",
+  "A registered agent receives legal notices and official state mail for your company. Florida requires every company to have one. Ours is included for the first year, then $119/year.": {
+    es: "Un agente registrado recibe notificaciones legales y correo oficial del estado para su empresa. Florida exige que toda empresa tenga uno. El nuestro está incluido el primer año, luego $119/año.",
+    pt: "Um agente registrado recebe notificações legais e correspondência oficial do estado para sua empresa. A Flórida exige que toda empresa tenha um. O nosso está incluído no primeiro ano, depois US$119/ano.",
   },
 
   // Closing banner

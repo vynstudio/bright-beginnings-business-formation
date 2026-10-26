@@ -7,7 +7,7 @@
   "main": "worker/maintenance.js",
   "vars": {
     // "on" shows the "back soon" page on agenteregistradofl.com (the preview stays normal); "off" serves the site.
-    "MAINTENANCE": "on"
+    "MAINTENANCE": "off"
   },
   // Keeps the *.workers.dev preview address working alongside the domain.
   "workers_dev": true,

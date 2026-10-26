@@ -48,9 +48,9 @@ Company types:
 - corp: Florida corporation. Better when the owner plans to raise outside investment, issue shares, or wants a classic corporate structure. Florida state fee $70.
 
 Packages (one-time):
-- starter ($99): articles filed, operating agreement or bylaws, 1 year registered agent, privacy address. For US residents who already have or don't need an EIN.
-- professional ($199): starter + EIN, expedited 24h filing, certificate of status, free amendment in 90 days. For most US-based founders.
-- international ($399): professional + EIN for non-US owners without SSN, apostille, certificate of incumbency, one free DBA, bank account guidance. For owners living outside the US.
+- starter ($149): articles filed, operating agreement or bylaws, 1 year registered agent, privacy address. For US residents who already have or don't need an EIN.
+- professional ($249): starter + EIN, expedited 24h filing, certificate of status, free amendment in 90 days. For most US-based founders.
+- international ($449): professional + EIN for non-US owners without SSN, apostille, certificate of incumbency, one free DBA, bank account guidance. For owners living outside the US.
 
 Optional extras (only suggest if clearly useful and not included in the plan): ein (starter only), annual_report (prepay first annual report), registered_agent (already included in all plans, normally don't suggest), expedited (starter only).
 

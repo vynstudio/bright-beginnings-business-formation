@@ -2,7 +2,6 @@ import { useLang } from "@/i18n/LanguageContext";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import LogoStrip from "@/components/LogoStrip";
 import Photo from "@/components/Photo";
 
 const HeroSection = () => {
@@ -40,17 +39,11 @@ const HeroSection = () => {
 
       {/* Hero photo - container width. Not animated: it's the largest element, so it shows immediately. */}
       <div className="container mx-auto px-4">
-        <div className="relative mt-8 mb-12">
+        <div className="relative mt-8">
           <div className="w-full max-w-[1280px] h-[320px] sm:h-[500px] overflow-hidden rounded-[24px]">
             <Photo name="miami-skyline" priority sizes="(min-width: 1312px) 1280px, calc(100vw - 32px)" className="w-full h-full" />
           </div>
         </div>
-      </div>
-
-      <div className="container mx-auto px-4">
-
-        {/* Client Logos */}
-        <LogoStrip />
       </div>
     </section>
   );
