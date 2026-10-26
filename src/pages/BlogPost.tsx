@@ -1,4 +1,6 @@
 import { useParams, Link } from "react-router-dom";
+import { useLang, LOCALES } from "@/i18n/LanguageContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock } from "lucide-react";
@@ -100,6 +102,7 @@ const addIdsToHtmlHeadings = (html: string): string => {
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { t, lang } = useLang();
   const [activeHeading, setActiveHeading] = useState<string>('');
   const [readingProgress, setReadingProgress] = useState(0);
   const articleRef = useRef<HTMLElement>(null);
@@ -126,6 +129,7 @@ const BlogPost = () => {
     },
     enabled: !!slug,
   });
+  usePageTitle(post?.title ?? "Florida business formation guides");
 
   const contentBlocks = (post?.content_blocks as unknown as ContentBlock[]) || [];
   // Process HTML content to add IDs to headings for scroll-to functionality
@@ -224,7 +228,7 @@ const BlogPost = () => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString(LOCALES[lang], {
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -258,14 +262,14 @@ const BlogPost = () => {
       <div className="min-h-dvh bg-background">
         <Header />
         <main id="main-content" tabIndex={-1} className="container mx-auto px-4 pt-32 pb-16 text-center">
-          <h1 className="text-3xl font-bold text-foreground mb-4">Article Not Found</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-4">{t("Article Not Found")}</h1>
           <p className="text-muted-foreground mb-8">
-            The article you're looking for doesn't exist or has been removed.
+            {t("The article you're looking for doesn't exist or has been removed.")}
           </p>
           <Link to="/blog">
             <Button variant="lime">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Blog
+              {t("Back to blog")}
             </Button>
           </Link>
         </main>
@@ -289,7 +293,7 @@ const BlogPost = () => {
           {/* Back Button */}
           <Link to="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to blog
+            {t("Back to blog")}
           </Link>
 
           {/* Article Header */}
@@ -323,7 +327,7 @@ const BlogPost = () => {
               )}
               <div className="flex items-center gap-1 text-muted-foreground">
                 <Clock className="w-3.5 h-3.5" />
-                <span>{readTime} min read</span>
+                <span>{readTime} {t("min read")}</span>
               </div>
             </div>
           </header>

@@ -15,6 +15,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getStripe, getStripeEnvironment } from "@/lib/stripe";
 import { EXTRAS, INCLUDED, PLANS, STATE_FEE, money, orderTotal, type Entity, type Extra, type Plan } from "@/lib/catalog";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 type Owner = { name: string; ownership: string };
 
@@ -23,6 +24,7 @@ const isPlan = (v: string | null): v is Plan =>
 
 const Start = () => {
   const { t, lang } = useLang();
+  usePageTitle("Start your Florida company");
   const [params] = useSearchParams();
   const [step, setStep] = useState(1);
   const [plan, setPlan] = useState<Plan>(isPlan(params.get("plan")) ? (params.get("plan") as Plan) : "professional");

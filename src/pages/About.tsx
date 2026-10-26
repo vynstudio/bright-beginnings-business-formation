@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import Photo from "@/components/Photo";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const values = [
   {
@@ -22,6 +23,7 @@ const values = [
 
 const About = () => {
   const { t } = useLang();
+  usePageTitle("About us");
   return (
     <div className="min-h-dvh bg-background">
       <Header />

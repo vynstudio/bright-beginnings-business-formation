@@ -8,8 +8,10 @@ import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const Index = () => {
+  usePageTitle("Florida LLC and corporation formation, EIN and registered agent");
   return (
     <div className="min-h-dvh bg-background">
       <Header />

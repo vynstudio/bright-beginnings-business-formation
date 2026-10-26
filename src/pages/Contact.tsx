@@ -21,39 +21,41 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useLang } from "@/i18n/LanguageContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
-const contactSchema = z.object({
+const makeContactSchema = (t: (text: string) => string) => z.object({
   name: z
     .string()
     .trim()
-    .min(1, { message: "Name is required" })
-    .max(100, { message: "Name must be less than 100 characters" }),
+    .min(1, { message: t("Name is required") })
+    .max(100, { message: t("Name must be less than 100 characters") }),
   email: z
     .string()
     .trim()
-    .email({ message: "Please enter a valid email address" })
-    .max(255, { message: "Email must be less than 255 characters" }),
+    .email({ message: t("Please enter a valid email address") })
+    .max(255, { message: t("Email must be less than 255 characters") }),
   subject: z
     .string()
     .trim()
-    .min(1, { message: "Subject is required" })
-    .max(200, { message: "Subject must be less than 200 characters" }),
+    .min(1, { message: t("Subject is required") })
+    .max(200, { message: t("Subject must be less than 200 characters") }),
   message: z
     .string()
     .trim()
-    .min(10, { message: "Message must be at least 10 characters" })
-    .max(2000, { message: "Message must be less than 2000 characters" }),
+    .min(10, { message: t("Message must be at least 10 characters") })
+    .max(2000, { message: t("Message must be less than 2000 characters") }),
 });
 
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = z.infer<ReturnType<typeof makeContactSchema>>;
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { t } = useLang();
+  usePageTitle("Contact us");
 
   const form = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(makeContactSchema(t)),
     defaultValues: {
       name: "",
       email: "",
@@ -75,16 +77,16 @@ const Contact = () => {
 
     if (error) {
       toast({
-        title: "Message not sent",
-        description: "Something went wrong. Please try again or email us directly.",
+        title: t("Message not sent"),
+        description: t("Something went wrong. Please try again or email us directly."),
         variant: "destructive",
       });
       return;
     }
 
     toast({
-      title: "Message sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      title: t("Message sent!"),
+      description: t("Thank you for contacting us. We'll get back to you soon."),
     });
     form.reset();
   };
@@ -102,11 +104,10 @@ const Contact = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Get in Touch
+              {t("Get in Touch")}
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Have questions about forming your Florida company? We'd love to hear from you. Send us a
-              message and we'll respond as soon as possible.
+              {t("Have questions about forming your Florida company? We'd love to hear from you. Send us a message and we'll respond as soon as possible.")}
             </p>
           </motion.div>
           <div className="max-w-6xl mx-auto mt-10 h-[220px] sm:h-[320px] overflow-hidden rounded-[24px]">
@@ -125,7 +126,7 @@ const Contact = () => {
               className="bg-card border border-border rounded-2xl p-8"
             >
               <h2 className="text-2xl font-semibold text-foreground mb-6">
-                Send us a message
+                {t("Send us a message")}
               </h2>
               <Form {...form}>
                 <form
@@ -138,10 +139,10 @@ const Contact = () => {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name</FormLabel>
+                          <FormLabel>{t("Name")}</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Your name"
+                              placeholder={t("Your name")}
                               {...field}
                               className="bg-background"
                             />
@@ -155,11 +156,11 @@ const Contact = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>{t("Email")}</FormLabel>
                           <FormControl>
                             <Input
                               type="email"
-                              placeholder="your@email.com"
+                              placeholder={t("your@email.com")}
                               {...field}
                               className="bg-background"
                             />
@@ -174,10 +175,10 @@ const Contact = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>{t("Subject")}</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="What's this about?"
+                            placeholder={t("What's this about?")}
                             {...field}
                             className="bg-background"
                           />
@@ -191,10 +192,10 @@ const Contact = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>{t("Message")}</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell us more about your inquiry..."
+                            placeholder={t("Tell us more about your inquiry...")}
                             rows={6}
                             {...field}
                             className="bg-background resize-none"
@@ -211,11 +212,11 @@ const Contact = () => {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Sending..."
+                      t("Sending...")
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        {t("Send Message")}
                       </>
                     )}
                   </Button>

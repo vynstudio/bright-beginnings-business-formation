@@ -29,3 +29,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useLang = () => useContext(LanguageContext);
+
+// Locale used to format dates for each site language.
+export const LOCALES: Record<Lang, string> = { en: "en-US", es: "es-US", pt: "pt-BR" };

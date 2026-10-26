@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useLang } from "@/i18n/LanguageContext";
+import { useLang, LOCALES } from "@/i18n/LanguageContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import {
   Popover,
   PopoverContent,
@@ -127,7 +128,8 @@ const sanitizeSearchQuery = (query: string): string => {
   return sanitized;
 };
 const Blog = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  usePageTitle("Florida business formation guides");
   const [searchInput, setSearchInput] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -187,7 +189,7 @@ const Blog = () => {
     }
   });
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString(LOCALES[lang], {
       month: "short",
       day: "numeric",
       year: "numeric"
@@ -240,8 +242,8 @@ const Blog = () => {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input 
                   type="text" 
-                  aria-label="Search articles"
-                  placeholder="Search articles..." 
+                  aria-label={t("Search articles")}
+                  placeholder={t("Search articles...")} 
                   value={searchInput} 
                   onChange={e => setSearchInput(e.target.value)} 
                   maxLength={100} 
@@ -250,7 +252,7 @@ const Blog = () => {
                 {searchInput && (
                   <button 
                     type="button"
-                    aria-label="Clear search"
+                    aria-label={t("Clear search")}
                     onClick={() => setSearchInput("")}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                   >
@@ -266,7 +268,7 @@ const Blog = () => {
                 <button className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground bg-muted hover:bg-muted/80 rounded-full transition-colors w-fit">
                   {selectedCategory 
                     ? categories?.find(c => c.id === selectedCategory)?.name 
-                    : "All categories"}
+                    : t("All categories")}
                   <ChevronDown className="w-4 h-4 text-muted-foreground" />
                 </button>
               </PopoverTrigger>
@@ -287,7 +289,7 @@ const Blog = () => {
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     }`}
                   >
-                    All categories
+                    {t("All categories")}
                   </button>
                   {categories?.map(category => (
                     <button 
@@ -434,7 +436,7 @@ const Blog = () => {
                     <div className="flex-1 min-w-0">
                       {/* Category and Date */}
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                        <span>{post.blog_categories?.name || 'Uncategorized'}</span>
+                        <span>{post.blog_categories?.name || t("Uncategorized")}</span>
                         <span>•</span>
                         <span>{post.published_at && formatDate(post.published_at)}</span>
                       </div>
@@ -544,7 +546,7 @@ const Blog = () => {
                     
                     {/* Category - hidden on mobile */}
                     <span className="text-sm text-muted-foreground hidden md:block pr-4">
-                      {post.blog_categories?.name || 'Uncategorized'}
+                      {post.blog_categories?.name || t("Uncategorized")}
                     </span>
                     
                     {/* Date - hidden on mobile */}
@@ -569,7 +571,7 @@ const Blog = () => {
                     onClick={() => setVisibleCount(prev => prev + LOAD_MORE_COUNT)}
                     className="rounded-full px-8"
                   >
-                    Load more
+                    {t("Load more")}
                   </Button>
                 </div>
               )}
@@ -579,7 +581,7 @@ const Blog = () => {
 
         {!isLoading && (!posts || posts.length === 0) && <div className="text-center py-16">
             <p className="text-muted-foreground text-lg">
-              No articles found. Try adjusting your search or filters.
+              {t("No articles found. Try adjusting your search or filters.")}
             </p>
             {(searchInput || selectedCategory) && <button type="button" onClick={() => {
               setSearchInput("");

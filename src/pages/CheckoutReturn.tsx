@@ -3,9 +3,11 @@ import { CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLang } from "@/i18n/LanguageContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const CheckoutReturn = () => {
   const { t } = useLang();
+  usePageTitle("Order received");
   const [params] = useSearchParams();
   const ok = !!params.get("session_id");
   return (

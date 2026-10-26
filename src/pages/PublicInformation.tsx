@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import { publicPages, type PublicPageKey } from "@/content/publicPages";
 import Photo, { type PhotoName } from "@/components/Photo";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const pagePhotos: Partial<Record<PublicPageKey, PhotoName>> = {
   "florida-llc-vs-corporation": "signing-contract",
@@ -16,6 +17,7 @@ const pagePhotos: Partial<Record<PublicPageKey, PhotoName>> = {
 export default function PublicInformation({ pageKey }: { pageKey: PublicPageKey }) {
   const { t } = useLang();
   const page = publicPages[pageKey];
+  usePageTitle(page.title);
   return <div className="min-h-dvh bg-background text-foreground">
     <Header />
     <main id="main-content" tabIndex={-1} className="pt-32 pb-16">
