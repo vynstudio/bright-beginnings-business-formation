@@ -1,8 +1,8 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3";
-import { alertText, sendTelegram } from "../_shared/telegram.ts";
+import { sendAlert } from "../_shared/alerts.ts";
 
-// Saves a contact-form message (only admins can read them) and alerts the owner on Telegram.
+// Saves a contact-form message (only admins can read them) and alerts the owner (Telegram and email).
 const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -35,13 +35,13 @@ Deno.serve(async (req) => {
     const { error } = await db.from("contact_messages").insert({ name, email, subject, message });
     if (error) throw error;
 
-    await sendTelegram(alertText("✉️ New contact message", [
+    await sendAlert("✉️ New contact message", [
       ["Name", name],
       ["Email", email],
       ["Language", language.toUpperCase()],
       ["Subject", subject],
       ["Message", message.length > 1500 ? `${message.slice(0, 1500)}…` : message],
-    ]));
+    ]);
     return json({ ok: true });
   } catch (e) {
     console.error("contact-message error", e);

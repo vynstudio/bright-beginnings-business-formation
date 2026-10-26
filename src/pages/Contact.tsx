@@ -68,7 +68,7 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Saved by the contact-message function, which also alerts us on Telegram.
+    // Saved by the contact-message function, which also alerts us (Telegram and email).
     const { error } = await supabase.functions.invoke("contact-message", {
       body: { ...data, language: lang },
     });
