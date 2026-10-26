@@ -1,6 +1,7 @@
 // POST /api/alert-email: the Supabase functions send owner alerts here, and Cloudflare Email
-// Routing delivers them (from alertas@agenteregistradofl.com) to the verified owner address set on
-// the ALERT_EMAIL binding in wrangler.jsonc. Requests must carry the shared ALERT_SECRET.
+// Routing delivers them (from alertas@agenteregistradofl.com) to each ALERT_TO address in
+// wrangler.jsonc; every one must be a verified Email Routing destination address and be listed on
+// the ALERT_EMAIL binding. Requests must carry the shared ALERT_SECRET.
 import { EmailMessage } from "cloudflare:email";
 
 const FROM = "alertas@agenteregistradofl.com";
@@ -38,6 +39,9 @@ export async function alertEmail(request, env) {
   if (typeof subject !== "string" || typeof text !== "string" || !subject || subject.length > 200 || text.length > 10000) {
     return new Response("Bad request", { status: 400 });
   }
-  await env.ALERT_EMAIL.send(new EmailMessage(FROM, env.ALERT_TO, mime(env.ALERT_TO, subject, text)));
-  return new Response("sent");
+  const recipients = env.ALERT_TO.split(",").map((a) => a.trim()).filter(Boolean);
+  const results = await Promise.allSettled(recipients.map((to) => env.ALERT_EMAIL.send(new EmailMessage(FROM, to, mime(to, subject, text)))));
+  const failed = results.flatMap((r, i) => (r.status === "rejected" ? [`${recipients[i]}: ${r.reason}`] : []));
+  if (failed.length) console.error("Alert email failed", failed);
+  return new Response(failed.length === recipients.length ? "failed" : "sent", { status: failed.length === recipients.length ? 502 : 200 });
 }

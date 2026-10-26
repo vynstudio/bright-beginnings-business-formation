@@ -7,8 +7,13 @@
   "main": "worker/index.js",
   "vars": {
     // "on" shows the "back soon" page on agenteregistradofl.com (the preview stays normal); "off" serves the site.
-    "MAINTENANCE": "off"
+    "MAINTENANCE": "off",
+    // Owner alert emails (worker/alert-email.js); each address must be verified in Email Routing.
+    "ALERT_TO": "info@dilerservices.com,hello@toromovers.com"
   },
+  "send_email": [
+    { "name": "ALERT_EMAIL", "allowed_destination_addresses": ["info@dilerservices.com", "hello@toromovers.com"] }
+  ],
   // Keeps the *.workers.dev preview address working alongside the domain.
   "workers_dev": true,
   "routes": [
