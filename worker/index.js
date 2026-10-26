@@ -93,6 +93,10 @@ export default {
     }
     if (env.MAINTENANCE === "on" && publicHost) return maintenancePage();
 
+    // Google Search Console ownership file: served at its exact .html address (no redirect).
+    if (/^\/google[0-9a-f]+\.html$/.test(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL(url.pathname.slice(0, -5), url), request));
+    }
     // Files (scripts, images, sitemap...) are served as they are.
     if (/\.[a-z0-9]+$/i.test(url.pathname)) return env.ASSETS.fetch(request);
 
