@@ -28,7 +28,8 @@ async function email(title: string, lines: Lines) {
   const res = await fetch("https://agenteregistradofl.com/api/alert-email", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-alert-secret": secret },
-    body: JSON.stringify({ subject: title, text }),
+    // The first value (company or person) makes each subject unique, so Gmail doesn't thread alerts together.
+    body: JSON.stringify({ subject: `${title}: ${present(lines)[0]?.[1] ?? ""}`.slice(0, 200), text }),
   });
   if (!res.ok) throw new Error(`Alert email ${res.status}: ${await res.text()}`);
 }
